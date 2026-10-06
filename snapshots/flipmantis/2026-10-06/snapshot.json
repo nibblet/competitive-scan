@@ -1,0 +1,197 @@
+{
+  "product": "FlipMantis",
+  "slug": "flipmantis",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://flipmantis.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://flipmantis.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://flipmantis.com/features/rehab",
+      "raw_file": "raw/features_rehab.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipmantis.com/features/all",
+      "raw_file": "raw/features_all.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipmantis.com/solutions/flippers",
+      "raw_file": "raw/solutions_flippers.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipmantis.com/whats-new",
+      "raw_file": "raw/whats_new.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://flipmantis.com/blog",
+      "raw_file": "raw/blog.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/id6757320810",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=6757320810&country=us",
+      "raw_file": "raw/itunes_lookup.json",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://www.capterra.ca/software/1086098/FlipMantis",
+      "raw_file": null,
+      "http_status": 403,
+      "what": "other"
+    },
+    {
+      "url": "https://www.getapp.ca/software/2084201/flipmantis",
+      "raw_file": null,
+      "http_status": 403,
+      "what": "other"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Stakeholder portals for lenders, contractors, JV partners",
+      "quote": "Give lenders, contractors, and JV partners their own login. Draw request approvals, document uploads, deal transparency.",
+      "source_url": "https://flipmantis.com/"
+    },
+    {
+      "feature": "Token-based (magic link) portal access",
+      "quote": "Token-Based Portal Access. Secure magic link access for stakeholders",
+      "source_url": "https://flipmantis.com/features/all"
+    },
+    {
+      "feature": "White label portals and portal blueprints",
+      "quote": "White Label Portals. Branded stakeholder portals",
+      "source_url": "https://flipmantis.com/features/all"
+    },
+    {
+      "feature": "Draw request workflow to lenders",
+      "quote": "Submit draws to lenders with documentation. Track approval status in real-time.",
+      "source_url": "https://flipmantis.com/features/rehab"
+    },
+    {
+      "feature": "Draw package assembly",
+      "quote": "Draw Package Assembly. Bundle documentation for lender submission",
+      "source_url": "https://flipmantis.com/features/all"
+    },
+    {
+      "feature": "Change orders with cost impact",
+      "quote": "Document scope changes with cost impact. Keep lenders informed automatically.",
+      "source_url": "https://flipmantis.com/features/rehab"
+    },
+    {
+      "feature": "Lien release tracking by vendor",
+      "quote": "Track lien release status by vendor. Never close with outstanding liens.",
+      "source_url": "https://flipmantis.com/features/rehab"
+    },
+    {
+      "feature": "Budget vs actual on scope items",
+      "quote": "See where you are over or under budget. Catch cost overruns before they kill your profit.",
+      "source_url": "https://flipmantis.com/features/rehab"
+    },
+    {
+      "feature": "Mobile rehab progress and draw approval from the field",
+      "quote": "Track rehab milestones, capture progress photos, and approve draws from the field",
+      "source_url": "https://flipmantis.com/features/all"
+    },
+    {
+      "feature": "Lender packets",
+      "quote": "Generate professional lender packets with one click",
+      "source_url": "https://flipmantis.com/features/all"
+    },
+    {
+      "feature": "Pass Pile Intelligence (track passed deals that later sold)",
+      "quote": "Track every deal you pass on. When they sell for profit, see exactly what you missed.",
+      "source_url": "https://flipmantis.com/"
+    },
+    {
+      "feature": "AI voice agents for outbound seller calls",
+      "quote": "Dispatch a voice agent to call a lead. The agent runs the conversation, captures the outcome, and writes it back to the contact record.",
+      "source_url": "https://flipmantis.com/whats-new"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Free",
+      "price": "Free",
+      "limits": "2 active deals, 10 free skip traces, property searches $0.10 each, basic underwriting, mobile app, D4D",
+      "source_url": "https://flipmantis.com/pricing"
+    },
+    {
+      "plan": "Pro",
+      "price": "$99/mo, or $950/yr",
+      "limits": "2,500 skip traces/mo, unlimited searches, dialer and SMS, lender packets, investor portals, extra skip traces $0.12",
+      "source_url": "https://flipmantis.com/pricing"
+    },
+    {
+      "plan": "Team",
+      "price": "$199/mo, or $1,910/yr",
+      "limits": "Up to 10 users, role permissions, SSO/SAML, extra skip traces $0.10",
+      "source_url": "https://flipmantis.com/pricing"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-06 (month only)",
+      "change": "Driving for Dollars rebuilt into field workflow with seven action buckets and address confirmation before enrichment",
+      "source_url": "https://flipmantis.com/whats-new"
+    },
+    {
+      "date": "2026-06 (month only)",
+      "change": "Skip trace cost discipline: refuses duplicates, unconfirmed addresses, properties without intel",
+      "source_url": "https://flipmantis.com/whats-new"
+    },
+    {
+      "date": "2026-06 (month only)",
+      "change": "Offline-safe field capture of leads, photos, voice notes",
+      "source_url": "https://flipmantis.com/whats-new"
+    },
+    {
+      "date": "2026-05 late (month only)",
+      "change": "AI voice agent for outbound calls with transcripts and outcome categorization",
+      "source_url": "https://flipmantis.com/whats-new"
+    },
+    {
+      "date": "2026-05 late (month only)",
+      "change": "AI reply drafts in unified inbox; inbound email parsing",
+      "source_url": "https://flipmantis.com/whats-new"
+    },
+    {
+      "date": "2026-05 late (month only)",
+      "change": "Unified inbox foundation: SMS, email, calls, voicemails in one thread",
+      "source_url": "https://flipmantis.com/whats-new"
+    }
+  ],
+  "app_store": {
+    "version": "1.0",
+    "release_date": "2026-01-15",
+    "whats_new": "not established (no release notes on the listing)",
+    "rating_count_if_shown": "not enough ratings to display (iTunes lookup: 0)",
+    "source_url": "https://apps.apple.com/us/app/id6757320810"
+  },
+  "api_or_mcp": "Feature list claims 'REST API. Full API access for integrations' and 'Webhooks. Push events to external systems' plus an Integration Hub for 400+ apps (https://flipmantis.com/features/all). API docs not found; MCP: not established.",
+  "notes": "What's New page says 'Last updated: June 2026'. Day-level dates not given. App Store developer listed as an individual (Rabboni Smith), app still at 1.0."
+}

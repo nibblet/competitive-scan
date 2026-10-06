@@ -1,0 +1,187 @@
+{
+  "product": "BatchOffers",
+  "slug": "batchoffers",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://batchoffers.com/",
+      "raw_file": "raw/home-com.html",
+      "http_status": 200,
+      "what": "home",
+      "note": "SPA; prerender shell only, content in JS bundle"
+    },
+    {
+      "url": "https://batchoffers.com/assets/index-B-9rWPk_.js",
+      "raw_file": "raw/index-bundle.js.txt",
+      "http_status": 200,
+      "what": "pricing",
+      "note": "site JS bundle saved as .txt, read as text only, never executed; pricing, FAQ and docs copy live here"
+    },
+    {
+      "url": "https://batchoffers.com/pricing/",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing",
+      "note": "SPA shell identical to home"
+    },
+    {
+      "url": "https://batchoffers.com/docs/",
+      "raw_file": "raw/docs.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://batchoffers.com/docs/use-cases/",
+      "raw_file": "raw/docs-use-cases.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://batchoffers.com/docs/assumptions-guide/",
+      "raw_file": "raw/docs-assumptions-guide.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://batchoffers.com/docs/limitations/",
+      "raw_file": "raw/docs-limitations.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://batchoffers.com/learn/",
+      "raw_file": "raw/learn.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://batchoffers.com/sitemap.xml",
+      "raw_file": "raw/sitemap.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "no changelog or blog in sitemap"
+    },
+    {
+      "url": "https://batchoffers.com/robots.txt",
+      "raw_file": "raw/robots.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://alternativeto.net/software/batchoffers/about",
+      "raw_file": "raw/alternativeto.html",
+      "http_status": 403,
+      "what": "other",
+      "note": "blocked (403)"
+    },
+    {
+      "url": "https://news.bensbites.co/posts/60091-batchoffers-bulk-property-offer-calculator-for-real-estate-wholesalers",
+      "raw_file": "raw/bensbites.html",
+      "http_status": 522,
+      "what": "other",
+      "note": "origin error 522"
+    }
+  ],
+  "features": [
+    {
+      "feature": "CSV upload of a lead list, ARV + repairs + MAO per row",
+      "quote": "Upload addresses, get ARV + Repairs + MAO for every row. Batch underwriting for real estate wholesalers. 3 free - no credit card.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Same assumptions on every row",
+      "quote": "Upload your lead list. Get consistent, send-ready max offers back in minutes. Same assumptions, every row, every time.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Valuation source and method",
+      "quote": "BatchOffers uses the RentCast AVM API to estimate property values and a formula-based approach to compute rehab costs, maximum allowable offers, and deal scores.",
+      "source_url": "https://batchoffers.com/docs/"
+    },
+    {
+      "feature": "MAO formula",
+      "quote": "(ARV × Discount %) − Repairs − Closing Costs − Holding Costs − Assignment Fee",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Default assumptions preset",
+      "quote": "Medium rehab ($30), Standard discount (70%), 3% closing, $3,000 holding, $10,000 assignment.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Deal score plus confidence per row",
+      "quote": "Offer price, repairs, spread, and a deal score for every address. Focus on Strong deals first.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Low-confidence flag rule",
+      "quote": "Low - repairs exceed 35% of ARV or data may be incomplete. Verify this deal manually before making an offer.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Skipped rows with reasons; dedupe; no charge for provider failures",
+      "quote": "Duplicate addresses in the same batch are automatically deduplicated and don't consume credits. We aim to avoid charging for provider-side failures",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "CSV export as buyer worksheet",
+      "quote": "The CSV includes ARV, repairs, MAO, spread, and deal score. Send to your buyer as a clean one-page worksheet.",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "feature": "Use cases",
+      "quote": "How wholesalers use BatchOffers for daily lead processing, skip trace prioritization, JV deal scoring, disposition prep, and market entry research.",
+      "source_url": "https://batchoffers.com/docs/use-cases/"
+    },
+    {
+      "feature": "Coverage limits",
+      "quote": "Coverage varies by market. Vacant land, new construction, and rural properties may not return results.",
+      "source_url": "https://batchoffers.com/docs/limitations/"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Free",
+      "price": "$0",
+      "limits": "3 free analyses, no credit card",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "plan": "Starter",
+      "price": "$39/mo",
+      "limits": "300 credits ($0.13 per address)",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "plan": "Growth",
+      "price": "$99/mo",
+      "limits": "1,000 credits ($0.10 per address)",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "plan": "Pro",
+      "price": "$399/mo",
+      "limits": "4,000 credits ($0.10 per address)",
+      "source_url": "https://batchoffers.com/"
+    },
+    {
+      "plan": "Overage",
+      "price": "$0.12 per credit, sold in blocks",
+      "limits": "one credit per address",
+      "source_url": "https://batchoffers.com/"
+    }
+  ],
+  "pricing_note": "Prices read from the site's JS bundle (raw/index-bundle.js.txt), which renders the home and pricing views.",
+  "recent_changes": [
+    {
+      "date": "2026-02",
+      "change": "Terms of Service and Privacy Policy 'Last updated: February 2026'",
+      "source_url": "https://batchoffers.com/"
+    }
+  ],
+  "recent_changes_note": "No changelog, blog dates or release notes found. Baseline for next week: hash of JS bundle filename (index-B-9rWPk_.js) and the pricing table values above.",
+  "app_store": "not established",
+  "api_or_mcp": "not established (no API or MCP mentioned on https://batchoffers.com/ or its docs; valuation is supplied by the RentCast AVM API per https://batchoffers.com/docs/ )",
+  "quote_note": "Em dashes in quoted source text replaced with hyphens per house style; otherwise verbatim."
+}

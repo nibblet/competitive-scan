@@ -1,0 +1,3005 @@
+{
+  "generated": "2026-10-06",
+  "phase": "0",
+  "status_values": [
+    "built",
+    "partial",
+    "not built"
+  ],
+  "status_definitions": {
+    "built": "UI (or tool), API and data path all present in code",
+    "partial": "some layer missing, flagged off, stubbed, or backend only",
+    "not built": "absent from code, or in docs / plans only"
+  },
+  "evidence_format": "<repo>:<path relative to repo root>",
+  "repos": {
+    "readvise": {
+      "commit": "8520a20",
+      "branch": "claude/competitive-capability-scan-4p48kt"
+    },
+    "recontrol": {
+      "commit": "f05d778",
+      "branch": "claude/competitive-capability-scan-4p48kt"
+    },
+    "rebuild3": {
+      "commit": "41913c3",
+      "branch": "claude/competitive-capability-scan-4p48kt"
+    },
+    "forvex-underwrite": {
+      "commit": "cee40b8",
+      "branch": "claude/competitive-capability-scan-4p48kt"
+    }
+  },
+  "counts": {
+    "built": 93,
+    "partial": 16,
+    "not built": 17
+  },
+  "chat_access_counts": {
+    "read": 26,
+    "none": 44,
+    "read+write": 34,
+    "write": 4,
+    "n/a": 18
+  },
+  "chat_access_source": "mcp-coverage.json",
+  "apps": [
+    {
+      "app": "Readvise",
+      "repo": "readvise",
+      "rule": "System of record for pipeline, tasks, notes. Consumes underwriting, does not own it. MCP tools live in recontrol, not here.",
+      "rule_source": "readvise:CLAUDE.md",
+      "modules": [
+        {
+          "module": "Sense",
+          "capabilities": [
+            {
+              "id": "rv.sense.market-explorer",
+              "capability": "Tract / ZIP / neighborhood market explorer",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/operate/sense.tsx",
+                  "shows": "Sense page mounting the market views"
+                },
+                {
+                  "path": "readvise:components/operate/sense/views/MarketMemoryTab.tsx",
+                  "shows": "one of the Sense view tabs (Tracts, Zips, Neighborhoods, MarketForces alongside)"
+                },
+                {
+                  "path": "readvise:pages/api/operate/sense",
+                  "shows": "about 60 routes for ACS, HUD, SAFMR, Zillow history, FRED, choropleths"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_market_intelligence"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_market_intelligence.ts",
+                "note": "Per-property ZIP / tract layers only; cannot browse markets from chat."
+              }
+            },
+            {
+              "id": "rv.sense.market-brief",
+              "capability": "Weekly market memory / AI market brief",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/sense/market-memory/generate-week.ts",
+                  "shows": "generates the weekly narrative, signals and deltas"
+                },
+                {
+                  "path": "readvise:components/operate/sense/views/MarketMemoryTab.tsx",
+                  "shows": "UI for the brief"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_market_brief"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_market_brief.ts",
+                "note": "Data only; chat writes the narrative; weekly memory not saved."
+              }
+            },
+            {
+              "id": "rv.sense.news",
+              "capability": "Local news brief",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/dashboard/LocalNewsBrief.tsx",
+                  "shows": "dashboard card"
+                },
+                {
+                  "path": "readvise:pages/api/operate/sense/news/serpapi.ts",
+                  "shows": "SerpAPI news fetch"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.sense.watchlist",
+              "capability": "Tract / ZIP watchlist alerts",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/sense/watchlist/index.ts",
+                  "shows": "watchlist CRUD"
+                },
+                {
+                  "path": "readvise:lib/cron-tasks/sense-watchlist-check.ts",
+                  "shows": "daily cron writes in-app notifications"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.sense.comp-intel-capture",
+              "capability": "Competitor listing capture (daily SERP collector + manual paste)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/cron-tasks/competitive-intel.ts",
+                  "shows": "daily SERP ingest, persist, fuzzy match"
+                },
+                {
+                  "path": "readvise:pages/api/sense/competitive-intel/capture.ts",
+                  "shows": "pasted text to competitive_listings"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_record_competitor_listing",
+                  "readvise_list_competitor_work"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/records/recordCompetitorListing.ts",
+                "note": "One listing per call; list returns the work queue, not listings."
+              }
+            },
+            {
+              "id": "rv.sense.comp-intel-brief",
+              "capability": "Competitive landscape brief (deal board, buyer registry, overlap, operators) with share link",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/sense/competitive-intel/index.tsx",
+                  "shows": "brief and panels"
+                },
+                {
+                  "path": "readvise:pages/share/intel/[token].tsx",
+                  "shows": "read-only share link"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "No deal board, buyer registry, overlap or share link tool."
+              }
+            },
+            {
+              "id": "rv.sense.roundtrips",
+              "capability": "Competitor buy / resell round trips from public records (plus self-audit)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/sense/competitive-intel/roundtrips.ts",
+                  "shows": "round-trip and hold-time computation"
+                }
+              ],
+              "chat": {
+                "access": "write",
+                "tools": [
+                  "readvise_record_instrument",
+                  "readvise_upsert_records_entity",
+                  "readvise_resolve_listing"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/records/recordInstrument.ts",
+                "note": "Writes deed inputs; nothing reads the round-trip report back."
+              }
+            },
+            {
+              "id": "rv.sense.comp-discovery",
+              "capability": "Competitor discovery review queue",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/sense/competitive-intel/discoveries.tsx",
+                  "shows": "pending_review to active / archived / friendly_franchise"
+                },
+                {
+                  "path": "readvise:pages/api/sense/competitive-intel/discoveries.ts",
+                  "shows": "API"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.sense.comp-marketing",
+              "capability": "Competitor mail-effort upload and marketing profile",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/sense/competitive-intel/effort-upload.ts",
+                  "shows": "ZIP / weight CSV upload"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.sense.openings",
+              "capability": "Competitor openings (failed competitor listings as a lead list)",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:lib/cron-tasks/competitor-openings.ts",
+                  "shows": "backend cron only"
+                }
+              ],
+              "note": "Backend cron; no dedicated UI confirmed.",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/readvise/records/listCompetitorWork.ts",
+                "note": "list_competitor_work is not the openings list (judged from its description)."
+              }
+            },
+            {
+              "id": "rv.sense.density",
+              "capability": "Competitor density per neighborhood",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/sense/views/CompetitorsTab.tsx",
+                  "shows": "density view"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.sense.lost-deal-watch",
+              "capability": "Records watch on deals we did not get",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "readvise:docs/plans/DEAL_RECORDS_WATCH_PLAN.md",
+                  "shows": "says design agreed, not built"
+                }
+              ],
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Operate",
+          "capabilities": [
+            {
+              "id": "rv.op.pipeline",
+              "capability": "Pipeline / stage board, property list, map",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/operate/index.tsx",
+                  "shows": "pipeline board"
+                },
+                {
+                  "path": "readvise:pages/operate/map.tsx",
+                  "shows": "map view"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_list_deals",
+                  "forvex_save_deal",
+                  "forvex_update_deal_disposition"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/list_deals.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.bulk-status",
+              "capability": "Bulk status update across many properties",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/properties/bulk-update.ts",
+                  "shows": "multi-property status / update"
+                }
+              ],
+              "chat": {
+                "access": "write",
+                "tools": [
+                  "forvex_update_deal_disposition"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/update_deal_disposition.ts",
+                "note": "One deal per call; no bulk tool."
+              }
+            },
+            {
+              "id": "rv.op.property-workspace",
+              "capability": "Property detail workspace (overview, financials, comps, underwriting, workflow, notes, files)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/PropertyDetail.tsx",
+                  "shows": "workspace shell"
+                },
+                {
+                  "path": "readvise:components/operate/tabs",
+                  "shows": "per-tab components"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_deal",
+                  "forvex_get_deal_history",
+                  "forvex_get_property",
+                  "forvex_log_activity",
+                  "readvise_create_property_note",
+                  "forvex_attach_analysis"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_deal.ts",
+                "note": "Workflow / checklist tabs not exposed."
+              }
+            },
+            {
+              "id": "rv.op.comps-evidence",
+              "capability": "Comps / ARV evidence with overrides (reads recontrol comp traces)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/properties/[propertyId]/comps.ts",
+                  "shows": "reads comp trace"
+                },
+                {
+                  "path": "readvise:pages/api/operate/properties/[propertyId]/comps/override.ts",
+                  "shows": "operator override"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_comps",
+                  "forvex_get_comp_detail",
+                  "forvex_set_comp_override"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/set_comp_override.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.reanalyze",
+              "capability": "Re-underwrite one property (proxied to recontrol)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/properties/[propertyId]/reanalyze.ts",
+                  "shows": "proxies to recontrol engine"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_underwrite",
+                  "forvex_save_deal"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.tasks",
+              "capability": "Tasks and My Work (manual, AI-suggested, checklist, advisor)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/tasks.tsx",
+                  "shows": "task list"
+                },
+                {
+                  "path": "readvise:pages/operate/my-work.tsx",
+                  "shows": "My Work view"
+                },
+                {
+                  "path": "readvise:pages/api/operate/tasks/index.ts",
+                  "shows": "tasks API"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_list_tasks",
+                  "readvise_create_task",
+                  "readvise_complete_task",
+                  "readvise_undo_agent_actions",
+                  "readvise_list_agent_actions"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/createTask.ts",
+                "note": "Create / list / complete / undo; cannot edit, reassign or reschedule."
+              }
+            },
+            {
+              "id": "rv.op.checklists",
+              "capability": "Checklists and templates with trigger evaluator",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/operate/checklists/templates.tsx",
+                  "shows": "template editor"
+                },
+                {
+                  "path": "readvise:lib/operate/checklists/materialize.ts",
+                  "shows": "materialize into workflow nodes"
+                },
+                {
+                  "path": "readvise:lib/checklist/trigger-evaluator.ts",
+                  "shows": "trigger evaluation"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.staged-actions",
+              "capability": "Staged AI actions the operator approves",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/tabs/StagedActionsPanel.tsx",
+                  "shows": "approval panel"
+                },
+                {
+                  "path": "readvise:pages/api/operate/workflow/ai-op.ts",
+                  "shows": "AI op endpoint"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_get_daily_review",
+                  "readvise_decide_review_items"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/dailyReview.ts",
+                "note": "Inferred that review events are the staged actions."
+              }
+            },
+            {
+              "id": "rv.op.daily-review",
+              "capability": "Daily review queue (readvise_get_daily_review / decide_review_items)",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/tools/readvise/dailyReview.ts",
+                  "shows": "MCP tool implementation"
+                }
+              ],
+              "note": "No table, route or UI in readvise. Exists only as recontrol MCP tools. Paul (2026-10-06): in active use, needs validation.",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_get_daily_review",
+                  "readvise_decide_review_items"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/dailyReview.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.assignments",
+              "capability": "Assignments and in-app notifications",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/assignments/index.ts",
+                  "shows": "assignment API"
+                },
+                {
+                  "path": "readvise:components/notifications/NotificationBell.tsx",
+                  "shows": "in-app bell"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.op.doc-generate",
+              "capability": "Generate offer letter / purchase contract (.docx)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/properties/[propertyId]/document.ts",
+                  "shows": "docx generation"
+                },
+                {
+                  "path": "readvise:components/operate/DocumentGenerateModal.tsx",
+                  "shows": "UI"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "No offer letter / contract tool."
+              }
+            },
+            {
+              "id": "rv.op.dispo",
+              "capability": "Dispo: wholesale sheet, presentation packet, voice brief",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/dispo/WholesaleSheetModal.tsx",
+                  "shows": "wholesale sheet"
+                },
+                {
+                  "path": "readvise:components/operate/presentation/PresentationPacketMenu.tsx",
+                  "shows": "presentation packet"
+                },
+                {
+                  "path": "readvise:components/operate/tabs/underwriting/VoiceBriefListen.tsx",
+                  "shows": "voice brief"
+                }
+              ],
+              "chat": {
+                "access": "write",
+                "tools": [
+                  "forvex_build_wholesale_sheet",
+                  "forvex_render_presentation",
+                  "forvex_create_voice_brief"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/build_wholesale_sheet.ts",
+                "note": "Generates artifacts; no read-back."
+              }
+            },
+            {
+              "id": "rv.op.exit-reasons",
+              "capability": "Exit / lost reasons (closed lists mirrored from recontrol)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/operate/dispositionReasons.ts",
+                  "shows": "closed reason list"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_update_deal_disposition",
+                  "forvex_get_deal_history"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/update_deal_disposition.ts",
+                "note": "Read-back via history is inferred."
+              }
+            },
+            {
+              "id": "rv.op.war",
+              "capability": "Weekly Activity Report (generate, edit, AI polish, mark sent)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/operate/reports/generate.ts",
+                  "shows": "generation"
+                },
+                {
+                  "path": "readvise:components/operate/summary/WeeklyActivityReportCard.tsx",
+                  "shows": "UI"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Operate > Documents and deadlines",
+          "capabilities": [
+            {
+              "id": "rv.doc.storage",
+              "capability": "Deal document storage and listing",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:lib/operate/dealDocuments.ts",
+                  "shows": "doc types: purchaseContract, settlementStatement, deed, titleCommitment"
+                },
+                {
+                  "path": "readvise:pages/api/operate/properties/[propertyId]/files.ts",
+                  "shows": "GET only"
+                },
+                {
+                  "path": "readvise:components/operate/tabs/FilesTab.tsx",
+                  "shows": "lists docs and closing figures"
+                }
+              ],
+              "note": "Read-only in readvise. Uploads are written by recontrol (forVEX Scan / forvex_register_document).",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_deal_documents",
+                  "forvex_get_document_text",
+                  "forvex_register_document",
+                  "forvex_link_document",
+                  "forvex_project_scan",
+                  "forvex_recall"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/registerDocument.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.doc.deadline-extract",
+              "capability": "Contract contingency date extraction into deadline tasks",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/memory/extractScan.ts",
+                  "shows": "LLM extractor over phone-OCR text: parties, dates, dated obligations"
+                },
+                {
+                  "path": "recontrol:lib/mcp/memory/obligations.ts",
+                  "shows": "turns inspection, financing, earnest money, closing into tasks, idempotent"
+                },
+                {
+                  "path": "readvise:supabase/migrations/20260921160000_readvise_tasks_source_document_obligation.sql",
+                  "shows": "readvise accepts source='document_obligation' tasks with target_date"
+                }
+              ],
+              "note": "Extraction and task creation are built (recontrol). Gap: no deadline-specific UI in readvise; obligations show up as ordinary tasks. OCR happens on the phone; no server-side OCR found.",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_materialize_obligations",
+                  "forvex_project_scan",
+                  "readvise_list_tasks"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/materializeObligations.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.doc.key-date-alerts",
+              "capability": "Key-date risk alerts (option expiry, expected close)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/operate/dealRisk.ts",
+                  "shows": "scores key dates (around lines 199 to 226)"
+                },
+                {
+                  "path": "readvise:lib/cron-tasks/deal-at-risk.ts",
+                  "shows": "weekly cron writes insights and follow-up task"
+                },
+                {
+                  "path": "readvise:pages/api/workspaces/[workspaceId]/alert-settings.ts",
+                  "shows": "per-workspace thresholds"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "readvise_get_daily_review"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/dailyReview.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.doc.settlement-actuals",
+              "capability": "Apply settlement statement actuals to deal outcome",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/documents/applyDocumentFacts.ts",
+                  "shows": "writes actual purchase / sale price with fill / match / conflict preview"
+                }
+              ],
+              "note": "MCP only (forvex_apply_document_facts).",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_apply_document_facts",
+                  "forvex_list_closing_statements"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/applyDocumentFacts.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.doc.esign",
+              "capability": "E-signature / signature chasing",
+              "status": "not built",
+              "evidence": [],
+              "note": "Explorer found no DocuSign, e-sign or signature-tracking code in readvise.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "rv.doc.client-portal",
+              "capability": "Client / seller portal",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/share/intel/[token].tsx",
+                  "shows": "only read-only share link that exists (competitive brief)"
+                }
+              ],
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "rv.doc.outbound-reminders",
+              "capability": "Outbound email / SMS reminders",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/notifications/createNotification.ts",
+                  "shows": "notifications are in-app only"
+                },
+                {
+                  "path": "readvise:docs/plans/REFLECT2_WHATSAPP_CAPTURE_PLAN.md",
+                  "shows": "WhatsApp capture planned only"
+                }
+              ],
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Operate > Local deal flow",
+          "capabilities": [
+            {
+              "id": "rv.flow.marketplace-triage",
+              "capability": "Marketplace Stage 0 triage (paste many emails, rule-scored KILL / WATCH / PULL_ADDRESS)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/marketplace/MarketplaceIntakePanel.tsx",
+                  "shows": "paste-many intake"
+                },
+                {
+                  "path": "readvise:lib/marketplace/ingest.ts",
+                  "shows": "batch ingest"
+                },
+                {
+                  "path": "readvise:docs/MARKETPLACE_TRIAGE_STAGE0_RULESET_V0.1.md",
+                  "shows": "DRAFT ruleset, market-level, zero-address"
+                }
+              ],
+              "note": "Property-level Stage 1 not built.",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.flow.chatarv-pull",
+              "capability": "Pull ChatARV comps on won lead",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/marketplace/triggerChatarvPull.ts",
+                  "shows": "calls chatarv-run-comps edge function"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_chatarv_comps"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_chatarv_comps.ts",
+                "note": "refresh=true spends a credit."
+              }
+            },
+            {
+              "id": "rv.flow.bulk-csv-underwrite",
+              "capability": "CSV import of many addresses with bulk underwriting",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "recontrol:app/api/operate/reanalyze/route.ts",
+                  "shows": "server re-runs one property at a time"
+                }
+              ],
+              "note": "No bulk route in readvise or recontrol. Only CSV imports are rent roll, competitor mail effort, mailer segments, market data.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Track",
+          "capabilities": [
+            {
+              "id": "rv.track.dashboards",
+              "capability": "Metrics dashboards (funnel, cycle time, profit by exit / lead source)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/track/index.tsx",
+                  "shows": "Track page"
+                },
+                {
+                  "path": "readvise:pages/api/track/metrics",
+                  "shows": "metrics APIs"
+                },
+                {
+                  "path": "readvise:lib/track/chartRegistry.tsx",
+                  "shows": "chart registry"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Chat would aggregate list_deals / list_deal_outcomes itself."
+              }
+            },
+            {
+              "id": "rv.track.capital",
+              "capability": "Capital runway / pool planner",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/track/CapitalView.tsx",
+                  "shows": "UI"
+                },
+                {
+                  "path": "readvise:pages/api/track/capital/runway.ts",
+                  "shows": "API"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/readvise/listRentalDebt.ts",
+                "note": "Rental debt tool says it is not the flip runway planner."
+              }
+            },
+            {
+              "id": "rv.track.cfo",
+              "capability": "CFO insight and AI explore",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/track/cfo-insight.ts",
+                  "shows": "CFO insight"
+                },
+                {
+                  "path": "readvise:pages/api/track/ai/explore.ts",
+                  "shows": "AI explore"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.track.planned-vs-actual",
+              "capability": "Per-deal planned vs actual (ARV vs sale price, rehab estimate vs actual)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/tabs/overview/OutcomeReview.tsx",
+                  "shows": "mounted in OverviewTab"
+                },
+                {
+                  "path": "readvise:lib/checklist/outcome-capture.ts",
+                  "shows": "writes core.deal_outcomes on SOLD"
+                },
+                {
+                  "path": "recontrol:lib/mcp/deals/recordDealOutcome.ts",
+                  "shows": "returns arv_error_pct and rehab_error_pct"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_record_deal_outcome",
+                  "forvex_update_deal_outcome",
+                  "forvex_list_deal_outcomes"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/record_deal_outcome.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.track.arv-scoreboard",
+              "capability": "ARV accuracy scoreboard (estimated vs actual, by band, over time)",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:lib/track/templates/arvAccuracyProfile.server.ts",
+                  "shows": "server computation built"
+                },
+                {
+                  "path": "readvise:components/track/drivers/ARVAccuracyCard.tsx",
+                  "shows": "card built"
+                },
+                {
+                  "path": "readvise:lib/track/chartRegistry.tsx",
+                  "shows": "card registered enabled: false (line 114)"
+                }
+              ],
+              "note": "Also an aggregate mean_arv_error_pct on recontrol admin page recontrol:app/(dashboard)/learning/page.tsx. Internal only; nothing public-facing.",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_list_deal_outcomes"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/list_deal_outcomes.ts",
+                "note": "Per-deal only; no aggregate by band or time."
+              }
+            },
+            {
+              "id": "rv.track.decision-revisit",
+              "capability": "Revisit stale or drifted underwriting decisions",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:lib/operate/decisionRevisit.ts",
+                  "shows": "cron logic"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.track.cost-per-x",
+              "capability": "Marketing efficiency (cost per lead / contract / close)",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:lib/track/chartRegistry.tsx",
+                  "shows": "cards registered enabled: false"
+                },
+                {
+                  "path": "readvise:pages/api/operate/metrics/marketing-capital-bridge.ts",
+                  "shows": "bridge metric API"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.track.postmortem",
+              "capability": "Deal postmortems",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "readvise:docs/roadmap/Roadmap_next.md",
+                  "shows": "mentioned in roadmap only"
+                }
+              ],
+              "note": "A postmortem Claude skill exists outside the repos (forvex-postmortem).",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/capture_deal_brief.ts",
+                "note": "Nearest tool: forvex_capture_deal_brief (end-of-deal retrospective)."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Portfolio / Rentals",
+          "capabilities": [
+            {
+              "id": "rv.rent.portfolio",
+              "capability": "Rental portfolio dashboard with CSV import / export and AI review",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/operate/rentals.tsx",
+                  "shows": "page"
+                },
+                {
+                  "path": "readvise:components/operate/rentals/RentalPortfolioView.tsx",
+                  "shows": "view, import / export"
+                },
+                {
+                  "path": "readvise:pages/api/operate/rentals/analyze.ts",
+                  "shows": "AI review"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_list_rental_ops",
+                  "readvise_list_rental_debt",
+                  "readvise_list_lease_status",
+                  "readvise_list_property_capex",
+                  "readvise_upsert_rental_ops"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/listRentalOps.ts",
+                "note": "Underlying data only; no rollup / import / AI review."
+              }
+            },
+            {
+              "id": "rv.rent.per-property",
+              "capability": "Per-rental tabs (ops, debt, equity, value)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/tabs/rental",
+                  "shows": "tab components"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_list_rental_ops",
+                  "readvise_upsert_rental_ops",
+                  "readvise_list_rental_debt",
+                  "readvise_upsert_rental_debt"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/upsertRentalDebt.ts",
+                "note": "Ops and debt only; no equity / value."
+              }
+            },
+            {
+              "id": "rv.rent.rent-roll",
+              "capability": "Rent roll / lease snapshots",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:supabase/migrations/20260924120000_rental_lease_snapshots.sql",
+                  "shows": "table"
+                },
+                {
+                  "path": "readvise:lib/operate/hooks/rental/attachLeaseUnits.ts",
+                  "shows": "read into rollups"
+                },
+                {
+                  "path": "recontrol:lib/mcp/tools/readvise/parseRentRoll.ts",
+                  "shows": "written via MCP"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_parse_rent_roll",
+                  "readvise_upsert_lease_status",
+                  "readvise_list_lease_status"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/upsertLeaseStatus.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.rent.capex",
+              "capability": "CapEx watch list",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:supabase/migrations/20260915180000_property_capex_items.sql",
+                  "shows": "data only, comment says CapEx UI removed"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_list_property_capex",
+                  "readvise_upsert_property_capex"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/upsertPropertyCapex.ts",
+                "note": "Chat is the only UI for this table."
+              }
+            },
+            {
+              "id": "rv.rent.posture",
+              "capability": "Portfolio posture and badges",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/operate/summary/PortfolioPostureCard.tsx",
+                  "shows": "card"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.rent.cross-workspace",
+              "capability": "Cross-workspace portfolio metrics",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/portfolio/metrics.ts",
+                  "shows": "API exists, no UI consumer found"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "All tools are single-workspace."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Pulse / Reflect / Knowledge",
+          "capabilities": [
+            {
+              "id": "rv.pulse.capture",
+              "capability": "Pulse capture with AI enrich / normalize / property resolution",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:components/reflect/PulseCaptureModal.tsx",
+                  "shows": "capture"
+                },
+                {
+                  "path": "readvise:pages/api/pulse/analyze.ts",
+                  "shows": "AI analyze"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_append_pulse_today",
+                  "readvise_create_advisor_action",
+                  "readvise_get_today_summary"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/appendPulseToday.ts",
+                "note": "Today only."
+              }
+            },
+            {
+              "id": "rv.pulse.reflect",
+              "capability": "Reflect timeline and weekly rollup",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/reflect/index.tsx",
+                  "shows": "page"
+                },
+                {
+                  "path": "readvise:pages/api/reflect/week.ts",
+                  "shows": "weekly rollup"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_recall",
+                  "readvise_get_today_summary"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/recall.ts",
+                "note": "No timeline / weekly rollup tool."
+              }
+            },
+            {
+              "id": "rv.pulse.debrief",
+              "capability": "Debriefs (from pulse, accountability)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/debrief/pulse/[pulse_id].ts",
+                  "shows": "debrief from pulse"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_create_accountability_debrief",
+                  "readvise_get_prior_context"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/createAccountabilityDebrief.ts",
+                "note": "Accountability debriefs only."
+              }
+            },
+            {
+              "id": "rv.pulse.inbound-email",
+              "capability": "Inbound email to pulse",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/inbound/email.ts",
+                  "shows": "Postmark inbound"
+                },
+                {
+                  "path": "readvise:lib/inboundEmail/adapters/postmark.ts",
+                  "shows": "adapter"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rv.pulse.search",
+              "capability": "Global search",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "readvise:pages/api/search/index.ts",
+                  "shows": "search_global RPC"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_recall"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/recall.ts",
+                "note": "Lexical only."
+              }
+            },
+            {
+              "id": "rv.pulse.cmo",
+              "capability": "CMO social command center (read-only snapshot)",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "readvise:components/social/SocialCommandCenter.tsx",
+                  "shows": "UI"
+                },
+                {
+                  "path": "readvise:pages/api/cmo/snapshot.ts",
+                  "shows": "reads snapshot written by recontrol"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "readvise_get_cmo_snapshot",
+                  "readvise_upsert_cmo_snapshot"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/readvise/upsertCmoSnapshot.ts",
+                "note": ""
+              }
+            }
+          ]
+        }
+      ],
+      "repo_state": {
+        "commit": "8520a20",
+        "branch": "claude/competitive-capability-scan-4p48kt"
+      },
+      "chat_counts": {
+        "read": 6,
+        "none": 20,
+        "read+write": 21,
+        "write": 3,
+        "n/a": 6
+      }
+    },
+    {
+      "app": "REbuild",
+      "repo": "rebuild3",
+      "rule": "Estimate logic lives in the pure engine package (packages/rebuild-engine). Changes there move CONTRACT_VERSION (currently 0.3.0) and affect recontrol and readvise.",
+      "rule_source": "rebuild3:CLAUDE.md, rebuild3:packages/rebuild-engine/src/contract-version.ts",
+      "modules": [
+        {
+          "module": "Estimates",
+          "capabilities": [
+            {
+              "id": "rb.est.calc",
+              "capability": "Rule-based estimate calculation (quantity drivers, rounding, overrides)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/engine/calculator/calculate-estimate.ts",
+                  "shows": "calculateEstimate"
+                },
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/engine/calculator/quantity.ts",
+                  "shows": "quantity from sqft / rooms / fixed"
+                }
+              ],
+              "location": "engine",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_preview_estimate",
+                  "forvex_save_draft_estimate",
+                  "forvex_update_estimate",
+                  "forvex_get_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/preview_estimate.ts",
+                "note": "update blocked for final / contract / archived."
+              }
+            },
+            {
+              "id": "rb.est.condition",
+              "capability": "Condition (severity) pricing per category",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/category-scope.ts",
+                  "shows": "scope depth per category"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/profile-rules.ts",
+                  "shows": "profile rule CRUD"
+                }
+              ],
+              "location": "engine + app",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_preview_estimate",
+                  "forvex_get_builder_prefs",
+                  "forvex_save_builder_prefs"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/save_builder_prefs.ts",
+                "note": "Per-category pricing inferred."
+              }
+            },
+            {
+              "id": "rb.est.triangulation",
+              "capability": "Triangulation: $/sqft band vs severity vs bottom-up, variance flag",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/rehab-summary.ts",
+                  "shows": "computeSqftBandCrossCheck, isVarianceFlagged"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/field/estimate-triangulation-panel.tsx",
+                  "shows": "UI panel"
+                },
+                {
+                  "path": "rebuild3:ESTIMATE_MODEL_V2.md",
+                  "shows": "three stored modes planned, partly wired"
+                }
+              ],
+              "location": "engine + app",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_save_draft_estimate",
+                  "forvex_preview_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/save_draft_estimate.ts",
+                "note": "Variance flag read-back inferred."
+              }
+            },
+            {
+              "id": "rb.est.scenarios",
+              "capability": "Multiple scenarios side by side",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/field/profile-selector.tsx",
+                  "shows": "switch rehab profile"
+                },
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/wholetail-scope.ts",
+                  "shows": "wholetail vs full rehab read"
+                }
+              ],
+              "location": "engine + app",
+              "note": "No general scenario object or side-by-side comparison.",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.est.allowances",
+              "capability": "Contingency, allowance and free-text lines",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:supabase/migrations/20260322000000_estimate_model_v2_phase9.sql",
+                  "shows": "schema"
+                },
+                {
+                  "path": "rebuild3:rebuild3/lib/estimates/v2-line-item.ts",
+                  "shows": "line shape"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_preview_estimate",
+                  "forvex_save_draft_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/preview_estimate.ts",
+                "note": "Contingency verified; allowance / free-text inferred."
+              }
+            },
+            {
+              "id": "rb.est.audit",
+              "capability": "Deal audit / risk flags (AI + rules)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/ai/audit-deal.ts",
+                  "shows": "AI audit"
+                },
+                {
+                  "path": "rebuild3:rebuild3/lib/logic/auditor.ts",
+                  "shows": "rules"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Pricing",
+          "capabilities": [
+            {
+              "id": "rb.price.library",
+              "capability": "Line-item cost library",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/(dashboard)/library/page.tsx",
+                  "shows": "library page"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/library.ts",
+                  "shows": "actions"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_workspace_context",
+                  "forvex_map_observations_to_skus"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_workspace_context.ts",
+                "note": "Cannot edit library."
+              }
+            },
+            {
+              "id": "rb.price.books",
+              "capability": "Named, duplicable price books",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/price-books.ts",
+                  "shows": "actions"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/dashboard/price-book-editor.tsx",
+                  "shows": "editor"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_workspace_context"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_workspace_context.ts",
+                "note": "Can pick default via prefs; cannot create books."
+              }
+            },
+            {
+              "id": "rb.price.regional",
+              "capability": "Regional / ZIP cost index",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "rebuild3:supabase/migrations/20260321000000_builder_preferences.sql",
+                  "shows": "per-user $/sqft baselines only"
+                }
+              ],
+              "location": "app",
+              "note": "No ZIP or market cost index.",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_builder_prefs",
+                  "forvex_save_builder_prefs"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/save_builder_prefs.ts",
+                "note": "$/sqft prefs only."
+              }
+            },
+            {
+              "id": "rb.price.nec",
+              "capability": "National Estimator Cloud cost comparison",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/nec/client.ts",
+                  "shows": "sandbox API client"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/dashboard/nec-compare-panel.tsx",
+                  "shows": "only in price-book header"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.price.curation",
+              "capability": "Catalog curation queue",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/dashboard/curation-queue.tsx",
+                  "shows": "queue"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/approve-catalog-item.ts",
+                  "shows": "approve"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Intake",
+          "capabilities": [
+            {
+              "id": "rb.in.walkthrough",
+              "capability": "Room-by-room walkthrough with condition signals",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/(field)/field/projects/[id]/walkthrough/page.tsx",
+                  "shows": "page"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/walkthrough/walkthrough-container.tsx",
+                  "shows": "container"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.in.inference",
+              "capability": "Rule-based condition inference",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/inference/run-inference.ts",
+                  "shows": "signals to severity to tier"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.in.voice",
+              "capability": "Voice intake (transcribe + AI extraction)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/voice/transcribe-audio.ts",
+                  "shows": "transcribe"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/voice/analyze-intake.ts",
+                  "shows": "extract"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.in.photo",
+              "capability": "Photo analysis",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/ai/analyze-image.ts",
+                  "shows": "image analysis"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/ai/photo-analyzer.tsx",
+                  "shows": "UI"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.in.text",
+              "capability": "Free-text multi-agent extraction",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/ai/text-estimate-swarm.ts",
+                  "shows": "swarm"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Chat does extraction itself."
+              }
+            },
+            {
+              "id": "rb.in.sku",
+              "capability": "SKU mapping, autoscope, gap detection",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/intake/autoscope.ts",
+                  "shows": "AI items to SKUs"
+                },
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/intake/gap-detector.ts",
+                  "shows": "gap detection"
+                }
+              ],
+              "location": "engine",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_map_observations_to_skus",
+                  "forvex_get_missing_inputs"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/map_observations_to_skus.ts",
+                "note": "Compute only."
+              }
+            },
+            {
+              "id": "rb.in.eval",
+              "capability": "Intake eval harness (golden set, hallucination check)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:packages/rebuild-engine/src/eval/scorers.ts",
+                  "shows": "pure scorers"
+                },
+                {
+                  "path": "rebuild3:rebuild3/lib/eval/intake/run.ts",
+                  "shows": "runner"
+                }
+              ],
+              "location": "engine + app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Scope of work and reports",
+          "capabilities": [
+            {
+              "id": "rb.sow.build",
+              "capability": "Build SoW from estimate, with scope sentences",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/sow/buildSOW.ts",
+                  "shows": "builder"
+                },
+                {
+                  "path": "rebuild3:rebuild3/lib/catalog/scope-copy.ts",
+                  "shows": "scope sentences"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.sow.export",
+              "capability": "SoW DOCX / Excel export",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/reports/exportSOWDocx.ts",
+                  "shows": "docx"
+                },
+                {
+                  "path": "rebuild3:rebuild3/lib/reports/exportMasterSOWExcel.ts",
+                  "shows": "xlsx"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.rep.reports",
+              "capability": "Lender, master scope, contractor, bid-request reports",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/reports/lender-report.tsx",
+                  "shows": "lender"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/reports/bid-request-report.tsx",
+                  "shows": "bid request"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_render_presentation"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/render_presentation.ts",
+                "note": "Rehab-scope HTML view only."
+              }
+            },
+            {
+              "id": "rb.rep.budget-xlsx",
+              "capability": "Branded renovation budget workbook",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/reports/exportSilverHillBudget.ts",
+                  "shows": "XLSX template"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.rep.pdf",
+              "capability": "True PDF generation",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/field/field-action-hub.tsx",
+                  "shows": "Share PDF is preview + window.print()"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/render_presentation.ts",
+                "note": "HTML, not PDF."
+              }
+            },
+            {
+              "id": "rb.rep.share-link",
+              "capability": "Client / contractor share link",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/api/workspaces/[workspaceId]/invites/route.ts",
+                  "shows": "only workspace invites exist"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Project execution",
+          "capabilities": [
+            {
+              "id": "rb.ex.finalize",
+              "capability": "Finalize estimate into a project (and retract)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/finalize-estimate.ts",
+                  "shows": "action"
+                },
+                {
+                  "path": "rebuild3:supabase/migrations/20260316000000_finalize_estimate_to_execution.sql",
+                  "shows": "RPCs"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/update_estimate_rebuild.ts",
+                "note": "update_estimate refuses final estimates."
+              }
+            },
+            {
+              "id": "rb.ex.budget-actual",
+              "capability": "Budget vs actual with variance notes",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/project-execution.ts",
+                  "shows": "recordProjectActualCost"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/dashboard/project-budget-tab.tsx",
+                  "shows": "UI"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.ex.bids",
+              "capability": "Contractors, bids, bid groups",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/actions/contractors.ts",
+                  "shows": "contractors"
+                },
+                {
+                  "path": "rebuild3:supabase/migrations/20260319000000_add_bid_groups.sql",
+                  "shows": "bid groups"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.ex.updates",
+              "capability": "Status / progress updates",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/dashboard/project-updates-tab.tsx",
+                  "shows": "updates tab"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.ex.unexpected",
+              "capability": "Unexpected-scope bucket, deferred / cancelled lines",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:supabase/migrations/20260923140000_unexpected_scope_and_removed_status.sql",
+                  "shows": "schema"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.ex.change-orders",
+              "capability": "Formal change orders",
+              "status": "not built",
+              "evidence": [],
+              "location": "app",
+              "note": "No code or docs match. Unexpected-scope bucket is the closest. A forvex-change-order Claude skill exists outside the repos.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "rb.ex.draws",
+              "capability": "Draw schedules",
+              "status": "not built",
+              "evidence": [],
+              "note": "No code or docs match.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "rb.ex.debrief",
+              "capability": "AI project debrief and insights",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/projects/debrief-report.ts",
+                  "shows": "debrief"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/ai/generate-project-insights.ts",
+                  "shows": "insights"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Valuation and platform",
+          "capabilities": [
+            {
+              "id": "rb.val.arv",
+              "capability": "ARV / comps computation",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/components/reports/master/FinancialBreakdown.tsx",
+                  "shows": "ARV and offer price displayed only"
+                }
+              ],
+              "note": "By design: comps and ARV are owned by recontrol.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "ARV comes from forvex_get_comps."
+              }
+            },
+            {
+              "id": "rb.val.enrich",
+              "capability": "Property enrichment and project from deal",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/projects/flattenRealieNested.ts",
+                  "shows": "Realie data"
+                },
+                {
+                  "path": "rebuild3:rebuild3/app/actions/projects/create-project-from-deal.ts",
+                  "shows": "project from deal"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_resolve_property",
+                  "forvex_open_or_create_project"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/open_or_create_project.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "rb.plat.offline",
+              "capability": "Offline-first sync with conflict UI",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/db/sync-manager-v2.ts",
+                  "shows": "outbox sync"
+                },
+                {
+                  "path": "rebuild3:rebuild3/components/sync/sync-conflicts-panel.tsx",
+                  "shows": "conflict UI"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Client platform feature."
+              }
+            },
+            {
+              "id": "rb.plat.pwa",
+              "capability": "Installable PWA field mode",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/app/manifest.ts",
+                  "shows": "manifest"
+                }
+              ],
+              "location": "app",
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Client platform feature."
+              }
+            },
+            {
+              "id": "rb.plat.mcp",
+              "capability": "Estimate RPCs for the forVEX MCP",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "rebuild3:rebuild3/lib/rpc/rebuild-mcp-rpcs.ts",
+                  "shows": "RPC wrappers"
+                },
+                {
+                  "path": "recontrol:lib/mcp/tools/preview_estimate.ts",
+                  "shows": "MCP tool"
+                }
+              ],
+              "location": "app + recontrol",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Is the MCP layer."
+              }
+            }
+          ]
+        }
+      ],
+      "repo_state": {
+        "commit": "41913c3",
+        "branch": "claude/competitive-capability-scan-4p48kt"
+      },
+      "chat_counts": {
+        "read+write": 6,
+        "none": 22,
+        "read": 4,
+        "n/a": 5
+      }
+    },
+    {
+      "app": "Deal iOS",
+      "repo": "forvex-underwrite",
+      "rule": "No MCP, no LLM, no chat. No API keys on device. Server resolves, client recomputes, server persists. Not a comp tool, no map, not offline.",
+      "rule_source": "forvex-underwrite:CLAUDE.md, forvex-underwrite:CONTRACTS.md, forvex-underwrite:README.md",
+      "modules": [
+        {
+          "module": "Intake",
+          "capabilities": [
+            {
+              "id": "dl.in.places",
+              "capability": "Address autocomplete (Places proxied through recontrol)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/api/places.ts",
+                  "shows": "proxy calls with session token"
+                },
+                {
+                  "path": "forvex-underwrite:src/screens/AddressScreen.tsx",
+                  "shows": "New deal tab"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Tools take a full address."
+              }
+            },
+            {
+              "id": "dl.in.resolve",
+              "capability": "Resolve property (physicals, ARV estimate, condition, flood)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/api/property.ts",
+                  "shows": "POST /api/operate/property/resolve"
+                },
+                {
+                  "path": "forvex-underwrite:src/screens/PropertyBriefCard.tsx",
+                  "shows": "pre-save brief"
+                },
+                {
+                  "path": "forvex-underwrite:src/api/flood.ts",
+                  "shows": "FEMA flood"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_property",
+                  "forvex_get_flood_data"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_property.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Underwriting",
+          "capabilities": [
+            {
+              "id": "dl.uw.six",
+              "capability": "Six strategies side by side (flip, wholetail, wholesale, rental, BRRRR, assignment)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/strategies.ts",
+                  "shows": "order and labels"
+                },
+                {
+                  "path": "forvex-underwrite:src/screens/UnderwritingSummary.tsx",
+                  "shows": "strategy rows, best strategy, buy-box fit"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.uw.verdict",
+              "capability": "Verdict and deal score",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/UnderwritingSummary.tsx",
+                  "shows": "verdict and score out of 10"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.uw.knobs",
+              "capability": "Live knobs with on-device recompute and parity gate",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/DealScreen.tsx",
+                  "shows": "sliders re-run engine from effective_input"
+                },
+                {
+                  "path": "forvex-underwrite:src/engine/index.ts",
+                  "shows": "checkParity disables knobs on mismatch"
+                },
+                {
+                  "path": "forvex-underwrite:src/screens/knobRanges.ts",
+                  "shows": "ranges centred on server run"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": "Inferred: re-run with new inputs."
+              }
+            },
+            {
+              "id": "dl.uw.mao",
+              "capability": "MAO, target entry, breakeven",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/offerPrices.ts",
+                  "shows": "read from run, not solved on device"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.uw.rehab",
+              "capability": "Rehab input (pick saved estimate or tier total)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/RehabSheet.tsx",
+                  "shows": "tier picker, link to REbuild"
+                }
+              ],
+              "note": "No line-item estimator on device by design; REbuild owns that.",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite",
+                  "forvex_get_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_estimate_rebuild.ts",
+                "note": "Inferred."
+              }
+            },
+            {
+              "id": "dl.uw.costs",
+              "capability": "Cost breakdown per strategy",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/costLines.ts",
+                  "shows": "cost lines from engine rows"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": "Inferred."
+              }
+            },
+            {
+              "id": "dl.uw.rent",
+              "capability": "Rent estimate with rent comps",
+              "status": "partial",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/engine/index.ts",
+                  "shows": "rent knob starts from server rent"
+                }
+              ],
+              "note": "No rent-comps display.",
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_rent_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_rent_estimate.ts",
+                "note": "Rentometer; paid per call."
+              }
+            },
+            {
+              "id": "dl.uw.buybox",
+              "capability": "Buy box check",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/UnderwritingSummary.tsx",
+                  "shows": "fit and excluded_reason per row"
+                }
+              ],
+              "note": "Display only; buy boxes edited in recontrol.",
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_buy_box",
+                  "forvex_save_buy_box"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/save_buy_box.ts",
+                "note": "Chat can edit what Deal cannot."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Comps",
+          "capabilities": [
+            {
+              "id": "dl.comps.pane",
+              "capability": "ARV confidence pane (anchor ARV, median, grid, regression, AVM, not-used reasons)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/CompsPane.tsx",
+                  "shows": "pane"
+                },
+                {
+                  "path": "forvex-underwrite:src/api/comps.ts",
+                  "shows": "GET /api/operate/comps"
+                },
+                {
+                  "path": "forvex-underwrite:src/charts/compChart.ts",
+                  "shows": "price vs size scatter with server-fit line"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_comps",
+                  "forvex_get_comps_expanded",
+                  "forvex_get_comp_detail"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_comps.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.comps.pick",
+              "capability": "Operator include / exclude comps",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/CompsPane.tsx",
+                  "shows": "included is server decision, read-only"
+                }
+              ],
+              "note": "Readvise has overrides (rv.op.comps-evidence).",
+              "chat": {
+                "access": "n/a",
+                "tools": [
+                  "forvex_set_comp_override"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/set_comp_override.ts",
+                "note": "Not in Deal, but chat can already include / exclude comps."
+              }
+            },
+            {
+              "id": "dl.comps.map",
+              "capability": "Comp map",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:README.md",
+                  "shows": "\"There is no map.\""
+                }
+              ],
+              "note": "By design.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built by design."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Pipeline and platform",
+          "capabilities": [
+            {
+              "id": "dl.pipe.save",
+              "capability": "Save deal to shared pipeline (idempotent)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/api/underwrite.ts",
+                  "shows": "POST /api/operate/deals"
+                },
+                {
+                  "path": "forvex-underwrite:src/screens/DealScreen.tsx",
+                  "shows": "Save $X offer"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_save_deal",
+                  "forvex_get_deal"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/save_deal.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.pipe.list",
+              "capability": "Deal list with stage chips, search, stale filter",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/DealsScreen.tsx",
+                  "shows": "list"
+                },
+                {
+                  "path": "forvex-underwrite:src/api/deals.ts",
+                  "shows": "GET /api/operate/deals"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_list_deals"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/list_deals.ts",
+                "note": "Stale filter not verified."
+              }
+            },
+            {
+              "id": "dl.pipe.reopen",
+              "capability": "Reopen saved record and re-underwrite on today's comps",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/api/deal.ts",
+                  "shows": "GET saved analysis"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_deal",
+                  "forvex_underwrite",
+                  "forvex_save_deal"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.pipe.stage",
+              "capability": "Change stage / disposition",
+              "status": "not built",
+              "evidence": [],
+              "note": "Done in readvise / readvise-mobile per forvex-underwrite:CONTRACTS.md.",
+              "chat": {
+                "access": "n/a",
+                "tools": [
+                  "forvex_update_deal_disposition"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/update_deal_disposition.ts",
+                "note": "Not in Deal, but chat can change stage."
+              }
+            },
+            {
+              "id": "dl.plat.market",
+              "capability": "Market Sense pane",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/screens/MarketPane.tsx",
+                  "shows": "pane"
+                },
+                {
+                  "path": "forvex-underwrite:src/api/market.ts",
+                  "shows": "API"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_market_intelligence"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_market_intelligence.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.plat.strategies-pref",
+              "capability": "Choose which strategies show",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/prefs/PrefsProvider.tsx",
+                  "shows": "per-device prefs"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_buy_box",
+                  "forvex_save_buy_box"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_buy_box.ts",
+                "note": "Inferred; may not be the same setting as Deal's per-device pref."
+              }
+            },
+            {
+              "id": "dl.plat.dark",
+              "capability": "Light / dark appearance",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/theme/appearance.ts",
+                  "shows": "Auto / Day / Night"
+                }
+              ],
+              "chat": {
+                "access": "none",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "UI only."
+              }
+            },
+            {
+              "id": "dl.plat.auth",
+              "capability": "Sign in (no sign-up, no SSO)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:src/auth/AuthProvider.tsx",
+                  "shows": "Supabase email + password"
+                },
+                {
+                  "path": "forvex-underwrite:src/auth/secureStorage.ts",
+                  "shows": "Keychain chunked session"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_whoami"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/whoami.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "dl.plat.share",
+              "capability": "Share / export (PDF, CSV, link)",
+              "status": "not built",
+              "evidence": [],
+              "note": "No Share API, PDF or CSV code found.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "dl.plat.bulk",
+              "capability": "Bulk / list screening",
+              "status": "not built",
+              "evidence": [],
+              "note": "One address at a time; no bulk code.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "dl.plat.offline",
+              "capability": "Offline use",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:README.md",
+                  "shows": "\"Not offline.\""
+                }
+              ],
+              "note": "By decision.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            },
+            {
+              "id": "dl.plat.ai",
+              "capability": "AI / LLM / chat",
+              "status": "not built",
+              "evidence": [
+                {
+                  "path": "forvex-underwrite:CLAUDE.md",
+                  "shows": "No MCP, no LLM, no chat"
+                }
+              ],
+              "note": "By design. Route AI ideas to Readvise or recontrol MCP.",
+              "chat": {
+                "access": "n/a",
+                "tools": [],
+                "evidence": "recontrol:lib/mcp/tools/registry.ts",
+                "note": "Not built."
+              }
+            }
+          ]
+        }
+      ],
+      "repo_state": {
+        "commit": "cee40b8",
+        "branch": "claude/competitive-capability-scan-4p48kt"
+      },
+      "chat_counts": {
+        "none": 2,
+        "read": 12,
+        "read+write": 4,
+        "n/a": 7
+      }
+    },
+    {
+      "app": "MCP layer (reference)",
+      "repo": "recontrol",
+      "rule": "Owns the forvex_* / readvise_* MCP tools and the authoritative comp + underwriting engines (@nibblet/underwrite-engine 0.8.0). Tool name / input / output changes must be flagged to consumers.",
+      "rule_source": "recontrol:CLAUDE.md",
+      "modules": [
+        {
+          "module": "Underwriting engine and comps",
+          "capabilities": [
+            {
+              "id": "mcp.uw.engine",
+              "capability": "Underwrite engine (six strategies)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/underwrite/runUnderwrite.ts",
+                  "shows": "MCP wrapper"
+                },
+                {
+                  "path": "recontrol:packages/underwrite-engine/package.json",
+                  "shows": "@nibblet/underwrite-engine 0.8.0"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_underwrite"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/underwrite.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "mcp.uw.comps",
+              "capability": "Comps, expanded comps, comp detail, overrides",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/tools/get_comps.ts",
+                  "shows": "tool"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_comps",
+                  "forvex_get_comps_expanded",
+                  "forvex_get_comp_detail",
+                  "forvex_set_comp_override"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_comps.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "mcp.uw.chatarv",
+              "capability": "ChatARV cross-check (vendor integration)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/tools/get_chatarv_comps.ts",
+                  "shows": "cached report or refresh (spends credit)"
+                },
+                {
+                  "path": "recontrol:lib/mcp/chatarv/crossCheck.ts",
+                  "shows": "divergence_pct; never averaged into ARV"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_get_chatarv_comps"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_chatarv_comps.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "mcp.uw.rent",
+              "capability": "Rent estimate",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/tools/get_rent_estimate.ts",
+                  "shows": "tool"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_rent_estimate"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_rent_estimate.ts",
+                "note": ""
+              }
+            }
+          ]
+        },
+        {
+          "module": "Outcomes and learning",
+          "capabilities": [
+            {
+              "id": "mcp.out.record",
+              "capability": "Record deal outcome with predicted vs actual error",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/deals/recordDealOutcome.ts",
+                  "shows": "arv_error_pct, rehab_error_pct"
+                },
+                {
+                  "path": "recontrol:lib/mcp/deals/listDealOutcomes.ts",
+                  "shows": "missing_only finds deals lacking outcome"
+                }
+              ],
+              "chat": {
+                "access": "read+write",
+                "tools": [
+                  "forvex_record_deal_outcome",
+                  "forvex_update_deal_outcome",
+                  "forvex_list_deal_outcomes"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/record_deal_outcome.ts",
+                "note": ""
+              }
+            },
+            {
+              "id": "mcp.out.learning",
+              "capability": "Admin learning page with mean ARV error",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/admin/learning.ts",
+                  "shows": "mean_arv_error_pct"
+                },
+                {
+                  "path": "recontrol:app/(dashboard)/learning/page.tsx",
+                  "shows": "admin page"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_list_deal_outcomes",
+                  "forvex_capture_deal_brief"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/capture_deal_brief.ts",
+                "note": "No aggregate mean-error tool."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Sense pipeline",
+          "capabilities": [
+            {
+              "id": "mcp.sense.ingest",
+              "capability": "Market data ingest and scoring (Redfin, Zillow, ACS, SAFMR, HUD)",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/sense/redfin-ingest.ts",
+                  "shows": "ingest"
+                },
+                {
+                  "path": "recontrol:lib/sense/scoring/market-scores-v2.ts",
+                  "shows": "scoring"
+                },
+                {
+                  "path": "recontrol:lib/sense/backtest/evaluate.ts",
+                  "shows": "backtest"
+                }
+              ],
+              "chat": {
+                "access": "read",
+                "tools": [
+                  "forvex_get_market_intelligence",
+                  "forvex_get_market_brief"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/get_market_brief.ts",
+                "note": "Chat cannot trigger ingest."
+              }
+            }
+          ]
+        },
+        {
+          "module": "Presentations",
+          "capabilities": [
+            {
+              "id": "mcp.pres",
+              "capability": "Presentation, wholesale sheet, voice brief rendering",
+              "status": "built",
+              "evidence": [
+                {
+                  "path": "recontrol:lib/mcp/tools/render_presentation.ts",
+                  "shows": "presentation"
+                },
+                {
+                  "path": "recontrol:lib/mcp/tools/build_wholesale_sheet.ts",
+                  "shows": "wholesale sheet"
+                }
+              ],
+              "chat": {
+                "access": "write",
+                "tools": [
+                  "forvex_render_presentation",
+                  "forvex_build_wholesale_sheet",
+                  "forvex_create_voice_brief"
+                ],
+                "evidence": "recontrol:lib/mcp/tools/render_presentation.ts",
+                "note": ""
+              }
+            }
+          ]
+        }
+      ],
+      "repo_state": {
+        "commit": "f05d778",
+        "branch": "claude/competitive-capability-scan-4p48kt"
+      },
+      "chat_counts": {
+        "read": 4,
+        "read+write": 3,
+        "write": 1
+      }
+    }
+  ],
+  "seed_hypotheses": [
+    {
+      "hypothesis": "DeedSpring contract deadline extraction vs our document flow",
+      "finding": "Partly built, as you guessed. The LLM extractor and forvex_materialize_obligations already turn inspection, financing, earnest money and closing dates into tasks (recontrol). Missing: a deadline view in readvise (they show as ordinary tasks), any outbound reminder (in-app only), e-signature, and a client portal. OCR happens on the phone only.",
+      "cells": [
+        "rv.doc.deadline-extract",
+        "rv.doc.key-date-alerts",
+        "rv.doc.outbound-reminders",
+        "rv.doc.esign",
+        "rv.doc.client-portal"
+      ]
+    },
+    {
+      "hypothesis": "Resideline accuracy scoreboard vs our outcomes data",
+      "finding": "Closer than expected. Per-deal ARV and rehab error is already computed and stored (core.deal_outcomes), there is an admin mean ARV error in recontrol, and readvise has a fully built ARV Accuracy card that is switched off (enabled: false). The data foundation exists; it is internal only.",
+      "cells": [
+        "rv.track.planned-vs-actual",
+        "rv.track.arv-scoreboard",
+        "mcp.out.record",
+        "mcp.out.learning"
+      ]
+    },
+    {
+      "hypothesis": "Resideline bulk CSV screening vs Deal one-address flow",
+      "finding": "Not built anywhere. Deal's rules do not forbid it (it is not AI). Open question: does a bulk screen belong in Deal, or as a readvise / recontrol server job on the same engine, given Deal is built for one address on a driveway? Readvise's Marketplace Stage 0 triage is the nearest existing pattern (paste many, rule-scored), but it is market-level, not address-level.",
+      "cells": [
+        "rv.flow.bulk-csv-underwrite",
+        "rv.flow.marketplace-triage",
+        "dl.plat.bulk"
+      ]
+    }
+  ]
+}

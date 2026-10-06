@@ -1,0 +1,208 @@
+{
+  "product": "ListedKit (Ava)",
+  "slug": "listedkit",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://www.listedkit.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://www.listedkit.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://www.listedkit.com/features",
+      "raw_file": "raw/features.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/ai-contract-review",
+      "raw_file": "raw/ai-contract-review.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/ava-sign",
+      "raw_file": "raw/feature-ava-sign.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/email-automation",
+      "raw_file": "raw/feature-email-automation.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/share-real-estate-timelines",
+      "raw_file": "raw/feature-share-real-estate-timelines.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/global-chat",
+      "raw_file": "raw/feature-global-chat.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/team-dashboard",
+      "raw_file": "raw/feature-team-dashboard.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/features/compliance-scan",
+      "raw_file": "raw/feature-compliance-scan.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.listedkit.com/resources/what-is-ai-transaction-coordinator",
+      "raw_file": "raw/what-is-ai-tc.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.listedkit.com/media",
+      "raw_file": "raw/media.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.listedkit.com/resources",
+      "raw_file": "raw/resources.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.listedkit.com/help",
+      "raw_file": "raw/help.html",
+      "http_status": 200,
+      "what": "other"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Contract reading: any state's purchase agreement, dates, parties, contingencies",
+      "quote": "Any state's purchase agreement, even handwritten. Every date, party, and contingency extracted.",
+      "source_url": "https://www.listedkit.com/"
+    },
+    {
+      "feature": "Relative deadlines resolved to dates",
+      "quote": "every date, including relative deadlines like \"five business days after acceptance\" or \"seven business days before closing.\"",
+      "source_url": "https://www.listedkit.com/resources/what-is-ai-transaction-coordinator"
+    },
+    {
+      "feature": "Amendment re-read moves affected dates",
+      "quote": "the document gets read, the affected dates update, and the tasks that no longer apply are flagged",
+      "source_url": "https://www.listedkit.com/resources/what-is-ai-transaction-coordinator"
+    },
+    {
+      "feature": "Inbox reading: every email matched to the right deal",
+      "quote": "Every incoming email matched to the right deal, even with no address in the subject line.",
+      "source_url": "https://www.listedkit.com/"
+    },
+    {
+      "feature": "Scheduled reminders to parties ahead of key deadlines, sent from the user's Gmail or Outlook",
+      "quote": "sends scheduled reminders to parties ahead of key deadlines. All from your Gmail or Outlook.",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Email modes: auto-reply drafts, on-demand drafts, scheduled reminders; human sends",
+      "quote": "You review and send. Nothing leaves without you.",
+      "source_url": "https://www.listedkit.com/features/email-automation"
+    },
+    {
+      "feature": "SMS: text Ava a question about any deal",
+      "quote": "Text Ava a question about any deal and get an answer from your actual file.",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Calendar sync: one event per deadline with parties invited",
+      "quote": "It creates a calendar event for every deadline in Google Calendar or Outlook, with all parties invited, all from a single message.",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Ava Sign: e-signature filled from deal data, signature tracking, executed copy filed back on the deal",
+      "quote": "When it is signed, the executed copy files itself back on the deal automatically.",
+      "source_url": "https://www.listedkit.com/features/ava-sign"
+    },
+    {
+      "feature": "Global Chat across every deal",
+      "quote": "Ask what is outstanding across all your files, what is due today, or how your closings are tracking",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Team Dashboard: overdue items per teammate",
+      "quote": "An admin-only view of whether each teammate is keeping up: active transactions, overdue items, and tasks completed this week.",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Compliance Scan: missing signatures, mismatched dates, blank fields graded by severity",
+      "quote": "Ava scans every document at intake for missing signatures, mismatched dates, and blank fields, grades each finding by severity",
+      "source_url": "https://www.listedkit.com/features"
+    },
+    {
+      "feature": "Integrations: Gmail, Outlook, Follow Up Boss, Calendar",
+      "quote": "Connect Gmail, Outlook, Follow Up Boss, and Calendar.",
+      "source_url": "https://www.listedkit.com/features"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Transaction credit",
+      "price": "$14.99 per credit (first transaction free)",
+      "limits": "One credit = one contract setup (listing and sale are separate credits); no subscription; credits never expire; unlimited team members",
+      "source_url": "https://www.listedkit.com/pricing"
+    },
+    {
+      "plan": "Bulk 5 / 10 / 25 / 50",
+      "price": "$14.00 / $13.00 / $12.00 / $11.00 per credit",
+      "limits": "Up to 27% off; above 50 is a custom volume call",
+      "source_url": "https://www.listedkit.com/pricing"
+    },
+    {
+      "plan": "Ava Sign add-on",
+      "price": "$29.99 per user / month (free for 30 days)",
+      "limits": "Unlimited signature requests per license; recipients sign free",
+      "source_url": "https://www.listedkit.com/pricing"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-30",
+      "change": "'What Is AI Transaction Coordination?' guide updated (originally June 8, 2026); describes amendment-driven date updates and compliance packet delivery to SkySlope, Dotloop, BoldTrail",
+      "source_url": "https://www.listedkit.com/resources/what-is-ai-transaction-coordinator"
+    },
+    {
+      "date": "2026-08 (month only)",
+      "change": "Article 'The Myth of the Standard Closing' published",
+      "source_url": "https://www.listedkit.com/resources"
+    },
+    {
+      "date": "2026-06-23",
+      "change": "Founder podcast names roadmap: team features, e-signature, compliance dashboards (Ava Sign, Team Dashboard and Compliance Scan now appear on the features page; Ava Sign, Global Chat and Team Dashboard are tagged New, launch dates not established)",
+      "source_url": "https://www.listedkit.com/media"
+    },
+    {
+      "date": "2026-06-16",
+      "change": "Podcast appearance: Selling Real Estate with Kelly Cook, Ep. 223",
+      "source_url": "https://www.listedkit.com/media"
+    },
+    {
+      "date": "2026-05-14",
+      "change": "Podcast appearance: Icons of Real Estate",
+      "source_url": "https://www.listedkit.com/media"
+    }
+  ],
+  "app_store": "not established",
+  "api_or_mcp": "not established"
+}

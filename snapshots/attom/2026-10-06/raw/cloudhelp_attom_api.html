@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8"/>
+    <title>Using ATTOM API - ATTOM Cloud Help</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="ATTOM API ATTOM has developed an application program interface (API) that provides a convenient way of accessing ATTOM Cloud data that follows the REST architec"/>
+    <meta name="author" content="ATTOM Data Solutions"/>
+    <link rel="canonical" href="https://cloud-help.attomdata.com/article/527-using-attom-api"/>
+    
+        
+   
+            <meta name="twitter:card" content="summary"/>
+            <meta name="twitter:title" content="Using ATTOM API" />
+            <meta name="twitter:description" content="ATTOM API ATTOM has developed an application program interface (API) that provides a convenient way of accessing ATTOM Cloud data that follows the REST architec"/>
+
+
+    
+
+    
+        <link rel="stylesheet" href="//d3eto7onm69fcz.cloudfront.net/assets/stylesheets/launch-1790379955179.css">
+    
+    <style>
+        body { background: #ffffff; }
+        .navbar .navbar-inner { background: #2c323d; }
+        .navbar .nav li a, 
+        .navbar .icon-private-w  { color: #c0c0c0; }
+        .navbar .brand, 
+        .navbar .nav li a:hover, 
+        .navbar .nav li a:focus, 
+        .navbar .nav .active a, 
+        .navbar .nav .active a:hover, 
+        .navbar .nav .active a:focus  { color: #ffffff; }
+        .navbar a:hover .icon-private-w, 
+        .navbar a:focus .icon-private-w, 
+        .navbar .active a .icon-private-w, 
+        .navbar .active a:hover .icon-private-w, 
+        .navbar .active a:focus .icon-private-w { color: #ffffff; }
+        #serp-dd .result a:hover,
+        #serp-dd .result > li.active,
+        #fullArticle strong a,
+        #fullArticle a strong,
+        .collection a,
+        .contentWrapper a,
+        .most-pop-articles .popArticles a,
+        .most-pop-articles .popArticles a:hover span,
+        .category-list .category .article-count,
+        .category-list .category:hover .article-count { color: #b01c0e; }
+        #fullArticle, 
+        #fullArticle p, 
+        #fullArticle ul, 
+        #fullArticle ol, 
+        #fullArticle li, 
+        #fullArticle div, 
+        #fullArticle blockquote, 
+        #fullArticle dd, 
+        #fullArticle table { color:#585858; }
+    </style>
+    
+        <link rel="stylesheet" href="//wu2attomcloud.z5.web.core.windows.net/helpscout/customstyle.css">
+    
+    <link rel="apple-touch-icon-precomposed" href="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/5fe1231f7129911ba1b23225/attom-logo.png">
+    <link rel="shortcut icon" type="image/png" href="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/60a627b5dca0fd46b935738e/favicon.ico">
+    <!--[if lt IE 9]>
+    
+        <script src="//d3eto7onm69fcz.cloudfront.net/assets/javascripts/html5shiv.min.js"></script>
+    
+    <![endif]-->
+    
+        <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"WebSite","url":"https://cloud-help.attomdata.com","potentialAction":{"@type":"SearchAction","target":"https://cloud-help.attomdata.com/search?query={query}","query-input":"required name=query"}}
+        </script>
+    
+        <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ATTOM Cloud Help","item":"https://cloud-help.attomdata.com"},{"@type":"ListItem","position":2,"name":"User Guide","item":"https://cloud-help.attomdata.com/collection/329-user-guide"},{"@type":"ListItem","position":3,"name":"Using ATTOM API","item":"https://cloud-help.attomdata.com/article/527-using-attom-api"}]}
+        </script>
+    
+    
+        <script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
+</script><script type="text/javascript">window.Beacon('init', 'a85a4bf8-7ca9-452b-8c7a-f1a2dc0820aa')</script>
+
+<script type="text/javascript">
+  (function() {
+    function customScript() {
+var userGuide = $('#user-guide').attr('class');
+var dataGuide = $('#data-guide').attr('class');
+
+if(userGuide)
+{
+  $('#sidebar').removeClass('data-guide')
+  $('#sidebar').addClass('user-guide');
+}
+
+if(dataGuide)
+{
+ $('#sidebar').removeClass('user-guide')
+  $('#sidebar').addClass('data-guide');
+}
+var searchBar = document.getElementById("searchBar");
+
+var allCat = document.createElement("div");
+allCat.setAttribute("id", "allCat");
+allCat.setAttribute("class", "all-categories");
+
+allCat.appendChild(document.createTextNode("< All Categories"));
+searchBar.insertAdjacentElement("afterend", allCat);
+const url1 = window.location.href;
+if(url1.endsWith('/')){
+
+  document.getElementById("allCat").style.display = 'none';
+
+}else{
+  document.getElementById("allCat").style.display = 'block';
+
+}
+const myDiv = document.getElementById("allCat"); 
+myDiv.addEventListener("click", function() {
+  // Code to execute when the div is clicked
+  
+window.location.href = "https://cloud-help.attomdata.com";
+});
+
+    }
+    if (window.addEventListener) {
+      window.addEventListener("load",customScript,false);
+    } else if (window.attachEvent) {
+      window.attachEvent("onload",customScript);
+    }
+  })()
+
+
+</script>
+
+
+
+
+
+
+<script type = "text/javascript" >
+        window.heap = window.heap || [], heap.load = function(e, t) {
+                window.heap.appid = e, window.heap.config = t = t || {};
+                var r = document.createElement("script");
+                r.type = "text/javascript", r.async = !0, r.src = "https://cdn.heapanalytics.com/js/heap-" + e + ".js";
+                var a = document.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(r, a);
+                for (var n = function(e) {
+                                return function() {
+                                        heap.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                                }
+                        }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "resetIdentity", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], o = 0; o < p.length; o++) heap[p[o]] = n(p[o])
+        };
+heap.load("528476122"); </script>
+
+<script>
+
+var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
+
+</script>
+
+<style>
+#serp-dd .result a:hover, #serp-dd .result > li.active, #fullArticle strong a, #fullArticle a strong, .collection a, .contentWrapper a, .most-pop-articles .popArticles a, .most-pop-articles .popArticles a:hover span, .category-list .category .article-count, .category-list .category:hover .article-count {
+    color: #b01c0e!important;
+}
+</style>
+    
+</head>
+    
+    <body>
+        
+<header id="mainNav" class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="/">
+            
+                
+                    <img src="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/60a626ae13fd125a39b45886/attomlogo.png" alt="ATTOM Cloud Help" width="431" height="75">
+                
+
+            
+            </a>
+            
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            
+            <div class="nav-collapse collapse">
+                <nav role="navigation"><!-- added for accessibility -->
+                <ul class="nav">
+                    
+                    
+                        
+                            <li  class="active"  id="user-guide"><a href="/collection/329-user-guide">User Guide  <b class="caret"></b></a></li>
+                        
+                            <li  id="data-guide"><a href="/collection/332-data-guide">Data Guide  <b class="caret"></b></a></li>
+                        
+                            <li  id="property-navigator"><a href="/collection/561-property-navigator">Property Navigator  <b class="caret"></b></a></li>
+                        
+                    
+                    
+                    
+                </ul>
+                </nav>
+            </div><!--/.nav-collapse -->
+        </div><!--/container-->
+    </div><!--/navbar-inner-->
+</header>
+        <section id="contentArea" class="container-fluid">
+            <div class="row-fluid">
+                <section id="main-content" class="span9">
+                    <div class="contentWrapper withRelated">
+                        
+    
+    <article id="fullArticle">
+        <h1 class="title">Using ATTOM API</h1>
+    
+        <a href="javascript:window.print()" class="printArticle" title="Print this article" aria-label="Print this Article"><i class="icon-print"></i></a>
+        <div>
+ <p style="color: red;"></p>
+</div>
+<h2></h2>
+<h2>ATTOM API</h2>
+<p>ATTOM has developed an application program interface (API) that provides a convenient way of accessing ATTOM Cloud data that follows the REST architectural style and offers the flexibility of transaction-based pricing for property data.</p>
+<h2>Endpoints</h2>
+<p>ATTOM's comprehensive portfolio of property data is made available as a collection of API endpoints. Each of the endpoints has been designed to meet the needs of specific use cases. Each customer is encouraged to browse through the collection of endpoints available in ATTOM API to find the right ones for use in their projects. In some cases, it may be necessary to call two or more endpoints to get all the property data needed.</p>
+<p>See <a href="//cloud-help.attomdata.com/article/598-endpoints">ATTOM API Endpoints</a> for more details about the endpoints available</p>
+<h2>ATTOM API URI</h2>
+<p>Each ATTOM API endpoint has its own URL using the following pattern:</p>
+<pre>{API-URL}/{API-Version}/{Endpoint}/{Route}?{query}
+</pre>
+<h3>Examples</h3>
+<p>The following example calls the&nbsp;Basic Profile&nbsp;endpoint to search for a property with a specific address</p>
+<pre>https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=4529 Winona Court, Denver, CO
+</pre>
+<p>See <a href="//cloud-help.attomdata.com/article/598-endpoints">ATTOM API Endpoints</a> for more details about the structure of ATTOM API URLs.</p>
+<h2>Current Version</h2>
+<p>The current version of ATTOM API is V4. For full details of the history of ATTOM API and the various versions see <a href="//cloud-help.attomdata.com/article/686-attom-api-history">History of ATTOM API</a>.</p>
+<h2>Authentication</h2>
+<p>ATTOM API uses API Keys to authenticate users, allowing ATTOM to establish the rights to use ATTOM API as well as to keep track of the use made. To access ATTOM API, an API Key must be provided as part of the header when making a call to ATTOM API using the parameter&nbsp; <strong>apikey</strong>.</p>
+<p>Each ATTOM Cloud account provides an API Key that can be used for 30 days to evaluate the API. Details for the API key are provided in the Direct Integration section of your ATTOM Cloud account.</p>
+<p><img src="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/62a697861e5b41737b38d386/file-GPhuvHPF71.png">The example below shows the use of Postman to use ATTOM API.&nbsp;First, we must define API Key as the method used for Authorization</p>
+<p><img src="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/64e26a1efb285068c0d4d61e/file-sCedvQkv2W.png"></p>
+<p>Then the request must pass the assigned API Key in the header parameter apikey.</p>
+<p><img src="//d33v4339jhl8k0.cloudfront.net/docs/assets/55c4e0cce4b089486cad9afc/images/62a69821cb3c130081c1372f/file-t2UkclyL9v.png"></p>
+<p>Contact sales (800) 659-2877 if you need to extend your trial key, or need information about pricing.</p>
+<h2>Search Parameters</h2>
+<p>ATTOM API supports the use of search parameters as a way of matching to a specific property, or to search for multiple properties. These search parameters can be provided in the query string at the end of the URL.</p>
+<pre>https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/id?geoid=PL0820000&amp;minBeds=1&amp;maxBeds=2
+</pre>
+<p>For more details refer to <a href="//cloud-help.attomdata.com/article/687-api-search-parameters">ATTOM API Search Parameters</a>.</p>
+<h2>Data Dictionary</h2>
+<p>The range of property data offered via ATTOM Cloud and the ATTOM API is comprehensive. To identify which endpoints can be used to access specific property data we suggest making use of the Data Dictionary included as part of our online <a href="https://api.developer.attomdata.com/docs" target="_blank">API Developer Guide</a>.</p>
+<h2>Monitoring API Usage</h2>
+<p>For more information see <a href="//cloud-help.attomdata.com/article/689-monitoring-api-usage">Monitoring API Usage</a>.</p>
+    </article>
+    
+        <div class="articleRatings" data-article-url="https://cloud-help.attomdata.com/article/527-using-attom-api">
+            <span class="articleRatings-question">Did this answer your question?</span>
+            <span class="articleRatings-feedback">
+                <span class="articleRatings-feedback-tick">
+                    <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m8 14a.997.997 0 0 1 -.707-.293l-2-2a.999.999 0 1 1 1.414-1.414l1.293 1.293 4.293-4.293a.999.999 0 1 1 1.414 1.414l-5 5a.997.997 0 0 1 -.707.293" fill="#2CC683" fill-rule="evenodd"/>
+                    </svg>
+                </span>
+                <span class="articleRatings-feedback-message">Thanks for the feedback</span>
+            </span>
+            <span class="articleRatings-failure">There was a problem submitting your feedback. Please try again later.</span>
+            <div class="articleRatings-actions">
+                <button class="rateAction rateAction--positive" data-rating="positive">
+                    <span class="sr-only">Yes</span>
+                    <span class="rating-face">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path fill-rule="evenodd" d="M5.538 14.026A19.392 19.392 0 0 1 12 12.923c2.26 0 4.432.388 6.462 1.103-1.087 2.61-3.571 4.436-6.462 4.436-2.891 0-5.375-1.825-6.462-4.436zm1.847-3.872a1.846 1.846 0 1 1 0-3.692 1.846 1.846 0 0 1 0 3.692zm9.23 0a1.846 1.846 0 1 1 0-3.692 1.846 1.846 0 0 1 0 3.692z"/>
+                        </svg>
+                    </span>
+                </button>
+                <button class="rateAction rateAction--negative" data-rating="negative">
+                    <span class="sr-only">No</span>
+                    <span class="rating-face">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path fill-rule="evenodd" d="M7.385 13.846a1.846 1.846 0 1 1 0-3.692 1.846 1.846 0 0 1 0 3.692zm9.23 0a1.846 1.846 0 1 1 0-3.692 1.846 1.846 0 0 1 0 3.692zm-.967 4.95a.992.992 0 0 1-.615-.212c-1.701-1.349-4.364-1.349-6.065 0a.998.998 0 0 1-1.36-.123.895.895 0 0 1 .127-1.3A6.897 6.897 0 0 1 12 15.692c1.555 0 3.069.521 4.266 1.467.41.326.467.909.127 1.3a.982.982 0 0 1-.745.335z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+     
+
+    <section class="articleFoot">
+    
+
+    <time class="lu" datetime=2023-09-07 >Last updated on September 7, 2023</time>
+    </section>
+
+                    </div><!--/contentWrapper-->
+                    
+                        <section class="related">
+                            <h3>Related Articles</h3>
+                            <ul>
+                                
+                                    <li><a href="/article/598-endpoints"><i class="icon-article-doc"></i><span>ATTOM API Endpoints</span></a></li>
+                                
+                                    <li><a href="/article/687-api-search-parameters"><i class="icon-article-doc"></i><span>ATTOM API Search Parameters</span></a></li>
+                                
+                                    <li><a href="/article/612-attom-api-v4"><i class="icon-article-doc"></i><span>ATTOM API V4</span></a></li>
+                                
+                                    <li><a href="/article/579-geocodes"><i class="icon-article-doc"></i><span>Geocodes</span></a></li>
+                                
+                                    <li><a href="/article/686-attom-api-history"><i class="icon-article-doc"></i><span>History of ATTOM API</span></a></li>
+                                
+                                    <li><a href="/article/592-tileserver-api"><i class="icon-article-doc"></i><span>Parcel Tiles API</span></a></li>
+                                
+                                    <li><a href="/article/689-monitoring-api-usage"><i class="icon-article-doc"></i><span>Monitoring API Usage</span></a></li>
+                                
+                                    <li><a href="/article/581-version-numbers"><i class="icon-article-doc"></i><span>Version Numbers</span></a></li>
+                                
+                            </ul>
+                        </section>
+                    
+                </section><!--/content-->
+                <aside id="sidebar" class="span3">
+                 
+
+<form action="/search" method="GET" id="searchBar" class="sm" autocomplete="off">
+    
+                    <input type="hidden" name="collectionId" value="5fd90b0f27288b7f895d5b69"/>
+                    <input type="text" name="query" title="search-query" class="search-query" placeholder="Search" value="" aria-label="Search" />
+                    <button type="submit">
+                        <span class="sr-only">Toggle Search</span>
+                        <i class="icon-search"></i>
+                    </button>
+                    <div id="serp-dd" style="display: none;" class="sb">
+                        <ul class="result">
+                        </ul>
+                    </div>
+                
+</form>
+
+                
+                    <h3>Categories</h3>
+                    <ul class="nav nav-list">
+                    
+                        
+                            <li ><a href="/category/335-introduction">Introduction  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/449-whats-new">What&#x27;s New  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/337-quick-tour-of-the-interface">Quick Tour  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/545-solution-catalog">Solution Catalog  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/336-accessing-attom-cloud">Direct Integration  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/339-query-editor">Query Editor  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li  class="active" ><a href="/category/526-attom-api">ATTOM API  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/360-attom-cloud-security">Security  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/361-09-9logging-monitoring-and-performance-management">Metrics  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/342-account-management">Account Management  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                        
+                            <li ><a href="/category/419-faqs">FAQs  <i class="icon-arrow"></i></a></li>
+                        
+                    
+                    </ul>
+                
+                </aside><!--/span-->
+            </div><!--/row-->
+            <div id="noResults" style="display:none;">No results found</div>
+            <footer>
+                
+
+<p>&copy;
+    
+        <a href="https://www.attomdata.com">ATTOM Data Solutions</a>
+    
+    2026. <span>Powered by <a rel="nofollow noopener noreferrer" href="https://www.helpscout.com/docs-refer/?co=ATTOM+Data+Solutions&utm_source=docs&utm_medium=footerlink&utm_campaign=Docs+Branding" target="_blank">Help Scout</a></span>
+    
+        
+    
+    
+</p>
+
+            </footer>
+        </section><!--/.fluid-container-->
+        
+        
+    <script src="//d3eto7onm69fcz.cloudfront.net/assets/javascripts/app4.min.js"></script>
+
+<script>
+// keep iOS links from opening safari
+if(("standalone" in window.navigator) && window.navigator.standalone){
+// If you want to prevent remote links in standalone web apps opening Mobile Safari, change 'remotes' to true
+var noddy, remotes = false;
+document.addEventListener('click', function(event) {
+noddy = event.target;
+while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+noddy = noddy.parentNode;
+}
+
+if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes)){
+event.preventDefault();
+document.location.href = noddy.href;
+}
+
+},false);
+}
+</script>
+        
+    </body>
+</html>
+
+

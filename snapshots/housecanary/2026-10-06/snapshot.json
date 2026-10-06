@@ -1,0 +1,116 @@
+{
+  "product": "HouseCanary",
+  "slug": "housecanary",
+  "date": "2026-10-06",
+  "kind": "vendor",
+  "urls": [
+    {
+      "url": "https://www.housecanary.com/blog/housecanary-mcp-server",
+      "raw_file": "raw/mcp_blog.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://pypi.org/pypi/housecanary-mcp/json",
+      "raw_file": "raw/pypi.json",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.housecanary.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://api-docs.housecanary.com/",
+      "raw_file": "raw/api_docs.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://api-docs.housecanary.com/builds/1267/openapi.yaml",
+      "raw_file": "raw/openapi.yaml",
+      "http_status": 200,
+      "what": "api_docs"
+    }
+  ],
+  "mcp": {
+    "exists": true,
+    "endpoint_or_package": "PyPI package housecanary-mcp (pip install / uvx); stdio by default, optional self-hosted Streamable HTTP at /mcp. No vendor-hosted endpoint stated.",
+    "tools": [
+      "149 tools across 11 categories: Property level 31, ZIP 28, Census Block 24, MSA 16, State 14, Market Pulse 10, Block Group 10, Metro Division 8, Property Explorer 4, Portfolio Monitor 3, Bulk Property Data 1. Examples named: property/value, property/value_analysis, property/sales_history, property/estimate, property/value_fsd_threshold, property/ltv_details, zip/market_pulse/latest, zip/hcri, msa/hpi_ts_forecast"
+    ],
+    "read_write": "read-only (server filters out write endpoints)",
+    "auth": "Existing HouseCanary API credentials via HOUSECANARY_API_USERNAME / HOUSECANARY_API_PASSWORD env vars",
+    "source_url": "https://www.housecanary.com/blog/housecanary-mcp-server"
+  },
+  "api": {
+    "endpoints_relevant": [
+      "/v2/property/value",
+      "/v2/property/value_analysis",
+      "/v2/property/value_by_six_conditions",
+      "/v2/property/rental_value",
+      "/v2/property/sales_history",
+      "/v2/property/mortgage_lien",
+      "/v2/property/owner_occupied",
+      "/v3/property/estimate",
+      "/v3/property/value_fsd_threshold",
+      "/v2/property/component_mget"
+    ],
+    "auth": "HTTP Basic Authentication over HTTPS (API key / secret)",
+    "rate_limits": "Self-serve: Analytics API 250 components per minute; Value Report 10 requests per minute; Value Analysis 10 requests per minute. Enterprise custom.",
+    "source_url": "https://api-docs.housecanary.com/builds/1267/openapi.yaml"
+  },
+  "pricing": [
+    {
+      "plan": "Basic",
+      "price": "$19/month or $190/year",
+      "limits": "1 user, 2 custom valuation reports/month; no core API access listed",
+      "source_url": "https://www.housecanary.com/pricing"
+    },
+    {
+      "plan": "Pro",
+      "price": "$79/month or $790/year",
+      "limits": "1 user, 15 valuation reports + 15 AVM PDFs/month; core API access with usage-based costs",
+      "source_url": "https://www.housecanary.com/pricing"
+    },
+    {
+      "plan": "Teams",
+      "price": "$199/month or $1,990/year",
+      "limits": "10 users, 40 reports, 50 monitored properties; core + advanced APIs",
+      "source_url": "https://www.housecanary.com/pricing"
+    },
+    {
+      "plan": "Enterprise",
+      "price": "Contact us",
+      "limits": "custom",
+      "source_url": "https://www.housecanary.com/pricing"
+    },
+    {
+      "plan": "API usage (Basic/Pro/Teams)",
+      "price": "Property Analytics Basic endpoints $0.50/$0.40/$0.30 per successful call; Premium $4/$3/$2.50; Premium Plus $6/$5/$4; Property Estimate API $0.05; Market Pulse API $0",
+      "limits": "billed monthly on usage",
+      "source_url": "https://www.housecanary.com/pricing"
+    },
+    {
+      "plan": "MCP",
+      "price": "No separate MCP fee; tool calls billed as normal API calls",
+      "limits": "Portfolio Monitor, Market Pulse, Bulk Property Data no additional charge",
+      "source_url": "https://www.housecanary.com/blog/housecanary-mcp-server"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-04-27",
+      "change": "housecanary-mcp 0.1.0 published to PyPI (only release as of 2026-10-06); blog post announcing MCP dated the same day.",
+      "source_url": "https://pypi.org/project/housecanary-mcp/"
+    }
+  ],
+  "deprecations": [
+    {
+      "item": "jobs[].data_link and failed_jobs[].data_link on bulk job responses marked deprecated (poll batch status instead)",
+      "source_url": "https://api-docs.housecanary.com/builds/1267/openapi.yaml"
+    }
+  ]
+}

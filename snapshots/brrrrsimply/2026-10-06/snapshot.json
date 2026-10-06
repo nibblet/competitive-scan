@@ -1,0 +1,142 @@
+{
+  "product": "BrrrrSimply",
+  "slug": "brrrrsimply",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://brrrrsimply.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://brrrrsimply.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 404,
+      "what": "pricing",
+      "note": "no pricing page"
+    },
+    {
+      "url": "https://brrrrsimply.com/sitemap.xml",
+      "raw_file": "raw/sitemap.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "lists only terms and privacy (lastmod 2026-07-21)"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore",
+      "note": "includes full version history"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Analyzers for BRRRR, flip, rental, wholesale, multifamily, commission",
+      "quote": "Six analyzers. One app.",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Strategy picker",
+      "quote": "Pick your strategy. BRRRR, flip, rental, wholesale, STR or multifamily.",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Sales comps with ARV and rent comps by bed count",
+      "quote": "Live MLS-grade sales comps with ARV in one tap. Real rent comps pulled by neighborhood & bed count",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Saved and tagged comp sets per deal",
+      "quote": "Save, tag and revisit every comp set per deal",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Save and compare, PDF to partners",
+      "quote": "Stack deals side-by-side and email PDF reports to partners and lenders.",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Refi math defaults",
+      "quote": "Refi LTV, seasoning, holding costs, vacancy, handled correctly out of the box.",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Field use on site",
+      "quote": "Build a clear deal analysis from your phone while you are still at the property",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "feature": "Rehab estimate in app",
+      "quote": "Use built-in logic to calculate renovation and repair costs while you are still reviewing the property.",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "feature": "ARV is user input in BRRRR analyzer (FAQ)",
+      "quote": "User-input ARV is done manually using comparable sales or an appraiser's estimates.",
+      "source_url": "https://brrrrsimply.com/"
+    },
+    {
+      "feature": "Property Autofill and deal widget",
+      "quote": "We've expanded Property Autofill to make finding and analyzing properties easier",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Rockstar Investor Plan (App Store IAP)",
+      "price": "$9.99, $6.99, $97.00, $67.99, $97.00 (five listed IAP price points; billing periods not shown)",
+      "limits": "not established",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "plan": "Trial",
+      "price": "free 14 days",
+      "limits": "\"Try every analyzer free for 14 days.\"",
+      "source_url": "https://brrrrsimply.com/"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-21",
+      "change": "1.1.20: fixed an issue with the deal widget",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "date": "2026-08-19",
+      "change": "1.0.20: expanded Property Autofill, simplified onboarding, walkthrough videos",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "date": "2026-07-22",
+      "change": "1.0.19: redesigned analyzer results layout",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "date": "2026-07-09",
+      "change": "1.0.18: refined onboarding",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "date": "2026-07-07",
+      "change": "1.0.17: fully redesigned analyzer with guided step by step walkthroughs (same note as 1.0.16, 2026-06-26)",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    },
+    {
+      "date": "2026-05-29",
+      "change": "1.0.15: optimized BRRRR and Flip calculators for faster field analysis",
+      "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+    }
+  ],
+  "app_store": {
+    "version": "1.1.20",
+    "release_date": "2026-09-21",
+    "whats_new": "Your deal-finding experience is back on track. We've fixed an issue with the deal widget, so you can once again easily find and evaluate opportunities.",
+    "rating_count_if_shown": "15 ratings, 4.7",
+    "source_url": "https://apps.apple.com/us/app/brrrrsimply-deal-analyzer/id6746193115"
+  },
+  "api_or_mcp": "not established",
+  "quote_note": "Em dashes in quoted source text replaced with hyphens per house style; otherwise verbatim."
+}

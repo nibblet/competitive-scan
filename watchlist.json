@@ -1,0 +1,295 @@
+{
+  "updated": "2026-10-06",
+  "picked_by": "Paul, 2026-10-06 (suggested 10 from discovery-2026-10-06.md; the 'Nekst or ListedKit' slot is filled with both)",
+  "cadence": {
+    "watch": "weekly, Monday",
+    "discovery": "monthly, first Monday",
+    "capability_map": "quarterly"
+  },
+  "rules": {
+    "competitor": "Snapshot features, pricing, changelog / release notes, App Store What's New. Write idea cards for changes that touch a capability cell.",
+    "vendor": "Integration watch only: API / MCP changes, pricing, deprecations, new data. Do not mine for features to copy."
+  },
+  "products": [
+    {
+      "slug": "proplab",
+      "name": "PropLab",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "Deal",
+      "cells": [
+        "dl.uw.six",
+        "dl.uw.mao",
+        "dl.uw.rent",
+        "dl.plat.share"
+      ],
+      "seed_urls": [
+        "https://peerpush.com/p/proplab-ai-real-estate-underwriter",
+        "https://ai.g2.com/marketplace/tools/proplab"
+      ]
+    },
+    {
+      "slug": "batchoffers",
+      "name": "BatchOffers",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "Deal / Readvise",
+      "cells": [
+        "dl.plat.bulk",
+        "rv.flow.bulk-csv-underwrite",
+        "dl.uw.mao"
+      ],
+      "seed_urls": [
+        "https://alternativeto.net/software/batchoffers/about"
+      ]
+    },
+    {
+      "slug": "brrrrsimply",
+      "name": "BrrrrSimply",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "Deal",
+      "cells": [
+        "dl.uw.six",
+        "dl.comps.pane"
+      ],
+      "seed_urls": [
+        "https://apps.apple.com/app/id6746193115"
+      ]
+    },
+    {
+      "slug": "dealcheck",
+      "name": "DealCheck",
+      "kind": "competitor",
+      "group": "borrow patterns (incumbent)",
+      "app": "Deal",
+      "cells": [
+        "dl.comps.map",
+        "dl.comps.pick",
+        "dl.uw.rent"
+      ],
+      "seed_urls": [
+        "https://dealcheck.io/",
+        "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134",
+        "https://help.dealcheck.io/articles/3071993-viewing-sales-comps-arv-estimates"
+      ]
+    },
+    {
+      "slug": "flipperforce",
+      "name": "FlipperForce",
+      "kind": "competitor",
+      "group": "direct overlap (incumbent)",
+      "app": "REbuild / Deal",
+      "cells": [
+        "rb.est.calc",
+        "rb.sow.build",
+        "rb.ex.bids",
+        "rb.ex.change-orders",
+        "dl.comps.pick"
+      ],
+      "seed_urls": [
+        "https://flipperforce.com/software-features/rehab-repair-cost-estimator",
+        "https://www.flipperforce.com/house-flipping-blog/2025-year-in-review-productivity-and-platform-updates",
+        "https://flipperforce.com/learn/tools/ai-receipt-analyzer"
+      ]
+    },
+    {
+      "slug": "estimara",
+      "name": "Estimara",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "REbuild",
+      "cells": [
+        "rb.in.photo",
+        "rb.in.walkthrough",
+        "dl.uw.mao"
+      ],
+      "seed_urls": [
+        "https://apps.apple.com/app/id6760662681",
+        "https://appshunter.io/ios/app/estimara-ai-rehab-estimator/id6760662681"
+      ]
+    },
+    {
+      "slug": "flipmantis",
+      "name": "FlipMantis",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "Readvise",
+      "cells": [
+        "rv.op.pipeline",
+        "rv.doc.client-portal",
+        "rb.ex.draws"
+      ],
+      "seed_urls": [
+        "https://www.capterra.ca/software/1086098/FlipMantis"
+      ]
+    },
+    {
+      "slug": "nekst",
+      "name": "Nekst",
+      "kind": "competitor",
+      "group": "borrow patterns",
+      "app": "Readvise",
+      "cells": [
+        "rv.doc.deadline-extract",
+        "rv.op.checklists"
+      ],
+      "seed_urls": [
+        "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+      ]
+    },
+    {
+      "slug": "listedkit",
+      "name": "ListedKit (Ava)",
+      "kind": "competitor",
+      "group": "borrow patterns (incumbent)",
+      "app": "Readvise",
+      "cells": [
+        "rv.doc.deadline-extract",
+        "rv.doc.outbound-reminders"
+      ],
+      "seed_urls": [
+        "https://www.listedkit.com/resources/what-is-ai-transaction-coordinator"
+      ]
+    },
+    {
+      "slug": "sfr-analytics",
+      "name": "SFR Analytics",
+      "kind": "competitor",
+      "group": "direct overlap",
+      "app": "Readvise",
+      "cells": [
+        "rv.sense.roundtrips",
+        "rv.sense.comp-intel-capture",
+        "rv.sense.comp-discovery"
+      ],
+      "seed_urls": [
+        "https://sfranalytics.com/products/active-investors",
+        "https://sfranalytics.com/products/investor-edge"
+      ]
+    },
+    {
+      "slug": "dealmachine",
+      "name": "DealMachine (MCP)",
+      "kind": "competitor",
+      "group": "direct overlap / borrow patterns",
+      "app": "MCP layer",
+      "cells": [
+        "rv.op.pipeline",
+        "mcp.uw.comps"
+      ],
+      "seed_urls": [
+        "https://dealmachine.com/guides/mcp-server"
+      ]
+    },
+    {
+      "slug": "chatarv",
+      "name": "ChatARV",
+      "kind": "vendor",
+      "group": "vendor (in use)",
+      "app": "MCP layer",
+      "cells": [
+        "mcp.uw.chatarv",
+        "rv.flow.chatarv-pull"
+      ],
+      "seed_urls": [],
+      "note": "Paul pays for it and uses its MCP server. Track integration-affecting changes only; Paul may advise them."
+    },
+    {
+      "slug": "housecanary",
+      "name": "HouseCanary",
+      "kind": "vendor",
+      "group": "vendor",
+      "app": "MCP layer",
+      "cells": [
+        "mcp.uw.comps",
+        "rv.track.arv-scoreboard"
+      ],
+      "seed_urls": [
+        "https://www.housecanary.com/blog/housecanary-mcp-server"
+      ]
+    },
+    {
+      "slug": "attom",
+      "name": "ATTOM",
+      "kind": "vendor",
+      "group": "vendor",
+      "app": "MCP layer",
+      "cells": [
+        "mcp.uw.comps",
+        "rv.sense.roundtrips"
+      ],
+      "seed_urls": [
+        "https://www.attomdata.com/solutions/mcp-server/"
+      ]
+    },
+    {
+      "slug": "batchdata",
+      "name": "BatchData",
+      "kind": "vendor",
+      "group": "vendor",
+      "app": "MCP layer",
+      "cells": [
+        "rv.sense.comp-intel-capture"
+      ],
+      "seed_urls": [
+        "https://help.batchdata.io/en/articles/12859677-batchdata-mcp-server-now-available-november-2025"
+      ]
+    },
+    {
+      "slug": "rentcast",
+      "name": "RentCast",
+      "kind": "vendor",
+      "group": "vendor",
+      "app": "Deal / MCP layer",
+      "cells": [
+        "dl.uw.rent",
+        "mcp.uw.rent"
+      ],
+      "seed_urls": [
+        "https://developers.rentcast.io/reference/ai-tools"
+      ]
+    }
+  ],
+  "bench": {
+    "note": "Found in discovery, not watched. Revisit at monthly discovery.",
+    "vendors": [
+      "Regrid",
+      "Realie",
+      "Altos Research",
+      "1build",
+      "Clear Estimates"
+    ],
+    "competitors": [
+      "DealBeast",
+      "Privy",
+      "OfferMarket SOW",
+      "Smart Scope",
+      "Storypole",
+      "Rabbet",
+      "Paperless Pipeline",
+      "Docs2Dates",
+      "Wit",
+      "Clozze",
+      "RealPact",
+      "Open to Close",
+      "PropertyRadar",
+      "DealScanner",
+      "RentRedi",
+      "PropStream Intelligence Assistant"
+    ]
+  },
+  "paul_guidance": {
+    "updated": "2026-10-06",
+    "note": "Filters for future idea cards, from Paul's 2026-10-06 review.",
+    "items": [
+      "Keep project management light: no change orders, no lender draw workflows, no stakeholder portals.",
+      "Deal comps are a quick reference; deeper comping happens in ChatARV on its own. Do not grow Deal into a comp app.",
+      "No outbound reminders to outside parties for now: ugville covers that and it needs contact data.",
+      "Checklists, tasks and document upload may get a larger rework; read deadline and document ideas as input to that.",
+      "Wholesale disposition support is of interest if a workable data source exists.",
+      "Track our own leads' fate (competitor listing or recorded sale on our lead) alongside competitor tracking.",
+      "Accuracy scorecard in Track is wanted."
+    ]
+  }
+}

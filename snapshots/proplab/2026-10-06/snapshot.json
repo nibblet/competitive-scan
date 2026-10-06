@@ -1,0 +1,213 @@
+{
+  "product": "PropLab",
+  "slug": "proplab",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://proplab.app/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://proplab.app/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing",
+      "note": "redirects to https://proplab.app/#pricing; same document as home"
+    },
+    {
+      "url": "https://proplab.app/api-docs",
+      "raw_file": "raw/api-docs.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "API docs"
+    },
+    {
+      "url": "https://proplab.app/for/wholesalers",
+      "raw_file": "raw/for-wholesalers.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://proplab.app/deal-finder",
+      "raw_file": "raw/deal-finder.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://proplab.app/chatarv-alternative",
+      "raw_file": "raw/chatarv-alternative.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "comparison page vs ChatARV (Paul's vendor)"
+    },
+    {
+      "url": "https://proplab.app/blog",
+      "raw_file": "raw/blog.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "daily SEO posts, not product release notes"
+    },
+    {
+      "url": "https://proplab.app/sitemap.xml",
+      "raw_file": "raw/sitemap.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://proplab.app/help",
+      "raw_file": "raw/help.html",
+      "http_status": 200,
+      "what": "other",
+      "note": "contact form only"
+    },
+    {
+      "url": "https://proplab.app/changelog",
+      "raw_file": "raw/changelog.html",
+      "http_status": 404,
+      "what": "changelog",
+      "note": "no changelog page exists"
+    },
+    {
+      "url": "https://peerpush.com/p/proplab-ai-real-estate-underwriter",
+      "raw_file": "raw/peerpush.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://ai.g2.com/marketplace/tools/proplab",
+      "raw_file": "raw/g2.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://futuretools.io/tools/proplab",
+      "raw_file": "raw/futuretools.html",
+      "http_status": 200,
+      "what": "other"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Address or listing link to MAO in about 60 seconds",
+      "quote": "Paste address. Any MLS, Zillow, or Redfin link works ... AI builds the report. Comps, ARV, rent, expenses, exit strategies",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "MAO from ARV minus repairs with margin",
+      "quote": "Max Offer Price (MAO). A clear buy box price you can act on. Calculated from ARV minus repairs. Built-in profit margin. Ready to send to seller",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "Weighted comps with adjustments and confidence",
+      "quote": "Distance + recency weighted. Adjustment breakdowns. Confidence scoring",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "Risk alerts / condition signals",
+      "quote": "ARV estimate plus red flags from data + listing cues. Market-backed ARV. Condition indicators. Risk alerts",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "Shareable report (PDF and link)",
+      "quote": "Offer-Ready Report. Copy/paste summary you can send to partners or sellers. Professional PDF. Shareable link. Lender-ready format",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "Compare deals side by side (Plus tier)",
+      "quote": "Compare deals side-by-side",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "feature": "Deal Finder: scanned, pre-analyzed, scored listings with alerts",
+      "quote": "Each deal comes with instant ARV, rehab estimate, and profit potential already calculated.",
+      "source_url": "https://proplab.app/deal-finder"
+    },
+    {
+      "feature": "Underwriting templates via API",
+      "quote": "List all your underwriting templates with their IDs and configurations.",
+      "source_url": "https://proplab.app/api-docs"
+    },
+    {
+      "feature": "Batch API with webhooks, CSV upload of disposition lists",
+      "quote": "Our batch processing endpoint lets you submit up to 100 properties per request. Each property is analyzed in parallel, and you receive results via webhook or can poll for completion.",
+      "source_url": "https://proplab.app/for/wholesalers"
+    },
+    {
+      "feature": "Contract Generator (Pro)",
+      "quote": "Contract Generator",
+      "source_url": "https://proplab.app/"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Free",
+      "price": "$0 forever",
+      "limits": "3 total analyses; session-only history",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "plan": "Basic",
+      "price": "$16.63/month billed yearly ($199.50/yr)",
+      "limits": "20 analyses/month; save up to 10 deals; 90-day history",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "plan": "Plus",
+      "price": "$34.92/month billed yearly ($419.00/yr)",
+      "limits": "50 analyses/month; save up to 50 deals; side-by-side compare; PDF export and sharing",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "plan": "Pro",
+      "price": "$49/month shown, $588.00 billed yearly",
+      "limits": "150 analyses/month; unlimited saving; Contract Generator; API Access",
+      "source_url": "https://proplab.app/"
+    },
+    {
+      "plan": "Pro (as stated on comparison page)",
+      "price": "$99/month",
+      "limits": "300 analyses/month (conflicts with home page 150/month)",
+      "source_url": "https://proplab.app/chatarv-alternative"
+    },
+    {
+      "plan": "Monthly list prices (third party)",
+      "price": "Basic $19.95/mo, Plus $49.95/mo, Pro $99/mo",
+      "limits": "not established on own site (monthly toggle is client-side)",
+      "source_url": "https://ai.g2.com/marketplace/tools/proplab"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-10-01",
+      "change": "Blog post 'Software for Investors Worth Using in 2026' (SEO content, not a product change; daily cadence since at least 2026-09-20)",
+      "source_url": "https://proplab.app/blog"
+    },
+    {
+      "date": "2026-09-30",
+      "change": "Blog post 'real-estate-comparables-template' (SEO content)",
+      "source_url": "https://proplab.app/sitemap.xml"
+    },
+    {
+      "date": "2026-09-22",
+      "change": "Blog post 'flood-zone-determination' (SEO content)",
+      "source_url": "https://proplab.app/sitemap.xml"
+    },
+    {
+      "date": "2026-03-18",
+      "change": "Listed on PeerPush ('Published on Mar 18, 2026'); PeerPush shows '1 product update' (content not captured)",
+      "source_url": "https://peerpush.com/p/proplab-ai-real-estate-underwriter"
+    },
+    {
+      "date": "2026-02",
+      "change": "Home page and Deal Finder page footers read 'Last updated: February 2026'",
+      "source_url": "https://proplab.app/"
+    }
+  ],
+  "recent_changes_note": "No changelog or release notes found (/changelog is 404). Next week's diff should compare home pricing block, api-docs endpoints and sitemap lastmod values.",
+  "app_store": "not established",
+  "api_or_mcp": "REST API (Pro tier): POST /api/v1/underwrite (1 credit, accepts templateId), GET /api/v1/templates, GET /api/v1/credits/balance, GET /api/v1/analysis/:id; claims CRM fit with Salesforce, GoHighLevel, Podio. Source: https://proplab.app/api-docs . Batch endpoint up to 100 properties per request with webhook claimed at https://proplab.app/for/wholesalers . MCP: not established.",
+  "quote_note": "Em dashes in quoted source text replaced with hyphens per house style; otherwise verbatim."
+}

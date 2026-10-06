@@ -1,0 +1,119 @@
+{
+  "product": "ChatARV",
+  "slug": "chatarv",
+  "date": "2026-10-06",
+  "kind": "vendor",
+  "urls": [
+    {
+      "url": "https://www.chatarv.ai/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.chatarv.ai/llms.txt",
+      "raw_file": "raw/llms.txt",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.chatarv.ai/sitemap.xml",
+      "raw_file": "raw/sitemap.xml",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.chatarv.ai/.well-known/oauth-protected-resource",
+      "raw_file": "raw/oauth_protected_resource.json",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.chatarv.ai/mcp/oauth-protected-resource",
+      "raw_file": "raw/mcp_oauth_protected_resource.json",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.chatarv.ai/mcp",
+      "raw_file": "raw/mcp_unauth_headers.txt",
+      "http_status": 401,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.chatarv.ai/pricing",
+      "raw_file": null,
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://www.chatarv.ai/changelog",
+      "raw_file": null,
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://www.chatarv.ai/docs",
+      "raw_file": null,
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://www.chatarv.ai/mcp-server",
+      "raw_file": null,
+      "http_status": 200,
+      "what": "mcp"
+    }
+  ],
+  "notes": [
+    "/pricing, /changelog, /docs and /mcp-server all returned the identical client-rendered home shell (same md5 as home.html), so no copy was kept; they are not real pages and do not appear in sitemap.xml.",
+    "The /mcp probe was an unauthenticated initialize POST with no credentials; it returned 401 with header www-authenticate: Bearer resource_metadata=\"https://www.chatarv.ai/mcp/oauth-protected-resource\". Body saved as raw/mcp_unauth_body.txt.",
+    "/.well-known/oauth-authorization-server returned the HTML 404 shell, so no copy was kept."
+  ],
+  "mcp": {
+    "exists": true,
+    "endpoint_or_package": "https://www.chatarv.ai/mcp (Streamable HTTP)",
+    "tools": [
+      "run_comps (name confirmed by current forVEX integration, REcontrol:supabase/functions/chatarv-run-comps/index.ts)",
+      "list_comp_reports (name confirmed by forVEX integration)",
+      "get_comp_report (name confirmed by forVEX integration)",
+      "revise a report (per llms.txt; tool name not established)",
+      "read property details, images, repair estimates, account status (per llms.txt; tool names not established)"
+    ],
+    "read_write": "read + write (run_comps creates a report and spends a credit; revise modifies a report)",
+    "auth": "llms.txt says 'authenticated with OAuth'. Protected-resource metadata names a Supabase auth server (https://zmngkwxzdukxiwiquvuy.supabase.co/auth/v1), scopes openid/email/profile, bearer in header. forVEX currently sends a static Bearer CHATARV_KEY; whether a non-OAuth API key remains supported long term is not established from public pages.",
+    "source_url": "https://www.chatarv.ai/llms.txt"
+  },
+  "api": {
+    "endpoints_relevant": [
+      "llms.txt says reports can be built 'from the API'; no public API reference found. Endpoints not established."
+    ],
+    "auth": "not established",
+    "rate_limits": "not established",
+    "source_url": "https://www.chatarv.ai/llms.txt"
+  },
+  "pricing": "not established",
+  "recent_changes": [
+    {
+      "date": "2026-10-06 (observed)",
+      "change": "MCP endpoint advertises OAuth protected-resource metadata pointing to a Supabase auth server; unauthenticated calls get 401 with resource_metadata header. Baseline for auth drift.",
+      "source_url": "https://www.chatarv.ai/.well-known/oauth-protected-resource"
+    },
+    {
+      "date": "2026-08-25",
+      "change": "run_comps text response switched from bare JSON to a markdown heading plus fenced json block (same rendering as get_comp_report). Broke forVEX JSON.parse until fixed in REcontrol commit 82d3c15 on 2026-10-02. Observed by forVEX, not announced by ChatARV.",
+      "source_url": "REcontrol:supabase/functions/chatarv-run-comps/recoverReport.ts (internal evidence; no vendor URL)"
+    },
+    {
+      "date": "ongoing (observed)",
+      "change": "run_comps returns adjustedArv null; get_comp_report on the same reportId returns the size-adjusted figure. forVEX does a second no-credit read to fetch it.",
+      "source_url": "REcontrol:supabase/functions/chatarv-run-comps/index.ts (internal evidence; no vendor URL)"
+    },
+    {
+      "date": "2026-09-01",
+      "change": "Latest sitemap lastmod (blog post chatarv-vs-manual-comps). No integration content; recorded only as a diff anchor.",
+      "source_url": "https://www.chatarv.ai/sitemap.xml"
+    }
+  ],
+  "deprecations": []
+}

@@ -1,0 +1,501 @@
+{
+  "product": "DealMachine (MCP)",
+  "slug": "dealmachine",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://dealmachine.com/guides/mcp-server",
+      "raw_file": "raw/mcp-guide.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md",
+      "raw_file": "raw/api-docs-mcp-server.md",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://api.docs.dealmachine.com/ai-assistants/introduction",
+      "raw_file": "raw/api-ai-assistants.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://api.docs.dealmachine.com/llms.txt",
+      "raw_file": "raw/api-docs-llms.txt",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://api.docs.dealmachine.com/llms-full.txt",
+      "raw_file": "raw/api-docs-llms-full.txt",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://api.docs.dealmachine.com/cli/overview",
+      "raw_file": "raw/cli-overview.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://www.dealmachine.com/connections/claude",
+      "raw_file": "raw/connections-claude.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://mcp.pipedream.com/app/dealmachine",
+      "raw_file": "raw/pipedream-mcp.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://zapier.com/mcp/dealmachine",
+      "raw_file": "raw/zapier-mcp.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.dealmachine.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://www.dealmachine.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://www.dealmachine.com/solutions/agents",
+      "raw_file": "raw/solutions-agents.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://updates.dealmachine.com/",
+      "raw_file": "raw/release-notes.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/ZFTad-9222026-1640-release",
+      "raw_file": "raw/release-ZFTad.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/ZufnE-982026-1630-release",
+      "raw_file": "raw/release-ZufnE.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/PnpUR-8272026-1620-release",
+      "raw_file": "raw/release-PnpUR.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/MpB9K-8112026-1610-release",
+      "raw_file": "raw/release-MpB9K.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/Q2tOZ-1600-release-7272026",
+      "raw_file": "raw/release-Q2tOZ.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://updates.dealmachine.com/release/j39yk-5192026-1550-release",
+      "raw_file": "raw/release-j39yk.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/dealmachine-for-real-estate/id1136936300",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Remote MCP server, 37 tools, API key or OAuth",
+      "quote": "DealMachine currently exposes 37 MCP Tools.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "MCP writes to the prospect pipeline: add, lifecycle update, notes, tags",
+      "quote": "Move a prospect between active, opportunity, and archived, or star it.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "MCP can launch paid mail campaigns behind an explicit confirmation flag",
+      "quote": "Read a campaign's cost estimate and get the user's approval before sending. Sending and cancelling require `confirmed: true`.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "Credit-safe agent defaults (count before search, usage before batch, confirm before export)",
+      "quote": "Confirm with the user before exporting or returning a large credit-consuming result set.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "Outbound webhooks for prospect and list events, registrable from MCP",
+      "quote": "Register an https URL that receives prospect and list events.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "Comps via MCP",
+      "quote": "Find comparable sales and active listings for subject properties.",
+      "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+    },
+    {
+      "feature": "In-app AI Chat that searches, looks up people, runs comps, enriches",
+      "quote": "DealMachine's AI searches properties, looks up people, runs comps, and enriches contacts",
+      "source_url": "https://updates.dealmachine.com/release/Q2tOZ-1600-release-7272026"
+    },
+    {
+      "feature": "Estimated Repair Cost per residential property, filterable and exportable",
+      "quote": "Residential properties now carry an Estimated Repair Cost, calculated from the property's condition and building square footage.",
+      "source_url": "https://updates.dealmachine.com/release/ZufnE-982026-1630-release"
+    },
+    {
+      "feature": "Driving for Dollars mobile app with tap-to-add prospects and route history",
+      "quote": "Tap-to-Add is back. Turn it on in Settings > Driving, and one tap adds a house as a prospect.",
+      "source_url": "https://updates.dealmachine.com/release/ZFTad-9222026-1640-release"
+    },
+    {
+      "feature": "CLI with browser login for AI assistants",
+      "quote": "npm install -g dealmachine dm login",
+      "source_url": "https://updates.dealmachine.com/release/Q2tOZ-1600-release-7272026"
+    },
+    {
+      "feature": "Zapier MCP actions (third-party wrapper): address autocomplete, DNC check, enrich by address / APN",
+      "quote": "Check whether a phone number is on the National Do Not Call (DNC) registry.",
+      "source_url": "https://zapier.com/mcp/dealmachine"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Basic",
+      "price": "$99 / seat / mo (billed monthly)",
+      "limits": "10,000 data credits / seat; API, CLI and webhook access; Driving for Dollars; pay-as-you-go mail",
+      "source_url": "https://www.dealmachine.com/pricing"
+    },
+    {
+      "plan": "Pro",
+      "price": "$149 / seat / mo (billed monthly)",
+      "limits": "20,000 data credits / seat; premium filters; priority support",
+      "source_url": "https://www.dealmachine.com/pricing"
+    },
+    {
+      "plan": "Scale",
+      "price": "$599 / package / mo",
+      "limits": "Each package 100K records and 10 workspace seats; SSO / SAML; dedicated support",
+      "source_url": "https://www.dealmachine.com/pricing"
+    },
+    {
+      "plan": "Annual billing",
+      "price": "Save 17%",
+      "limits": "",
+      "source_url": "https://www.dealmachine.com/pricing"
+    },
+    {
+      "plan": "Mail (usage-based)",
+      "price": "4x6 postcard $0.75 Basic / $0.70 Pro; 6x9 $0.81 / $0.80; 6x11 $0.89 / $0.87 per piece",
+      "limits": "",
+      "source_url": "https://www.dealmachine.com/pricing"
+    },
+    {
+      "plan": "MCP usage",
+      "price": "Same data credits as the app",
+      "limits": "One credit per unique record, deduplicated per cycle; counts, filter discovery, location lookups and usage checks are free",
+      "source_url": "https://dealmachine.com/guides/mcp-server"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-22",
+      "change": "Release 16.4.0: map-first search; Saved Properties renamed Prospects (incl. drive targets); mobile parity (property pages, lists, bulk actions, send mail from phone); API phone carrier; fixes for Mail API access and API list building",
+      "source_url": "https://updates.dealmachine.com/release/ZFTad-9222026-1640-release"
+    },
+    {
+      "date": "2026-09-22",
+      "change": "iOS app 20.0.1: all-new native mobile experience replaces the previous one",
+      "source_url": "https://apps.apple.com/us/app/dealmachine-for-real-estate/id1136936300"
+    },
+    {
+      "date": "2026-09-08",
+      "change": "Release 16.3.0: Estimated Repair Cost field and filter; HOA exclude filter; phone carrier at export; APN and lat/long free in exports; comps fixes for vacant land",
+      "source_url": "https://updates.dealmachine.com/release/ZufnE-982026-1630-release"
+    },
+    {
+      "date": "2026-08-24",
+      "change": "Release 16.2.0: lot size unit toggle, four land filters, partial exports up to limit; fix for lists built from AI Chat arriving empty",
+      "source_url": "https://updates.dealmachine.com/release/PnpUR-8272026-1620-release"
+    },
+    {
+      "date": "2026-08-11",
+      "change": "Release 16.1.0: owned-properties count filter, higher unit-count filters, export and AI Chat fixes",
+      "source_url": "https://updates.dealmachine.com/release/MpB9K-8112026-1610-release"
+    },
+    {
+      "date": "2026-07-27",
+      "change": "Release 16.0.0: full rebuild; new web and mobile apps; AI Chat; connect external AI assistants via CLI login",
+      "source_url": "https://updates.dealmachine.com/release/Q2tOZ-1600-release-7272026"
+    },
+    {
+      "date": "2026-05-19",
+      "change": "Release 15.5.0: portfolio value fix, import header fix",
+      "source_url": "https://updates.dealmachine.com/release/j39yk-5192026-1550-release"
+    }
+  ],
+  "app_store": {
+    "name": "DealMachine for Real Estate",
+    "subtitle": "Real Estate At Your Fingertips",
+    "price": "Free",
+    "rating": "4.8 (5K ratings)",
+    "category": "Business",
+    "latest_version": "20.0.1",
+    "latest_version_date": "Sep 22 (year not shown on page; matches 2026-09-22 web release)",
+    "source_url": "https://apps.apple.com/us/app/dealmachine-for-real-estate/id1136936300"
+  },
+  "api_or_mcp": {
+    "exists": true,
+    "endpoint": "https://mcp.dealmachine.com",
+    "tool_count": 37,
+    "tools": [
+      {
+        "tool": "dealmachine_enrich_address",
+        "desc": "Look up a property by street address.",
+        "cost": "1 property data credit per match",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_enrich_latlng",
+        "desc": "Look up the closest property by GPS coordinates.",
+        "cost": "1 property data credit per match",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_enrich_apn",
+        "desc": "Look up a property by Assessor's Parcel Number.",
+        "cost": "1 property data credit per match",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_enrich_email",
+        "desc": "Look up a person by email address.",
+        "cost": "1 people data credit per matched person",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_enrich_phone",
+        "desc": "Look up a person by phone number.",
+        "cost": "1 people data credit per matched person",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_enrich_name",
+        "desc": "Look up people by name. Always narrow with location.",
+        "cost": "Free with estimate_cost=true, otherwise 1 people credit per person",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_property_search",
+        "desc": "Search properties by location and filters.",
+        "cost": "Credit-consuming unless estimate_cost=true",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_property_count",
+        "desc": "Count matching properties before a search or export.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_property_export",
+        "desc": "Export matching property-owner contacts as CSV.",
+        "cost": "Credit-consuming export",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_property_get",
+        "desc": "Fetch one property by ID.",
+        "cost": "1 property data credit unless enrich=false",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_property_get_many",
+        "desc": "Fetch up to 25 properties by ID.",
+        "cost": "1 property data credit per property unless deduped",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_comps",
+        "desc": "Find comparable sales and active listings for subject properties.",
+        "cost": "1 property data credit per subject found",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_people_search",
+        "desc": "Search people by location and filters.",
+        "cost": "Credit-consuming unless estimate_cost=true",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_people_count",
+        "desc": "Count matching people before a search or export.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_people_get",
+        "desc": "Fetch one person by ID.",
+        "cost": "Credit-consuming unless deduped",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_people_get_many",
+        "desc": "Fetch up to 25 people by ID.",
+        "cost": "Credit-consuming unless deduped",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_location_search",
+        "desc": "Look up FIPS codes, ZIP codes, and location IDs by name.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_list_create",
+        "desc": "Create a list, optionally pre-filled with up to 250 record IDs. Filed records become prospects unless add_as_prospects is false.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_list_add_items",
+        "desc": "Add up to 10,000 property or person IDs to a list.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_prospect_add",
+        "desc": "Track up to 1,000 records as prospects.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_prospect_get",
+        "desc": "One prospect by ID or by the record it tracks.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_prospect_search",
+        "desc": "List prospects by lifecycle, source, list, tag, or search words.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_prospect_update",
+        "desc": "Move a prospect between active, opportunity, and archived, or star it.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_prospect_note_add",
+        "desc": "Add a note to a prospect.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_prospect_tags_set",
+        "desc": "Replace the tags on a prospect.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_tags_list",
+        "desc": "The prospect tag catalog with usage counts.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_webhook_list",
+        "desc": "Outbound webhooks with delivery health, optionally the event catalog.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_webhook_create",
+        "desc": "Register an https URL that receives prospect and list events.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_driving_read",
+        "desc": "List recorded drives or get one drive with its route, visits, events, and linked Prospects.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_mail_read",
+        "desc": "Read campaigns, recipients, analytics, cost estimates, designs, pricing, or wallet balance.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_mail_campaign_draft",
+        "desc": "Create or update a draft, or pause or resume a campaign.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_mail_campaign_send",
+        "desc": "Launch a draft campaign. Requires confirmed: true.",
+        "cost": "Wallet dollars based on recipients and steps",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_mail_campaign_cancel",
+        "desc": "Cancel a campaign and stop future sends. Requires confirmed: true.",
+        "cost": "Free",
+        "rw": "write"
+      },
+      {
+        "tool": "dealmachine_filters",
+        "desc": "List available search filters with types, operators, and options.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_fields",
+        "desc": "List available result fields.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_usage",
+        "desc": "Get credit usage for the current billing cycle.",
+        "cost": "Free",
+        "rw": "read"
+      },
+      {
+        "tool": "dealmachine_whoami",
+        "desc": "Check the authenticated account and organization.",
+        "cost": "Free",
+        "rw": "read"
+      }
+    ],
+    "read_write": "Read + write. Writes: list create / add items, prospect add / update lifecycle / note / tags, webhook create, mail campaign draft / pause / resume / send / cancel (send and cancel need confirmed: true). Reads: enrichment, property and people search, comps, exports, drives, mail analytics, usage. Native first-party server, not only a Zapier / Pipedream wrapper.",
+    "source_url": "https://api.docs.dealmachine.com/ai-assistants/mcp-server.md"
+  }
+}

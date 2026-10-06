@@ -1,0 +1,209 @@
+{
+  "product": "Nekst",
+  "slug": "nekst",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://www.nekst.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://www.nekst.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/",
+      "raw_file": "raw/help-first-transaction.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://help.nekst.com/en-us/article/keep-control-over-communication-sending-and-auto-sending-messages-wgmxip/",
+      "raw_file": "raw/help-auto-send.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://help.nekst.com/en-us/article/key-dates-track-and-complete-your-critical-deadlines-hbd7q8/",
+      "raw_file": "raw/help-key-dates.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://nekst.featurebase.app/changelog",
+      "raw_file": "raw/changelog.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://nekst.featurebase.app/changelog/nekst-ai-is-officially-live-inside-your-account",
+      "raw_file": "raw/changelog-ai-live.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/nekst-task-management/id6473773626",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Create a transaction by uploading a signed contract; AI extracts dates and details",
+      "quote": "upload a signed contract, and watch Nekst AI fill in your deadlines and pre-write your emails",
+      "source_url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+    },
+    {
+      "feature": "Click-to-source citation on every extracted value",
+      "quote": "Hover the green Sparkle icon next to any value to see the exact line Nekst AI used. Click the Sparkle to jump the PDF straight to that page.",
+      "source_url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+    },
+    {
+      "feature": "Tasks linked to contract dates reschedule themselves",
+      "quote": "every task linked to a contract date has already adjusted itself to match your contract.",
+      "source_url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+    },
+    {
+      "feature": "Dependent task offsets (task due N days after another task), re-parentable",
+      "quote": "In a Workflow, a task's due date can follow another task (\"3 days after Inspection\").",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "feature": "5-step human review before the transaction goes live (verify data, remove groups, key dates, tasks, parties)",
+      "quote": "When it finishes, you'll step through a quick 5-step review.",
+      "source_url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+    },
+    {
+      "feature": "Parties extracted from the contract and matched to contacts",
+      "quote": "Nekst AI pulls the contacts from your contract",
+      "source_url": "https://help.nekst.com/en-us/article/see-it-work-create-your-first-transaction-from-a-contract-18q84ti/"
+    },
+    {
+      "feature": "Email and SMS tasks pre-written with contract details; nothing sends without a click unless Auto-Send is checked",
+      "quote": "By default, Nekst never sends an email or text on its own",
+      "source_url": "https://help.nekst.com/en-us/article/keep-control-over-communication-sending-and-auto-sending-messages-wgmxip/"
+    },
+    {
+      "feature": "Auto-send window for reminders",
+      "quote": "Auto-sent emails and texts both send between 8–9 AM in your local time on the day the task is due.",
+      "source_url": "https://help.nekst.com/en-us/article/keep-control-over-communication-sending-and-auto-sending-messages-wgmxip/"
+    },
+    {
+      "feature": "Key Dates widget, Key Dates calendar feed, and calendar links shareable with clients",
+      "quote": "Key Dates have their own calendar feed, separate from your full task list.",
+      "source_url": "https://help.nekst.com/en-us/article/key-dates-track-and-complete-your-critical-deadlines-hbd7q8/"
+    },
+    {
+      "feature": "Client portal and client app, Communication Hub per transaction",
+      "quote": "Every transaction in Nekst now has a Communication Hub: conversations that live on the deal, next to the tasks, documents, and timeline.",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "feature": "In-app AI chat over transactions, deadlines, notes and documents",
+      "quote": "Nekst AI is built directly into your workspace and understands your transactions, deadlines, comments, and documents.",
+      "source_url": "https://nekst.featurebase.app/changelog/nekst-ai-is-officially-live-inside-your-account"
+    },
+    {
+      "feature": "Public API and Zapier on Solo Pro and up",
+      "quote": "Access Public API, Zapier & Other Integrations",
+      "source_url": "https://www.nekst.com/pricing"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Solo Lite",
+      "price": "Free",
+      "limits": "1 user, up to 5 total transactions, contracts from up to 2 markets; includes contract upload, calendar sync, client portals, AI chat",
+      "source_url": "https://www.nekst.com/pricing"
+    },
+    {
+      "plan": "Solo Pro",
+      "price": "$790/yr (~$66 over 12 mos), +$299 onboarding fee",
+      "limits": "Unlimited transactions, 3 markets, public API and Zapier, SMS messaging, 4x more AI tokens",
+      "source_url": "https://www.nekst.com/pricing"
+    },
+    {
+      "plan": "Team Pro",
+      "price": "$1,990/yr (~$166 over 12 mos), +$399 onboarding fee",
+      "limits": "2 seats included; extra Administrator $49/mo, extra Team Member $19/mo; 6 markets; assign tasks to others",
+      "source_url": "https://www.nekst.com/pricing"
+    },
+    {
+      "plan": "Enterprise",
+      "price": "Custom pricing",
+      "limits": "Any market, multiple accounts, dedicated account manager, company branding",
+      "source_url": "https://www.nekst.com/pricing"
+    },
+    {
+      "plan": "Extra setup time",
+      "price": "$65/hour beyond 3 hours",
+      "limits": "Onboarding build-out",
+      "source_url": "https://www.nekst.com/pricing"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-25",
+      "change": "iOS app 1.6.6 (bug fixes); 1.6.5 on Sep 17 shipped Communication Hub to mobile",
+      "source_url": "https://apps.apple.com/us/app/nekst-task-management/id6473773626"
+    },
+    {
+      "date": "2026-09-22",
+      "change": "Trim a contract before it uploads (Split Document page picker)",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-09-21",
+      "change": "Communication Hub: team and client conversations on every transaction; any message can become a task",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-09-09",
+      "change": "Notes icon on all five launch-from-contract review steps",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-09-09",
+      "change": "Complete Key Dates in one click; Key Dates guide with calendar links for clients",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-09-09",
+      "change": "Search for a task inside a workflow",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-08-12",
+      "change": "Move a dependent task to a new parent without rebuilding it (relative due-date links editable)",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    },
+    {
+      "date": "2026-08-12",
+      "change": "Transaction stage shown and filterable on All Tasks page",
+      "source_url": "https://nekst.featurebase.app/changelog"
+    }
+  ],
+  "app_store": {
+    "name": "Nekst - Task Management",
+    "subtitle": "Task, Email & SMS for Realtors",
+    "price": "Free, in-app purchases",
+    "rating": "5.0 (3 ratings)",
+    "category": "Productivity",
+    "latest_version": "1.6.6",
+    "latest_version_date": "Sep 25 (year not shown on page; assumed 2026 from sequence)",
+    "notes": "Earlier version 1.6.1 (Jul 15) lists Nekst AI. A separate Client app is referenced on the pricing page; its App Store page was not captured.",
+    "source_url": "https://apps.apple.com/us/app/nekst-task-management/id6473773626"
+  },
+  "api_or_mcp": {
+    "exists": true,
+    "tools": "not established (public REST API and Zapier referenced on pricing page; no MCP server found)",
+    "read_write": "not established",
+    "source_url": "https://www.nekst.com/pricing"
+  }
+}

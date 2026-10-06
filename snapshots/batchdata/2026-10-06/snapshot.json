@@ -1,0 +1,176 @@
+{
+  "product": "BatchData",
+  "slug": "batchdata",
+  "date": "2026-10-06",
+  "kind": "vendor",
+  "urls": [
+    {
+      "url": "https://help.batchdata.io/en/articles/12859677-batchdata-mcp-server-now-available-november-2025",
+      "raw_file": "raw/mcp_announce.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide",
+      "raw_file": "raw/mcp_devguide.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://batchdata.io/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://developer.batchdata.com/",
+      "raw_file": "raw/api_docs.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://help.batchdata.io/en/collections/16760800-product-release-notes",
+      "raw_file": "raw/release_notes.html",
+      "http_status": 200,
+      "what": "changelog"
+    }
+  ],
+  "mcp": {
+    "exists": true,
+    "endpoint_or_package": "https://mcp.batchdata.com (Streamable HTTP, hosted)",
+    "tools": [
+      "lookup_property",
+      "comparable_property",
+      "skip_trace_property",
+      "verify_phone",
+      "check_dnc_status",
+      "check_tcpa_status",
+      "verify_address",
+      "geocode_address",
+      "reverse_geocode_address"
+    ],
+    "read_write": "read",
+    "auth": "OAuth sign-in for supported AI clients (since January 2026); custom clients use Authorization: Bearer <server-side API token>",
+    "source_url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide"
+  },
+  "api": {
+    "endpoints_relevant": [
+      "property-lookup-all-attributes",
+      "property-search",
+      "property-skip-trace-v3",
+      "address-verify / geocode / reverse-geocode",
+      "phone-verification (token permission names as listed in the MCP guide)"
+    ],
+    "auth": "Bearer server-side API token with per-endpoint permissions",
+    "rate_limits": "MCP subject to the same rate limits as the BatchData API; 429 on exceed; numeric limits not on fetched pages (not established)",
+    "source_url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide"
+  },
+  "pricing": [
+    {
+      "plan": "Property Data Growth",
+      "price": "$1,000/mo",
+      "limits": "100,000 records/mo; API access",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Property Data Professional",
+      "price": "$2,500/mo",
+      "limits": "300,000 records/mo",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Property Data Scale",
+      "price": "$5,000/mo",
+      "limits": "750,000 records/mo",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Property Data Enterprise",
+      "price": "$10,000/mo",
+      "limits": "3,000,000 records/mo",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Skip Tracing Growth to Enterprise",
+      "price": "$3,000 to $30,000/mo",
+      "limits": "100,000 to 3,000,000 matched records/mo",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Reverse Skip Tracing Growth to Enterprise",
+      "price": "$1,500 to $15,000/mo",
+      "limits": "7,500 to 150,000 matched records/mo",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "Add-ons (Listing, Owner Profile, Demographics, History (Deed), Valuation, Comps, etc.)",
+      "price": "vary by tier; calculator showed $0/mo with nothing selected",
+      "limits": "not established",
+      "source_url": "https://batchdata.io/pricing"
+    },
+    {
+      "plan": "MCP billing",
+      "price": "Same as direct API; per-record cost set by datasets provisioned on the token, not by runtime datasets/customProjection",
+      "limits": "",
+      "source_url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09",
+      "change": "MCP Developer Integration Guide marked 'Last Updated: September 2026' (page says updated yesterday)",
+      "source_url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide"
+    },
+    {
+      "date": "2026-08",
+      "change": "Owner-name search now matches both names on the same owner",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "2026-07",
+      "change": "Previous-Owner Property Search; Owner-Name Property Search",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "undated in title",
+      "change": "Property Search: new minimum 1-record charge for take=0 requests",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "undated in title",
+      "change": "New Metro Area (CBSA, CSA, Metro Division) search filters",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "2026-06",
+      "change": "New property attributes; Reverse Skip Trace API; wallet endpoints (balance, consumption, card history)",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "undated in title",
+      "change": "New comps dataset for low-cost comparable-property analysis; new Buy Box endpoint",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "2026-04",
+      "change": "OAuth MCP connections now use account-level dataset configuration; new OAuth connections default to Core Property Data only with add-ons disabled",
+      "source_url": "https://help.batchdata.io/en/articles/12860581-batchdata-mcp-server-developer-integration-guide"
+    },
+    {
+      "date": "2026-03",
+      "change": "Property Lookup API accepts unitNumber and unitType as separate fields",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    },
+    {
+      "date": "2026-01",
+      "change": "OAuth authentication for MCP server",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    }
+  ],
+  "deprecations": [
+    {
+      "item": "String values for distance parameters (Deprecation Notice, January 2026)",
+      "source_url": "https://help.batchdata.io/en/collections/16760800-product-release-notes"
+    }
+  ]
+}

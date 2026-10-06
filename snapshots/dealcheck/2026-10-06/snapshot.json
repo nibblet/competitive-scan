@@ -1,0 +1,173 @@
+{
+  "product": "DealCheck",
+  "slug": "dealcheck",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://dealcheck.io/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://dealcheck.io/pricing/",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://dealcheck.io/features/",
+      "raw_file": "raw/features.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://dealcheck.io/blog/category/news-updates/",
+      "raw_file": "raw/news-updates.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://dealcheck.io/sitemap.xml",
+      "raw_file": "raw/sitemap.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://help.dealcheck.io/en/articles/3071993-viewing-sales-comps-arv-estimates",
+      "raw_file": "raw/help-comps.html",
+      "http_status": 403,
+      "what": "features",
+      "note": "help.dealcheck.io blocked by egress proxy (curl 403, WebFetch EGRESS_BLOCKED); feature text below taken from WebSearch snippet of this URL"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Comps list and map with ARV",
+      "quote": "you'll see a list and a map of up to 20 recent sales comps, including their address, description, distance and sale information",
+      "source_url": "https://help.dealcheck.io/en/articles/3071993-viewing-sales-comps-arv-estimates",
+      "capture": "search snippet"
+    },
+    {
+      "feature": "Operator include / exclude comps (Pro)",
+      "quote": "With the DealCheck Pro upgrade, you can select which comps are included in the calculation by checking or unchecking the checkboxes next to them.",
+      "source_url": "https://help.dealcheck.io/en/articles/3071993-viewing-sales-comps-arv-estimates",
+      "capture": "search snippet"
+    },
+    {
+      "feature": "Two ARV estimates",
+      "quote": "the DealCheck Estimate ... and the Estimated ARV Based on Average Price per Square Foot (recommended if you've edited the list of sales comps or uploaded your own manually)",
+      "source_url": "https://help.dealcheck.io/en/articles/3071993-viewing-sales-comps-arv-estimates",
+      "capture": "search snippet"
+    },
+    {
+      "feature": "Comp similarity scores and comp report PDFs",
+      "quote": "You will now see similarity scores for each comparable property in the app and in all property reports",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "feature": "Sales and rental comps",
+      "quote": "Estimate after repair values and potential rents with confidence. View recent sales comps, comparable rental listings and market statistics.",
+      "source_url": "https://dealcheck.io/features/"
+    },
+    {
+      "feature": "Maximum allowable offer calculator",
+      "quote": "Use our offer calculator to figure out the highest price you can offer to make each deal profitable. We use reverse valuation and over a dozen criteria",
+      "source_url": "https://dealcheck.io/features/"
+    },
+    {
+      "feature": "Purchase criteria screening",
+      "quote": "Set up detailed purchase criteria and focus on the metrics that are important to you. Instantly screen properties with your criteria",
+      "source_url": "https://dealcheck.io/features/"
+    },
+    {
+      "feature": "Branded shareable reports",
+      "quote": "Create professional online or PDF reports with a single click. Add your custom branding and logo",
+      "source_url": "https://dealcheck.io/features/"
+    },
+    {
+      "feature": "Nationwide listing search with rental and flip potential",
+      "quote": "View estimated rental and flip potential of each listing, and analyze promising properties with just a few taps",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "feature": "Future refinance scenarios for rentals / BRRRR",
+      "quote": "You can now analyze future cash-out or term & rate refinance scenarios for rentals and BRRRRs",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Starter",
+      "price": "$0",
+      "limits": "15 saved properties, 5 photos, 5 sales and rental comps, 5 templates",
+      "source_url": "https://dealcheck.io/pricing/"
+    },
+    {
+      "plan": "Plus",
+      "price": "$10/mo (yearly toggle is the default view, '3 months free'); App Store IAP $13.99 monthly-tier and $119.99",
+      "limits": "50 saved properties, 15 photos, 10 comps, 10 templates",
+      "source_url": "https://dealcheck.io/pricing/"
+    },
+    {
+      "plan": "Pro",
+      "price": "$20/mo (yearly view); App Store IAP $28.99 and $239.99",
+      "limits": "Unlimited properties, photos, comps, templates; customize comps; owner lookup; branded reports",
+      "source_url": "https://dealcheck.io/pricing/"
+    },
+    {
+      "plan": "App Store IAP list",
+      "price": "DealCheck Pro $28.99, DealCheck Plus $13.99, DealCheck Pro $239.99, DealCheck Plus $119.99",
+      "limits": "billing periods not labeled",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-26",
+      "change": "iOS 4.41.1: Facebook sign-in removed; minor fixes",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "date": "2026-02-27",
+      "change": "iOS 4.40.6: minor bug fixes and interface improvements",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "date": "2025-12-09",
+      "change": "iOS 4.40.5: minor bug fixes",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "date": "2025-10-10",
+      "change": "iOS 4.40.2: updated featured lender information",
+      "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+    },
+    {
+      "date": "2025-05-19",
+      "change": "Blog: New Feature: Nationwide Property Search (iOS 4.40.0 shipped 2025-05-12 with listing search, filters, rental and flip potential per listing, Townhouse type, pools, owner type)",
+      "source_url": "https://dealcheck.io/blog/category/news-updates/"
+    },
+    {
+      "date": "2024-07-04",
+      "change": "Blog: Future Refinances, Comp Reports and More (iOS 4.39.0: refi scenarios, sales and rental comp PDF reports, comp similarity scores)",
+      "source_url": "https://dealcheck.io/blog/category/news-updates/"
+    }
+  ],
+  "app_store": {
+    "version": "4.41.1",
+    "release_date": "2026-09-26",
+    "whats_new": "Facebook sign-in is no longer available. You can still sign in with Google, Apple, or your email and password. Minor bug fixes and interface improvements",
+    "rating_count_if_shown": "1.7K ratings (1746), 4.8",
+    "source_url": "https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134"
+  },
+  "api_or_mcp": "DealCheck points to the RentCast property data API from the same team: iOS 4.38.0 note 'Get access to millions of property records, value and rent estimates, comps ... with our new property data API: https://rentcast.io/api' (source https://apps.apple.com/us/app/dealcheck-analyze-real-estate/id1001869134), blog post dated 2023-10-10 (https://dealcheck.io/blog/category/news-updates/). No DealCheck-specific API or MCP established. RentCast is separately watched as a vendor.",
+  "quote_note": "Em dashes in quoted source text replaced with hyphens per house style; otherwise verbatim."
+}

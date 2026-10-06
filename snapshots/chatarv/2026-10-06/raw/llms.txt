@@ -1,0 +1,25 @@
+# ChatARV
+
+> ChatARV is an AI-powered property analysis platform for real estate wholesalers and investors. It finds comparable sales for a subject address, calculates after-repair value (ARV) and repair costs, and generates an offer. Reports are built in the web app at https://www.chatarv.ai, from the API, integrations with CRMs like GHL, or from an AI assistant over the ChatARV MCP server.
+
+The web app requires a signed-in account, so pages under /dashboard are not publicly readable. The public pages below describe the product, the company and its policies.
+
+## Product
+
+- [Home](https://www.chatarv.ai/): What ChatARV does, who it is for, and how comps, repair estimates and offers are generated.
+- [AI Transparency](https://www.chatarv.ai/ai-transparency): How artificial intelligence is used for property analysis, comp selection and offer generation.
+- [Chrome extension](https://chromewebstore.google.com/detail/chatarv/ejlbnaljbicofmjmdimaeimcgikgjcje): Run comps on a listing directly from the browser.
+- [MCP server](https://www.chatarv.ai/mcp): Streamable HTTP Model Context Protocol endpoint, authenticated with OAuth. Tools run comps on an address, revise a report, list and fetch a user's comp reports, and read property details, images, repair estimates and account status.
+
+## Company
+
+- [Blog](https://www.chatarv.ai/blog): Tips, guides and insights for real estate wholesalers and investors.
+- [Team](https://www.chatarv.ai/team): The people behind ChatARV.
+- [Contact](https://www.chatarv.ai/contact): Send the team a message.
+
+## Optional
+
+- [Terms of Service](https://www.chatarv.ai/terms)
+- [Privacy Policy](https://www.chatarv.ai/privacy)
+- [Affiliate Program Agreement](https://www.chatarv.ai/affiliate-policy): Commission structure, payout terms and program rules.
+- [Sitemap](https://www.chatarv.ai/sitemap.xml): Every public page, including individual blog posts.

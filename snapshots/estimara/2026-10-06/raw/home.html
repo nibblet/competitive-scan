@@ -1,0 +1,206 @@
+<!doctype html>
+<!-- The background and color-scheme are set inline on <html> because the webview
+     paints its default WHITE before any stylesheet loads. Without this there is a
+     white flash on every cold boot, which on native reads as the app itself
+     being slow. Keep in sync with --background in src/index.css. -->
+<html lang="en" style="background:#000;color-scheme:dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Applies the stored theme before the first paint. Must stay synchronous
+         and stay above <body>: deferring this to the bundle flashes black at
+         every light-mode user on every cold start, which is the same failure
+         the splash exists to prevent. Separate file because the CSP is
+         script-src 'self' and blocks inline script. -->
+    <script src="/theme-init.js"></script>
+    <style>
+      /* Boot colours live here, not on the elements, because the light variants
+         need a selector and an inline attribute would outrank one. The <html>
+         background is the exception: index.html sets it as an attribute for the
+         earliest possible paint, so theme-init.js rewrites that one directly. */
+      body { background: #000; }
+      #app-splash { background: #000; }
+      #splash-track { background: rgba(255, 255, 255, 0.08); }
+      html.light body,
+      html.light #app-splash { background: #f9fbfa; }
+      html.light #splash-track { background: rgba(0, 0, 0, 0.10); }
+    </style>
+    <title>Estimara — AI Rehab Cost Estimator for Real Estate Investors</title>
+    <meta name="description" content="Estimara is an AI rehab cost estimator for real estate investors. Photograph any property and get room-by-room repair estimates, ARV, and your max allowable offer.">
+    <meta name="author" content="Estimara" />
+
+    <!-- Google Search Console ownership proof for the https://estimara.app/ property.
+         Verification is re-checked periodically, so removing this un-verifies the
+         property and silently stops sitemap and indexing reports. Leave it. -->
+    <meta name="google-site-verification" content="25gaSc1mS4HelppSnzVgIoSGnRf_tB3m0prglFj7EtM" />
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://estimara.app/app-icon.png">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://estimara.app/app-icon.png">
+    <meta property="og:title" content="Estimara — AI Rehab Cost Estimator for Real Estate Investors">
+  <meta name="twitter:title" content="Estimara — AI Rehab Cost Estimator for Real Estate Investors">
+  <meta property="og:description" content="Estimara is an AI rehab cost estimator for real estate investors. Photograph any property and get room-by-room repair estimates, ARV, and your max allowable offer.">
+  <meta name="twitter:description" content="Estimara is an AI rehab cost estimator for real estate investors. Photograph any property and get room-by-room repair estimates, ARV, and your max allowable offer.">
+  <link rel="icon" type="image/png" href="/app-icon.png">
+
+    <!-- Structured data. This lives in the static shell on purpose: estimara.app is a
+         client-rendered SPA, and most AI crawlers (GPTBot, OAI-SearchBot, PerplexityBot)
+         do not execute JavaScript, so this block is the only description of the product
+         they can read. Every claim here must also be visible on the rendered page —
+         keep it in sync with LandingScreen.tsx. No aggregateRating until the App Store
+         count is worth broadcasting; a machine-readable "6" is worse than silence. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://estimara.app/#organization",
+          "name": "Estimara",
+          "legalName": "Midwest Capital Solutions LLC",
+          "url": "https://estimara.app/",
+          "logo": "https://estimara.app/app-icon.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://estimara.app/#website",
+          "url": "https://estimara.app/",
+          "name": "Estimara",
+          "description": "AI rehab cost estimator for real estate investors.",
+          "publisher": { "@id": "https://estimara.app/#organization" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": ["SoftwareApplication", "MobileApplication"],
+          "@id": "https://estimara.app/#app",
+          "name": "Estimara",
+          "alternateName": "Estimara - AI Rehab Estimator",
+          "url": "https://estimara.app/",
+          "applicationCategory": "FinanceApplication",
+          "applicationSubCategory": "Real estate investment software",
+          "operatingSystem": "iOS, Android, Web",
+          "image": "https://estimara.app/app-icon.png",
+          "publisher": { "@id": "https://estimara.app/#organization" },
+          "inLanguage": "en-US",
+          "description": "Estimara is an AI rehab cost estimator built for real estate investors. Photograph a property or upload a walkthrough video and Estimara identifies the repairs, estimates local rehab costs room by room, calculates ARV and maximum allowable offer (MAO), and analyzes contractor bids.",
+          "featureList": [
+            "Rehab cost estimates from property photos or a walkthrough video",
+            "Room-by-room itemized repair scopes",
+            "Budget and retail cost ranges",
+            "ARV (after repair value) calculator",
+            "MAO (maximum allowable offer) calculator",
+            "Contractor bid analysis for overcharges and missing line items",
+            "Deal pipeline tracking for wholesale and fix & flip projects",
+            "Shareable scope-of-work reports and deal links"
+          ],
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Real estate investors, wholesalers, house flippers, landlords, and real estate agents"
+          },
+          "screenshot": [
+            "https://estimara.app/screenshots/upload.png",
+            "https://estimara.app/screenshots/estimate.png",
+            "https://estimara.app/screenshots/itemized.png",
+            "https://estimara.app/screenshots/offer.png"
+          ],
+          "installUrl": [
+            "https://apps.apple.com/us/app/estimara-ai-rehab-estimator/id6760662681",
+            "https://play.google.com/store/apps/details?id=com.despia.estimara"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free to download and includes a limited number of free analyses. Paid plans start at $9.99 per month."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- With JavaScript off, the splash overlay would sit on top of the
+         prerendered landing page forever. Hide it so the static markup is
+         actually usable, not merely present. -->
+    <noscript><style>#app-splash{display:none!important}</style></noscript>
+  <script type="module" crossorigin src="/assets/index-DNMENEOu.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-CNC7AqOf.js">
+  <link rel="modulepreload" crossorigin href="/assets/react-Augu_vA3.js">
+  <link rel="modulepreload" crossorigin href="/assets/client-iXjV7lFZ.js">
+  <link rel="modulepreload" crossorigin href="/assets/jsx-runtime-CTknu7_t.js">
+  <link rel="modulepreload" crossorigin href="/assets/useAuth-CcG7pJvH.js">
+  <link rel="modulepreload" crossorigin href="/assets/dist-Cqq5Jf--.js">
+  <link rel="modulepreload" crossorigin href="/assets/preload-helper-Czpn1I53.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunk-62JRHF6Z-CoD9bJeu.js">
+  <link rel="modulepreload" crossorigin href="/assets/onboarding-state-Co0B2ArF.js">
+  <link rel="modulepreload" crossorigin href="/assets/dist-DXDZz1Zz.js">
+  <link rel="modulepreload" crossorigin href="/assets/dist-nGRE94oe.js">
+  <link rel="modulepreload" crossorigin href="/assets/utils-hDqELrg_.js">
+  <link rel="modulepreload" crossorigin href="/assets/repair-scope-safety-CudMbV3w.js">
+  <link rel="modulepreload" crossorigin href="/assets/AppContext-kBorEURP.js">
+  <link rel="modulepreload" crossorigin href="/assets/proxy-DKymo4gF.js">
+  <link rel="modulepreload" crossorigin href="/assets/use-reduced-motion-Dy7akToY.js">
+  <link rel="modulepreload" crossorigin href="/assets/native-bridge-iD2edo-t.js">
+  <link rel="modulepreload" crossorigin href="/assets/createLucideIcon-CNITSPzV.js">
+  <link rel="modulepreload" crossorigin href="/assets/camera-AMayjbvb.js">
+  <link rel="modulepreload" crossorigin href="/assets/chart-column-BpLhAtdP.js">
+  <link rel="modulepreload" crossorigin href="/assets/file-search-XU9uJTRB.js">
+  <link rel="modulepreload" crossorigin href="/assets/house-CcPCSTfn.js">
+  <link rel="modulepreload" crossorigin href="/assets/loader-circle-KNpzK_Bl.js">
+  <link rel="modulepreload" crossorigin href="/assets/plus-RmmtHFIr.js">
+  <link rel="modulepreload" crossorigin href="/assets/sparkles-BBr56AGk.js">
+  <link rel="modulepreload" crossorigin href="/assets/user-B-ECh8jU.js">
+  <link rel="modulepreload" crossorigin href="/assets/x-CEDrdeOA.js">
+  <link rel="modulepreload" crossorigin href="/assets/DealListViewContext-Bp7JJIFl.js">
+  <link rel="modulepreload" crossorigin href="/assets/useSubscription-BHNaNUqd.js">
+  <link rel="modulepreload" crossorigin href="/assets/theme-IGYOGsyM.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-CmpNH_Cy.css">
+</head>
+
+  <body style="margin:0">
+      <!-- Splash shown instantly before React loads. Background matches
+           --background (pure black) exactly — #0d0d0d here used to hand off to
+           a black app and flash a second time. -->
+      <div id="app-splash" style="
+        position: fixed; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 28px; z-index: 9999;
+      ">
+        <img src="/app-icon.png" alt="Estimara" style="width: 72px; height: 72px; border-radius: 18px;" />
+        <!-- Indeterminate bar rather than a spinning ring: a spinner reads as
+             "working/stalled", a progress track reads as "loading". -->
+        <div id="splash-track" style="
+          width: 132px; height: 2px;
+          border-radius: 2px;
+          overflow: hidden;
+        ">
+          <div style="
+            width: 40%; height: 100%;
+            background: #00c800;
+            border-radius: 2px;
+            animation: splash-slide 1.15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          "></div>
+        </div>
+        <style>
+          @keyframes splash-slide {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(330%); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            #app-splash [style*="splash-slide"] { animation: none; width: 100%; }
+          }
+        </style>
+      </div>
+    <div id="root">
+      <!-- Build-time landing markup lands here; see scripts/prerender-landing.mjs.
+           It sits behind the splash, and createRoot discards it on mount. -->
+      <div class="min-h-screen select-text overflow-x-clip bg-background text-foreground"><nav class="sticky top-0 z-40 mx-auto flex max-w-6xl items-center justify-between px-5 py-5 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70"><div class="flex items-center gap-2.5"><img src="/app-icon.png" alt="Estimara logo" class="h-8 w-8 rounded-lg"/><span class="text-xl font-extrabold tracking-tight">estim<span class="text-est-green">ara</span></span></div><div class="flex items-center gap-2"><a class="rounded-full border border-border bg-surface-2/70 px-4 py-2 text-sm font-semibold text-text-mid transition-all duration-200 hover:border-text-dim hover:text-foreground" href="/auth" data-discover="true">Sign in</a><a class="rounded-full bg-est-green px-4 py-2 text-sm font-bold text-primary-foreground shadow-[0_0_26px_hsl(var(--active)/0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_34px_hsl(var(--active)/0.32)]" href="/auth" data-discover="true">Sign up</a></div></nav><header class="relative mx-auto max-w-6xl px-5 pb-14 pt-8 sm:pt-12 lg:pb-20"><div class="pointer-events-none absolute inset-x-5 top-0 -z-10 h-[560px] rounded-[2rem] border border-border bg-[linear-gradient(180deg,hsl(var(--surface)/0.72),transparent_74%)]"></div><div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-12"><div class="text-center lg:text-left"><div class="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-2 px-3.5 py-1.5 text-xs font-semibold text-text-mid lg:mx-0"><span class="flex items-center gap-0.5 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg></span>5.0 on the App Store - Finance</div><h1 class="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] sm:text-6xl lg:mx-0 lg:max-w-[620px]">AI rehab cost estimates from a few <span class="text-est-green">photos</span></h1><p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-mid sm:text-lg lg:mx-0 lg:max-w-[560px]">Estimara is the AI-powered rehab cost estimator built for real estate investors. Snap photos of any property and get repair estimates, ARV, and max offer. Stop guessing and make confident offers on every deal.</p><div class="mt-8"><div class="flex flex-col items-center gap-3 sm:flex-row lg:justify-start"><a href="https://apps.apple.com/us/app/estimara-ai-rehab-estimator/id6760662681" target="_blank" rel="noopener noreferrer" aria-label="Download Estimara on the App Store" class="flex w-[220px] items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-background shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200 active:scale-[0.97] hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(0,0,0,0.36)]"><span class="flex w-6 shrink-0 justify-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.11 3.02-.75.9-1.98 1.6-3.15 1.5-.14-1.11.42-2.29 1.08-3.04.74-.86 2.02-1.5 3.06-1.55.03.02.06.05.12.07zM20.9 17.1c-.55 1.27-.82 1.83-1.53 2.95-.99 1.56-2.39 3.5-4.12 3.51-1.54.02-1.94-1-4.03-.99-2.09.01-2.52 1.01-4.06.99-1.73-.01-3.06-1.76-4.05-3.32C.4 16.98-.13 12.4 1.6 9.65c1.15-1.83 2.96-2.9 4.66-2.9 1.73 0 2.82 1 4.25 1 1.39 0 2.24-1 4.24-1 1.51 0 3.11.82 4.25 2.24-3.74 2.05-3.13 7.39.9 8.11z"></path></svg></span><span class="flex flex-col leading-none text-left"><span class="text-[10px] font-medium opacity-70">Download on the</span><span class="text-[17px] font-semibold -mt-0.5">App Store</span></span></a><a href="https://play.google.com/store/apps/details?id=com.despia.estimara" target="_blank" rel="noopener noreferrer" aria-label="Get Estimara on Google Play" class="flex w-[220px] items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-background shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200 active:scale-[0.97] hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(0,0,0,0.36)]"><span class="flex w-6 shrink-0 justify-center"><svg width="20" height="22" viewBox="0 0 512 512" aria-hidden="true"><path d="M47 32.5C40.6 36 36.5 43 36.5 52.4v407.2c0 9.4 4.1 16.4 10.5 19.9l229-223.5L47 32.5z" fill="#00D2FF"></path><path d="M348.9 208.4L276 256l72.9 47.6 66.4-38.4c19.7-11.4 19.7-40.2 0-51.6l-66.4-5.2z" fill="#FFCE00"></path><path d="M47 479.5c4.9 2.7 11.2 2.4 18-1.5l283.9-164.4L276 256 47 479.5z" fill="#00F076"></path><path d="M348.9 208.4L65 44c-6.8-3.9-13.1-4.2-18-1.5L276 256l72.9-47.6z" fill="#FF3945"></path></svg></span><span class="flex flex-col leading-none text-left"><span class="text-[10px] font-medium opacity-70">GET IT ON</span><span class="text-[17px] font-semibold -mt-0.5">Google Play</span></span></a></div></div><a class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-est-green transition-opacity hover:opacity-80" href="/auth" data-discover="true">Or use the web app <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><div class="mx-auto mt-8 hidden flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-text-dim sm:flex lg:mx-0"><span class="text-foreground">5.0 App Store rating</span><span class="h-1 w-1 rounded-full bg-est-green" aria-hidden="true"></span><span>Typical upload in 2 minutes</span><span class="h-1 w-1 rounded-full bg-est-green" aria-hidden="true"></span><span>Room-by-room scopes</span></div></div><div class="relative isolate mx-auto w-full max-w-[320px] py-5 lg:max-w-[360px]"><div class="pointer-events-none absolute -inset-x-16 inset-y-[12%] -z-20 [background:radial-gradient(ellipse,hsl(var(--active)/0.10),transparent_70%)]" aria-hidden="true"></div><div class="pointer-events-none absolute -inset-x-12 inset-y-4 -z-10 overflow-hidden rounded-[3rem]" aria-hidden="true"><span class="absolute -left-1/2 h-24 w-[190%] rotate-[-24deg] bg-gradient-to-r from-transparent via-est-green/[0.08] to-transparent blur-xl" style="top:16%"></span><span class="absolute -left-1/2 h-24 w-[190%] rotate-[-24deg] bg-gradient-to-r from-transparent via-est-green/[0.08] to-transparent blur-xl" style="top:44%"></span><span class="absolute -left-1/2 h-24 w-[190%] rotate-[-24deg] bg-gradient-to-r from-transparent via-est-green/[0.08] to-transparent blur-xl" style="top:72%"></span></div><div class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[88%] w-[112%] -translate-x-1/2 -translate-y-1/2 rounded-[45%] border border-est-green/10" aria-hidden="true"></div><div class="premium-card relative mx-auto w-full overflow-hidden rounded-[2rem] p-2.5 shadow-[0_30px_80px_rgba(0,0,0,0.42)]"><div class="relative aspect-[9/16] overflow-hidden rounded-[1.35rem] border border-border bg-background"><video src="/videos/field-walkthrough-v4.mp4" poster="/videos/field-walkthrough-poster.webp" class="landing-walkthrough-video h-full w-full object-contain" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Estimara property analysis walkthrough"></video><button type="button" aria-label="Unmute walkthrough" title="Sound on" class="absolute bottom-3 left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-border-mid bg-background/90 text-foreground transition-colors hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-est-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><line x1="22" x2="16" y1="9" y2="15"></line><line x1="16" x2="22" y1="9" y2="15"></line></svg></button></div></div></div></div></header><section class="relative h-[380svh] lg:h-[400vh]" aria-label="How Estimara turns property evidence into an offer strategy"><div class="sticky top-0 flex h-svh min-h-[680px] items-center overflow-hidden px-5 pt-16 lg:pt-20"><div class="pointer-events-none absolute left-1/2 h-[48vh] w-[72vw] -translate-x-1/2 rounded-full bg-est-green/[0.08] blur-[110px]" aria-hidden="true" style="top:8%"></div><div class="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(ellipse_at_68%_48%,hsl(var(--active)/0.08),transparent_42%)]" aria-hidden="true"></div><div class="relative mx-auto grid w-full max-w-6xl items-center gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:gap-16"><div class="relative z-20 mx-auto max-w-xl text-center lg:mx-0 lg:text-left"><div class="mb-5 flex items-center justify-center gap-2 lg:justify-start" aria-hidden="true"><span class="h-1 rounded-full bg-est-green"></span><span class="h-1 rounded-full bg-est-green"></span><span class="h-1 rounded-full bg-est-green"></span><span class="h-1 rounded-full bg-est-green"></span></div><div style="filter:blur(0px)"><p class="text-5xl font-extrabold leading-none tracking-[-0.03em] text-est-green sm:text-6xl lg:text-8xl">Capture</p><h2 class="mt-4 text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl">Walk the property once.</h2><p class="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-text-mid sm:text-base lg:mx-0">Photograph each room or upload a walkthrough. Estimara keeps the property evidence together from the first frame.</p></div></div><div class="relative flex items-center justify-center"><span class="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(6rem,14vw,11rem)] font-extrabold uppercase leading-none tracking-[-0.04em] text-foreground/[0.035] lg:block" aria-hidden="true">Capture</span><div class="relative z-10 mx-auto w-[210px] sm:w-[240px] lg:w-[286px]"><div class="relative aspect-[9/19.3] overflow-hidden rounded-[1.8rem] bg-surface-2 p-2 shadow-[0_36px_110px_rgba(0,0,0,0.58)] ring-1 ring-border-mid"><div class="relative h-full overflow-hidden rounded-[1.28rem] bg-background"><picture class="absolute inset-0 block" style="filter:blur(0px)"><source type="image/webp" sizes="(min-width: 1024px) 286px, (min-width: 640px) 240px, 210px" srcSet="/screenshots/upload-288.webp 288w, /screenshots/upload-576.webp 576w, /screenshots/upload-864.webp 864w"/><img src="/screenshots/upload-576.png" sizes="(min-width: 1024px) 286px, (min-width: 640px) 240px, 210px" srcSet="/screenshots/upload-288.png 288w, /screenshots/upload-576.png 576w, /screenshots/upload-864.png 864w" alt="Estimara property photo checklist ready for analysis" class="h-full w-full object-cover object-top"/></picture></div></div></div></div></div></div></section><section class="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-20 lg:py-28"><div class="lg:sticky lg:top-28 lg:self-start"><h2 class="max-w-md text-3xl font-extrabold tracking-tight sm:text-4xl">More than a repair number.</h2><p class="mt-4 max-w-md text-sm leading-relaxed text-text-mid sm:text-base">Estimara keeps the entire underwriting decision connected, from what you saw at the property to what you can offer.</p></div><div class="border-t border-border-mid"><div class="grid gap-4 border-b border-border-mid py-7 sm:grid-cols-[48px_minmax(0,0.7fr)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:py-9"><div class="flex h-11 w-11 items-center justify-center rounded-xl bg-est-green/10 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg></div><h3 class="text-lg font-bold tracking-tight sm:pt-2">Snap &amp; Analyze</h3><p class="text-sm leading-relaxed text-text-mid sm:pt-2">Take photos or upload a walkthrough video and get a rehab estimate, room by room.</p></div><div class="grid gap-4 border-b border-border-mid py-7 sm:grid-cols-[48px_minmax(0,0.7fr)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:py-9"><div class="flex h-11 w-11 items-center justify-center rounded-xl bg-est-green/10 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg></div><h3 class="text-lg font-bold tracking-tight sm:pt-2">Know Your Numbers</h3><p class="text-sm leading-relaxed text-text-mid sm:pt-2">Budget and retail cost ranges, an ARV calculator, and MAO (max allowable offer) so you make offers with confidence.</p></div><div class="grid gap-4 border-b border-border-mid py-7 sm:grid-cols-[48px_minmax(0,0.7fr)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:py-9"><div class="flex h-11 w-11 items-center justify-center rounded-xl bg-est-green/10 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-kanban" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M8 7v7"></path><path d="M12 7v4"></path><path d="M16 7v9"></path></svg></div><h3 class="text-lg font-bold tracking-tight sm:pt-2">Deal Pipeline</h3><p class="text-sm leading-relaxed text-text-mid sm:pt-2">Track wholesale deals and fix &amp; flip projects through every stage, from lead to close.</p></div><div class="grid gap-4 border-b border-border-mid py-7 sm:grid-cols-[48px_minmax(0,0.7fr)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:py-9"><div class="flex h-11 w-11 items-center justify-center rounded-xl bg-est-green/10 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-search" aria-hidden="true"><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M4.268 21a2 2 0 0 0 1.727 1H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"></path><path d="m9 18-1.5-1.5"></path><circle cx="5" cy="14" r="3"></circle></svg></div><h3 class="text-lg font-bold tracking-tight sm:pt-2">Contractor Bid Analyzer</h3><p class="text-sm leading-relaxed text-text-mid sm:pt-2">Upload a contractor quote and instantly spot overcharges, missing items, and fair pricing.</p></div><div class="grid gap-4 border-b border-border-mid py-7 sm:grid-cols-[48px_minmax(0,0.7fr)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:py-9"><div class="flex h-11 w-11 items-center justify-center rounded-xl bg-est-green/10 text-est-green"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg></div><h3 class="text-lg font-bold tracking-tight sm:pt-2">Share &amp; Export</h3><p class="text-sm leading-relaxed text-text-mid sm:pt-2">Generate professional scope-of-work reports and shareable deal links in one tap.</p></div></div></section><section class="mx-auto max-w-4xl px-5 py-14 text-center"><h2 class="text-xl font-bold tracking-tight text-text-mid">Built for</h2><div class="mt-5 flex flex-wrap items-center justify-center gap-2.5"><span class="rounded-full border border-border bg-surface-2/80 px-4 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.18)]">Wholesalers</span><span class="rounded-full border border-border bg-surface-2/80 px-4 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.18)]">House Flippers</span><span class="rounded-full border border-border bg-surface-2/80 px-4 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.18)]">Fix &amp; Flip Investors</span><span class="rounded-full border border-border bg-surface-2/80 px-4 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.18)]">Landlords</span><span class="rounded-full border border-border bg-surface-2/80 px-4 py-2 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.18)]">Real Estate Agents</span></div></section><section class="mx-auto max-w-6xl px-5 py-8"><div class="premium-card rounded-3xl border-est-green/25 bg-est-green/[0.06] px-6 py-14 text-center"><h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Make your next offer with confidence</h2><p class="mx-auto mt-4 max-w-lg text-text-mid">Download Estimara free and run your first analysis in minutes.</p><div class="mt-8"><div class="flex flex-col items-center gap-3 sm:flex-row justify-center"><a href="https://apps.apple.com/us/app/estimara-ai-rehab-estimator/id6760662681" target="_blank" rel="noopener noreferrer" aria-label="Download Estimara on the App Store" class="flex w-[220px] items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-background shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200 active:scale-[0.97] hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(0,0,0,0.36)]"><span class="flex w-6 shrink-0 justify-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.11 3.02-.75.9-1.98 1.6-3.15 1.5-.14-1.11.42-2.29 1.08-3.04.74-.86 2.02-1.5 3.06-1.55.03.02.06.05.12.07zM20.9 17.1c-.55 1.27-.82 1.83-1.53 2.95-.99 1.56-2.39 3.5-4.12 3.51-1.54.02-1.94-1-4.03-.99-2.09.01-2.52 1.01-4.06.99-1.73-.01-3.06-1.76-4.05-3.32C.4 16.98-.13 12.4 1.6 9.65c1.15-1.83 2.96-2.9 4.66-2.9 1.73 0 2.82 1 4.25 1 1.39 0 2.24-1 4.24-1 1.51 0 3.11.82 4.25 2.24-3.74 2.05-3.13 7.39.9 8.11z"></path></svg></span><span class="flex flex-col leading-none text-left"><span class="text-[10px] font-medium opacity-70">Download on the</span><span class="text-[17px] font-semibold -mt-0.5">App Store</span></span></a><a href="https://play.google.com/store/apps/details?id=com.despia.estimara" target="_blank" rel="noopener noreferrer" aria-label="Get Estimara on Google Play" class="flex w-[220px] items-center gap-3 rounded-xl bg-foreground px-5 py-3 text-background shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200 active:scale-[0.97] hover:-translate-y-0.5 hover:shadow-[0_22px_56px_rgba(0,0,0,0.36)]"><span class="flex w-6 shrink-0 justify-center"><svg width="20" height="22" viewBox="0 0 512 512" aria-hidden="true"><path d="M47 32.5C40.6 36 36.5 43 36.5 52.4v407.2c0 9.4 4.1 16.4 10.5 19.9l229-223.5L47 32.5z" fill="#00D2FF"></path><path d="M348.9 208.4L276 256l72.9 47.6 66.4-38.4c19.7-11.4 19.7-40.2 0-51.6l-66.4-5.2z" fill="#FFCE00"></path><path d="M47 479.5c4.9 2.7 11.2 2.4 18-1.5l283.9-164.4L276 256 47 479.5z" fill="#00F076"></path><path d="M348.9 208.4L65 44c-6.8-3.9-13.1-4.2-18-1.5L276 256l72.9-47.6z" fill="#FF3945"></path></svg></span><span class="flex flex-col leading-none text-left"><span class="text-[10px] font-medium opacity-70">GET IT ON</span><span class="text-[17px] font-semibold -mt-0.5">Google Play</span></span></a></div></div></div></section><footer class="mx-auto max-w-6xl px-5 py-12"><div class="flex flex-col items-center justify-between gap-6 border-t border-border pt-8 sm:flex-row"><div class="flex items-center gap-2.5"><img src="/app-icon.png" alt="" class="h-7 w-7 rounded-lg" aria-hidden="true"/><span class="text-lg font-extrabold tracking-tight">estim<span class="text-est-green">ara</span></span></div><nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-text-mid"><a class="transition-colors hover:text-foreground" href="/terms" data-discover="true">Terms</a><a class="transition-colors hover:text-foreground" href="/privacy" data-discover="true">Privacy</a><a class="transition-colors hover:text-foreground" href="/support" data-discover="true">Support</a><a class="transition-colors hover:text-foreground" href="/delete-account" data-discover="true">Delete Account</a><a class="transition-colors hover:text-foreground" href="/auth" data-discover="true">Sign in</a></nav></div><p class="mt-6 text-center text-xs text-text-dim">(c) 2026 Estimara - Midwest Capital Solutions LLC</p></footer></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+{
+  "product": "ATTOM",
+  "slug": "attom",
+  "date": "2026-10-06",
+  "kind": "vendor",
+  "urls": [
+    {
+      "url": "https://www.attomdata.com/solutions/mcp-server/",
+      "raw_file": "raw/mcp.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.attomdata.com/solutions/delivery/mcp-server/faqs/",
+      "raw_file": "raw/mcp_faqs.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://www.attomdata.com/solutions/delivery/mcp-server/how-it-works/",
+      "raw_file": "raw/mcp_how_it_works.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://support.attomdata.com/collections/1229938684-mcp",
+      "raw_file": "raw/support_mcp_collection.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://support.attomdata.com/articles/5769219187-mcp-v2",
+      "raw_file": "raw/support_mcp_v2.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://www.attomdata.com/solutions/delivery/property-data-api/",
+      "raw_file": "raw/property_data_api.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://cloud-help.attomdata.com/category/526-attom-api",
+      "raw_file": "raw/cloudhelp_attom_api.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://cloud-help.attomdata.com/article/598-endpoints",
+      "raw_file": "raw/cloudhelp_endpoints.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://cloud-help.attomdata.com/article/686-attom-api-history",
+      "raw_file": "raw/cloudhelp_api_history.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://api.developer.attomdata.com/home",
+      "raw_file": "raw/developer_home.html",
+      "http_status": 403,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://api.developer.attomdata.com/docs",
+      "raw_file": null,
+      "http_status": 403,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://www.attomdata.com/pricing/",
+      "raw_file": null,
+      "http_status": 404,
+      "what": "pricing"
+    }
+  ],
+  "mcp": {
+    "exists": true,
+    "endpoint_or_package": "Hosted by ATTOM; endpoint URL not published. MCP V2 is current and requires provisioning through the ATTOM Intelligence Platform via a sales rep (not self-service).",
+    "tools": [
+      "Tool names not published. FAQ lists data mapped to tools: property details, ownership information, AVMs, comparable sales, sales history, tax history, permit data, community characteristics, schools, points of interest, market context, risk-related data."
+    ],
+    "read_write": "read (FAQ describes it as an access layer that does not modify data)",
+    "auth": "key-based authentication aligned with ATTOM's existing systems",
+    "source_url": "https://www.attomdata.com/solutions/delivery/mcp-server/faqs/"
+  },
+  "api": {
+    "endpoints_relevant": [
+      "https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile",
+      "propertyapi/v1.0.0/attomavm/detail",
+      "Sales Comparables endpoint (added in ATTOM API v2.0.0; path not on fetched pages)",
+      "Current API version is V4 (component APIs dropped from URI)"
+    ],
+    "auth": "apikey request header; ATTOM Cloud account gives a 30-day evaluation key",
+    "rate_limits": "not established (developer portal returned 403 to this fetch)",
+    "source_url": "https://cloud-help.attomdata.com/category/526-attom-api"
+  },
+  "pricing": [
+    {
+      "plan": "Property Data API",
+      "price": "not published; 'transaction-based pricing'; contact sales",
+      "limits": "free 30-day trial API key",
+      "source_url": "https://www.attomdata.com/solutions/delivery/property-data-api/"
+    },
+    {
+      "plan": "MCP V2",
+      "price": "not published",
+      "limits": "sales-provisioned only",
+      "source_url": "https://support.attomdata.com/articles/5769219187-mcp-v2"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "on or about 2026-10-05 (support page said 'Last updated 1 day ago' on 2026-10-06; exact launch date not established)",
+      "change": "ATTOM launched MCP V2 as part of the ATTOM Intelligence Platform; access requires provisioning through a sales rep, no self-service activation.",
+      "source_url": "https://support.attomdata.com/articles/5769219187-mcp-v2"
+    }
+  ],
+  "deprecations": [
+    {
+      "item": "Older endpoints on the OBI database deprecated June 30, 2023 (moved to V4)",
+      "source_url": "https://cloud-help.attomdata.com/article/686-attom-api-history"
+    },
+    {
+      "item": "DLP v1/v2/v3 no longer sold; Neighborhood API deprecated; DLP v1 kept only for PlatMaps",
+      "source_url": "https://cloud-help.attomdata.com/article/686-attom-api-history"
+    },
+    {
+      "item": "Estated API still supported but not marketed to new customers; migration into ATTOM API underway",
+      "source_url": "https://cloud-help.attomdata.com/article/686-attom-api-history"
+    }
+  ]
+}

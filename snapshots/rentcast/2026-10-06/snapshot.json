@@ -1,0 +1,163 @@
+{
+  "product": "RentCast",
+  "slug": "rentcast",
+  "date": "2026-10-06",
+  "kind": "vendor",
+  "urls": [
+    {
+      "url": "https://developers.rentcast.io/reference/ai-tools",
+      "raw_file": "raw/ai_tools.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://developers.rentcast.io/llms.txt",
+      "raw_file": "raw/llms.txt",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://developers.rentcast.io/reference/introduction",
+      "raw_file": "raw/intro.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://developers.rentcast.io/reference/rent-estimate-long-term.md",
+      "raw_file": "raw/rent_estimate.md",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://www.rentcast.io/api",
+      "raw_file": "raw/api_pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://developers.rentcast.io/reference/billing-and-pricing.md",
+      "raw_file": "raw/billing_pricing.md",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://developers.rentcast.io/reference/rate-limits",
+      "raw_file": "raw/rate_limits.html",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://developers.rentcast.io/reference/rate-limits.md",
+      "raw_file": "raw/rate_limits.md",
+      "http_status": 200,
+      "what": "api_docs"
+    },
+    {
+      "url": "https://developers.rentcast.io/changelog",
+      "raw_file": "raw/changelog.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://developers.rentcast.io/changelog.md",
+      "raw_file": "raw/changelog.md",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://developers.rentcast.io/changelog/api-release-2026-06.md",
+      "raw_file": "raw/release_2026_06.md",
+      "http_status": 200,
+      "what": "changelog"
+    }
+  ],
+  "mcp": {
+    "exists": true,
+    "endpoint_or_package": "https://developers.rentcast.io/mcp (hosted, public URL)",
+    "tools": [
+      "Tool names not listed. Features: documentation search and retrieval, endpoint discovery and schema inspection, code generation help, API request execution when an API key is supplied."
+    ],
+    "read_write": "read (docs plus live API reads when keyed)",
+    "auth": "Public for docs; X-Api-Key header to make live API requests",
+    "source_url": "https://developers.rentcast.io/reference/ai-tools"
+  },
+  "api": {
+    "endpoints_relevant": [
+      "/avm/rent/long-term (rent estimate plus comparable rental listings sorted by correlation)",
+      "/avm/value (value estimate plus sale comps)",
+      "property records (owner details)",
+      "rental listings",
+      "sale listings",
+      "market statistics"
+    ],
+    "auth": "X-Api-Key header; June 2026 added per-key IP and endpoint restrictions",
+    "rate_limits": "Hard limit 20 requests per second per API key, any plan; 429 auth/rate-limit-exceeded",
+    "source_url": "https://developers.rentcast.io/reference/rate-limits"
+  },
+  "pricing": [
+    {
+      "plan": "Developer",
+      "price": "$0/month",
+      "limits": "50 requests/month; $0.20 per additional request",
+      "source_url": "https://www.rentcast.io/api"
+    },
+    {
+      "plan": "Foundation",
+      "price": "$74/month",
+      "limits": "1,000 requests/month; $0.06 per additional",
+      "source_url": "https://www.rentcast.io/api"
+    },
+    {
+      "plan": "Growth",
+      "price": "$199/month",
+      "limits": "5,000 requests/month; $0.03 per additional",
+      "source_url": "https://www.rentcast.io/api"
+    },
+    {
+      "plan": "Scale",
+      "price": "$449/month",
+      "limits": "25,000 requests/month; $0.015 per additional",
+      "source_url": "https://www.rentcast.io/api"
+    },
+    {
+      "plan": "Enterprise",
+      "price": "Contact",
+      "limits": "custom",
+      "source_url": "https://www.rentcast.io/api"
+    },
+    {
+      "plan": "Terms",
+      "price": "Monthly, no contract; unused requests do not carry over; failed payment suspends keys",
+      "limits": "",
+      "source_url": "https://developers.rentcast.io/reference/billing-and-pricing"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-08-24",
+      "change": "Billing and Pricing doc page updatedAt",
+      "source_url": "https://developers.rentcast.io/reference/billing-and-pricing"
+    },
+    {
+      "date": "2026-08-13",
+      "change": "Rate Limits doc page updatedAt (20 rps per key, multiple keys suggested for higher rate)",
+      "source_url": "https://developers.rentcast.io/reference/rate-limits"
+    },
+    {
+      "date": "2026-08-11",
+      "change": "Rent Estimate (long-term) doc page updatedAt",
+      "source_url": "https://developers.rentcast.io/reference/rent-estimate-long-term"
+    },
+    {
+      "date": "2026-06-05",
+      "change": "API key IP restrictions and endpoint restrictions; improved comparable correlation and AVM methodology for /avm/value and /avm/rent/long-term",
+      "source_url": "https://developers.rentcast.io/changelog/api-release-2026-06"
+    },
+    {
+      "date": "2025-08-22",
+      "change": "Expanded query engine and AVM improvements",
+      "source_url": "https://developers.rentcast.io/changelog"
+    }
+  ],
+  "deprecations": []
+}

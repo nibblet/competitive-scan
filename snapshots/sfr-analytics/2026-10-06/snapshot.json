@@ -1,0 +1,584 @@
+{
+  "product": "SFR Analytics",
+  "slug": "sfr-analytics",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://sfranalytics.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://sfranalytics.com/products/active-investors",
+      "raw_file": "raw/active-investors.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://sfranalytics.com/products/investor-edge",
+      "raw_file": "raw/investor-edge.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://sfranalytics.com/products",
+      "raw_file": "raw/products.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://sfranalytics.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://sfranalytics.com/mcp",
+      "raw_file": "raw/mcp.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://mcp.sfranalytics.com/install",
+      "raw_file": "raw/mcp-install.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://mcp.sfranalytics.com/tools",
+      "raw_file": "raw/mcp-tools.html",
+      "http_status": 200,
+      "what": "mcp"
+    },
+    {
+      "url": "https://mcp.sfranalytics.com/pricing",
+      "raw_file": "raw/mcp-pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://sfranalytics.com/research/home-flipping",
+      "raw_file": "raw/research-home-flipping.html",
+      "http_status": 200,
+      "what": "other"
+    },
+    {
+      "url": "https://newsletter.sfranalytics.com/archive",
+      "raw_file": "raw/blog.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://newsletter.sfranalytics.com/p/meet-us-at-imn-sfr-east",
+      "raw_file": "raw/newsletter-imn.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://sfranalytics.com/products/api",
+      "raw_file": null,
+      "http_status": "timeout (curl exit 28 after 30s)",
+      "what": "other"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Active Investors Database: landlords, flippers, corporate buyers from recorded deeds",
+      "quote": "Complete database of all active real estate investors - landlords, flippers, and corporate buyers.",
+      "source_url": "https://sfranalytics.com/products/active-investors"
+    },
+    {
+      "feature": "Flipper identification by hold pattern",
+      "quote": "Active fix-and-flip investors identified by short-term hold patterns. Track their acquisition velocity and typical project profile.",
+      "source_url": "https://sfranalytics.com/products/active-investors"
+    },
+    {
+      "feature": "Entity resolution to true owner, acquisition history, 12-month acquisitions and dispositions, average hold, cash vs financed",
+      "quote": "True owner identification (entity resolution)",
+      "source_url": "https://sfranalytics.com/products/active-investors"
+    },
+    {
+      "feature": "Delivery as flat files or recurring feeds",
+      "quote": "CSV, JSON, Parquet, or database handoff",
+      "source_url": "https://sfranalytics.com/products/active-investors"
+    },
+    {
+      "feature": "Investor Edge: buyer lists for wholesale and dispositions, market heat maps, market alerts",
+      "quote": "build targeted buyer lists from public-record purchase data for wholesaling, acquisitions, and dispositions.",
+      "source_url": "https://sfranalytics.com/products/investor-edge"
+    },
+    {
+      "feature": "Data freshness",
+      "quote": "Our database is updated daily (Monday-Friday) with a typical lag of 2-3 weeks from recording date",
+      "source_url": "https://sfranalytics.com/products/investor-edge"
+    },
+    {
+      "feature": "MCP server (OAuth, streamable HTTP) usable from Claude, Cursor, ChatGPT and others",
+      "quote": "71+ MCP tools for property transactions, rental comps, buyer intelligence, and market data.",
+      "source_url": "https://sfranalytics.com/mcp"
+    },
+    {
+      "feature": "Match a property to its likely buyers (MCP tool sfr_best_buyers)",
+      "quote": "Match a property to its most likely buyers based on their acquisition patterns in the same area.",
+      "source_url": "https://mcp.sfranalytics.com/tools"
+    },
+    {
+      "feature": "Individual flip transactions with buy/sell prices, hold time, profit (MCP tool sfr_flip_activity)",
+      "quote": "Individual flip transactions with buy/sell prices, hold time, and profit.",
+      "source_url": "https://mcp.sfranalytics.com/tools"
+    },
+    {
+      "feature": "Most active buyers in a geography (MCP tool sfr_top_buyers)",
+      "quote": "Most active buyers in any geography ranked by acquisition count.",
+      "source_url": "https://mcp.sfranalytics.com/tools"
+    },
+    {
+      "feature": "Private Lender Radar: borrower prospecting, lender relationships, entity graph",
+      "quote": "Visual entity graph connecting a person to their LLCs, loans, and contacts.",
+      "source_url": "https://mcp.sfranalytics.com/tools"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Private Lender Radar Local",
+      "price": "$6,800/year",
+      "limits": "1 state, unlimited seats, 250 API and MCP credits/month; +1,000 credits $250; +$2,000/yr per extra state",
+      "source_url": "https://sfranalytics.com/pricing"
+    },
+    {
+      "plan": "Private Lender Radar Regional",
+      "price": "$18,000/year",
+      "limits": "6 states, unlimited contact unlocks, 5,000 API and MCP credits/month; +1,000 credits $150",
+      "source_url": "https://sfranalytics.com/pricing"
+    },
+    {
+      "plan": "TMO Analytics National",
+      "price": "$42,000/year",
+      "limits": "Nationwide, unlimited usage, loan-performance and delinquency benchmarks",
+      "source_url": "https://sfranalytics.com/pricing"
+    },
+    {
+      "plan": "MCP free preview",
+      "price": "Free",
+      "limits": "1,000 preview credits via OAuth; property lookup 1 credit, analytics 2, buyer contact unlock 5; hard cap at 100%",
+      "source_url": "https://sfranalytics.com/mcp"
+    },
+    {
+      "plan": "Investor Edge",
+      "price": "not established (trial offered; monthly and annual subscriptions referenced, no price on page)",
+      "limits": "not established",
+      "source_url": "https://sfranalytics.com/products/investor-edge"
+    },
+    {
+      "plan": "Active Investors Database",
+      "price": "not established (custom quote)",
+      "limits": "Scope by geography, fields, cadence",
+      "source_url": "https://sfranalytics.com/products/active-investors"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-05-14",
+      "change": "Newsletter: MCP 'about to be out of beta'; contact-info quality upgrades and 'verified phone' product",
+      "source_url": "https://newsletter.sfranalytics.com/p/meet-us-at-imn-sfr-east"
+    },
+    {
+      "date": "2026-05-11",
+      "change": "April 2026 Private Lending Market Update",
+      "source_url": "https://newsletter.sfranalytics.com/archive"
+    },
+    {
+      "date": "2026-05-01",
+      "change": "Out Of State Investor Trends Q1 2026",
+      "source_url": "https://newsletter.sfranalytics.com/archive"
+    },
+    {
+      "date": "2026-04-22",
+      "change": "Q1 2026 SFR Rental Acquisitions Overview",
+      "source_url": "https://newsletter.sfranalytics.com/archive"
+    },
+    {
+      "date": "2026-04-14",
+      "change": "Q1 2026 Top Investor Zip Codes",
+      "source_url": "https://newsletter.sfranalytics.com/archive"
+    },
+    {
+      "date": "2026-04-03",
+      "change": "New monthly report: March 2026 RTL and DSCR Rates and Points",
+      "source_url": "https://newsletter.sfranalytics.com/archive"
+    },
+    {
+      "date": "2026-10-06 (observed, undated on site)",
+      "change": "MCP tool count stated as 71 on the MCP site and 77+ on the home page; tool catalog captured as baseline (71 entries)",
+      "source_url": "https://mcp.sfranalytics.com/tools"
+    }
+  ],
+  "app_store": "not established",
+  "api_or_mcp": {
+    "exists": true,
+    "endpoint": "https://mcp.sfranalytics.com/mcp",
+    "tool_count_on_catalog": 71,
+    "tools": [
+      {
+        "tool": "sfr_rental_stats",
+        "desc": "Rental market statistics by ZIP, city, or county: median, average, percentiles, min/max rent, and price distributions.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rental_comparables",
+        "desc": "Nearby rental comps for any address. See what similar properties rented for to estimate fair market rent.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rental_market_analysis",
+        "desc": "Year-over-year rent growth, monthly trends, and vacancy metrics. Compare multiple cities to find where rents are rising fastest.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_top_buyers",
+        "desc": "Most active buyers in any geography ranked by acquisition count. Identify who is aggressively acquiring in your target market.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_buyer_profile",
+        "desc": "Deep investor profile: portfolio strategy, geographic focus, flip vs. hold ratio, related LLCs, and financing patterns. Covers ~50 mega-institutional buyers.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_buyer_growth",
+        "desc": "Track an investor’s acquisition velocity over time. Spot portfolio ramp-ups and strategic pivots month by month.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_best_buyers",
+        "desc": "Match a property to its most likely buyers based on their acquisition patterns in the same area. Built for sellers, wholesalers, and agents.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_market_highlights",
+        "desc": "Quick top-10 buyers in an MSA with optional city and date filters. A fast on-ramp to any market.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_buyer_contacts",
+        "desc": "Phone numbers, email addresses, and principal names for any buyer entity. Unlock verified contact data for direct investor outreach.",
+        "credits": 5
+      },
+      {
+        "tool": "sfr_institutional_owners",
+        "desc": "Institutional REITs and PE funds ranked by portfolio size in a location: Invitation Homes, Progress Residential, FirstKey, and more.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_zip_finder",
+        "desc": "Screen and rank ZIP codes by gross yield, home value, rent, income, population, and institutional ownership. Your starting point for market selection.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_zip_detail",
+        "desc": "Deep-dive investment metrics for a single ZIP: demographics, transaction volume, top buyers, rental stats, and value trends.",
+        "credits": 1
+      },
+      {
+        "tool": "sfr_investor_activity",
+        "desc": "Browse individual investor purchases in an MSA with cash-vs-financed and corporate-vs-individual breakdowns. See each buyer’s total portfolio size.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_flip_stats",
+        "desc": "Flip profitability distributions: hold time ranges and gross margin ranges by market. Spot the most profitable flip corridors.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_flip_activity",
+        "desc": "Individual flip transactions with buy/sell prices, hold time, and profit. Filter by flipper name (e.g., Opendoor) for iBuyer margin analysis.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_activity_highlights",
+        "desc": "Quick snapshot: total transaction count plus top 10 buyers in any geography. A lightweight preview before drilling deeper.",
+        "credits": 1
+      },
+      {
+        "tool": "sfr_market_investor_activity",
+        "desc": "Monthly investor transaction volume trends by MSA. Track how investor appetite is shifting over time.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_market_flip_activity",
+        "desc": "Monthly flip volume trends by MSA. See whether flip activity is accelerating or cooling in your markets.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_market_largest_owners",
+        "desc": "Largest property owners in an MSA ranked by total holdings. Includes both institutional and individual portfolios.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_market_snapshot",
+        "desc": "Latest Redfin snapshot for a ZIP or city: median sale price, days on market, active inventory, and homes sold.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_market_trends",
+        "desc": "Price, DOM, and inventory trends over time for a ZIP. Chart where a market has been and where it’s heading.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_compare_markets",
+        "desc": "Side-by-side comparison of 2+ markets on price, DOM, inventory, and sale-to-list ratio. Make apples-to-apples market decisions.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rank_zips",
+        "desc": "Rank ZIPs in a metro by Redfin metrics: median price, DOM, inventory, price growth, homes sold, and sale-to-list.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rental_market_sf",
+        "desc": "Rental pricing with 25th/50th/75th percentiles and property type breakdown. Precision rent data.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rental_yield",
+        "desc": "Market-level and acquisition-specific rental yield analysis. Know your cap rate before you underwrite.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_rank_rental_zips",
+        "desc": "Rank ZIPs by rental metrics: median rent, rent growth, vacancy, and yield. Find the best rental markets at a glance.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_zip_investor_activity",
+        "desc": "ZIP-level investor activity breakdown: cash purchase %, corporate buyer %, flip volume, and ownership concentration.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_zip_profile",
+        "desc": "Census demographics, housing stock composition, median income, education levels, and age distribution for any ZIP.",
+        "credits": 2
+      },
+      {
+        "tool": "sfr_hvi_trend",
+        "desc": "Home Value Index (HVI) and Rental Value Index (RVI) trends over time. Track long-term value and rent appreciation.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_search",
+        "desc": "Build targeted borrower lists with advanced filters: loan count, type (bridge/DSCR), geography, contact availability, lender include/exclude, and maturity dates.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_profile",
+        "desc": "Full borrower profile: loan history, lender relationships, geographic footprint, contact info, and bridge vs. DSCR breakdown.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_rankings",
+        "desc": "Rank borrowers by loan count and volume with period-over-period growth metrics. Spot who’s scaling up or winding down.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_leaderboard",
+        "desc": "Nationwide leaderboard of the largest private lending borrowers by total loan volume. Filter by state.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_loans",
+        "desc": "Individual loan records for a borrower: lender, amount, property, term, maturity, and outstanding status. Filter to active loans or by maturity window.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_borrower_contacts",
+        "desc": "Phone, email, and principal/owner names for borrowers. Enriched from commercial sources with quality flags for outreach readiness.",
+        "credits": 5
+      },
+      {
+        "tool": "plr_borrower_holdings",
+        "desc": "A borrower’s property portfolio â each property with address, lender, loan amount, and recording date. Evaluate DSCR rental exposure at a glance.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_acquired_borrowers",
+        "desc": "Borrowers recently acquired from competing lenders. See who switched and from whom: a direct pipeline for competitive displacement.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_churned_borrowers",
+        "desc": "Borrowers who stopped borrowing from a specific lender. Identify churn patterns and win-back opportunities.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_top_lenders",
+        "desc": "Rank private lenders by dollar volume originated with state and MSA filters. The definitive market share analysis tool.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_lender_rankings",
+        "desc": "Rank lenders nationwide by loan count. Filter by loan type and date range for portfolio or bridge-specific leaderboards.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_lender_borrowers",
+        "desc": "List all borrowers of a specific lender with loan counts and volumes. Map a competitor’s entire client base.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_lender_loans",
+        "desc": "Individual loan records originated by a lender: borrower, amount, property, term, maturity, and pre-foreclosure flags.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_lender_switching",
+        "desc": "Where a lender’s borrowers went after switching. Track churn flow to see which competitors are poaching your clients.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_lender_assignments",
+        "desc": "Note buyers a lender assigns or sells loans to. Map the secondary market flow for any originator.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_acquisition_sources",
+        "desc": "Where new borrowers came from: which lenders fed your growth. Reverse-engineer your acquisition funnel.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_steal_sources",
+        "desc": "Lender overlap analysis â which other lenders a lender’s borrowers also use. Identify cross-selling and competitive displacement opportunities.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_market_trends",
+        "desc": "Nationwide private lending trends: monthly, quarterly, or yearly volume with loan type breakdowns, seasonal patterns, and rolling averages.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_portfolio_summary",
+        "desc": "Market-wide summary: total loans, volume, unique lenders and borrowers, plus distributions by geography, type, and land use.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_msa_rankings",
+        "desc": "Rank MSAs by total lending activity. Find where capital is flowing fastest in private real estate lending.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_loans_nearby",
+        "desc": "Find private loans originated near any address. See who’s lending in the neighborhood and at what terms.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_transaction_history",
+        "desc": "Full private lending history for a specific property: every loan on record with lender, amount, and dates.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_outstanding_loans",
+        "desc": "Currently outstanding (not yet paid off) private loans by MSA or state. Identify the active loan book in any metro or state.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_negative_remarks",
+        "desc": "Foreclosures, defaults, and adverse events tied to borrowers. Identify credit risk and distress patterns across portfolios.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_owner_search",
+        "desc": "Search for a person or entity by name across private lending records. Find all associated loans and borrowing entities.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_principal_search",
+        "desc": "Person entity network search: find principals behind LLCs and trace entity relationships in lending data.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_entity_graph",
+        "desc": "Visual entity graph connecting a person to their LLCs, loans, and contacts. Map the full corporate structure of any borrower.",
+        "credits": 3
+      },
+      {
+        "tool": "plr_note_buyer_search",
+        "desc": "Search note buyers and loan purchasers in the secondary market. Find who’s buying loan paper and at what scale.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_note_buyer_acquisitions",
+        "desc": "Which lenders a note buyer acquires loans from. Map the purchase relationships in loan trading.",
+        "credits": 2
+      },
+      {
+        "tool": "plr_assignment_loans",
+        "desc": "Individual loan-level assignment records: see exactly which loans changed hands, when, and between whom.",
+        "credits": 2
+      },
+      {
+        "tool": "document_upload",
+        "desc": "Upload credit policies or lending guidelines. AI extracts structured criteria automatically. Max 10 documents per account.",
+        "credits": 0
+      },
+      {
+        "tool": "document_list",
+        "desc": "List all your uploaded documents with names, dates, and extraction status.",
+        "credits": 0
+      },
+      {
+        "tool": "document_get",
+        "desc": "Retrieve the content and extracted criteria from a previously uploaded document.",
+        "credits": 0
+      },
+      {
+        "tool": "document_delete",
+        "desc": "Remove an uploaded document from your account.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_welcome",
+        "desc": "First-run setup check: shows which capabilities are enabled and recommends the best next steps for your role.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_health",
+        "desc": "Check connectivity and latency to all configured APIs. Verify your setup is working before running queries.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_credits",
+        "desc": "View your credit balance, monthly allocation, top-up credits, and next reset date. Always free to call.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_billing",
+        "desc": "Manage your subscription: change plans, update payment, view invoices, or cancel via account portal.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_upgrade",
+        "desc": "View current list pricing and discuss the right setup for your team.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_support",
+        "desc": "Troubleshooting guide for common issues with direct support contact info. Call when something isn’t working.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_feedback",
+        "desc": "Send feedback, bug reports, or feature requests directly to the SFR Analytics team.",
+        "credits": 0
+      },
+      {
+        "tool": "sfra_api_reference",
+        "desc": "REST API endpoint details, parameter names, and code examples for any MCP tool. Built for developers building custom integrations.",
+        "credits": 0
+      }
+    ],
+    "read_write": "Read-only for market, buyer and lender data. The only writes are document_upload / document_delete (user's own credit-policy documents, max 10). No CRM, list or pipeline writes found.",
+    "source_url": "https://mcp.sfranalytics.com/tools",
+    "note": "Tool descriptions copied from the catalog; em dashes in the source replaced with colons or commas."
+  }
+}

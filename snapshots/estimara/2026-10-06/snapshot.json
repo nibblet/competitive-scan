@@ -1,0 +1,133 @@
+{
+  "product": "Estimara",
+  "slug": "estimara",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://estimara.app",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/id6760662681",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=6760662681&country=us",
+      "raw_file": "raw/itunes_lookup.json",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.despia.estimara&hl=en_US",
+      "raw_file": "raw/googleplay.html",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://appshunter.io/ios/app/estimara-ai-rehab-estimator/id6760662681",
+      "raw_file": null,
+      "http_status": 403,
+      "what": "other"
+    },
+    {
+      "url": "https://estimara.app/pricing",
+      "raw_file": null,
+      "http_status": 200,
+      "what": "pricing"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Photo and walkthrough video intake to room-by-room estimate",
+      "quote": "Take photos or upload a walkthrough video and get a rehab estimate, room by room.",
+      "source_url": "https://estimara.app"
+    },
+    {
+      "feature": "Single walk capture",
+      "quote": "Photograph each room or upload a walkthrough. Estimara keeps the property evidence together from the first frame.",
+      "source_url": "https://estimara.app"
+    },
+    {
+      "feature": "Budget and retail cost ranges, ARV and MAO",
+      "quote": "Budget and retail cost ranges, an ARV calculator, and MAO (max allowable offer) so you make offers with confidence.",
+      "source_url": "https://estimara.app"
+    },
+    {
+      "feature": "Contractor bid analyzer",
+      "quote": "Upload any contractor quote and our AI instantly tells you if you're being overcharged, what each line item should cost, and exactly what to negotiate to get a fair price.",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "feature": "Deal pipeline",
+      "quote": "Move deals through Analyzing, Offer Made, Under Contract, Closed, and more.",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "feature": "SOW reports and shareable property links",
+      "quote": "Generate professional Scope of Work reports, share deal analyses with your team, and create shareable links for any property.",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Estimara Starter",
+      "price": "$9.99 (App Store in-app purchase; period not stated on listing)",
+      "limits": "10 AI property analyses per month per search snippet of appshunter.io (page itself returned 403, not page-confirmed)",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "plan": "Estimara Pro",
+      "price": "$19.99 (in-app purchase)",
+      "limits": "not established",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "plan": "Estimara Investor",
+      "price": "$39.99 (in-app purchase)",
+      "limits": "not established",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "plan": "Weekly / Monthly / Yearly Pro Access",
+      "price": "$4.99 / $9.99 / $44.99 (in-app purchases)",
+      "limits": "not established",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-07-22",
+      "change": "iOS 1.2.0: Faster, more reliable estimates with smoother uploads and performance improvements",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "date": "2026-07-20",
+      "change": "Google Play listing updated",
+      "source_url": "https://play.google.com/store/apps/details?id=com.despia.estimara&hl=en_US"
+    },
+    {
+      "date": "2026-05-22",
+      "change": "iOS 1.1: Bug fixes, performance improvements, and updated app title and description",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    },
+    {
+      "date": "2026-03-30",
+      "change": "iOS 1.0 initial release",
+      "source_url": "https://apps.apple.com/us/app/id6760662681"
+    }
+  ],
+  "app_store": {
+    "version": "1.2.0",
+    "release_date": "2026-07-22",
+    "whats_new": "Faster, more reliable estimates with smoother uploads and performance improvements throughout the app.",
+    "rating_count_if_shown": "6 ratings, 5.0",
+    "source_url": "https://apps.apple.com/us/app/id6760662681"
+  },
+  "api_or_mcp": "not established",
+  "notes": "estimara.app is a single-page app; /pricing and /support return the same shell as home (not saved separately). Web app and Google Play exist. Developer: Midwest Capital Solutions LLC (App Store). No changelog page found."
+}

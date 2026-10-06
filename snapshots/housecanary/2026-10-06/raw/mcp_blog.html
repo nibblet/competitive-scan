@@ -1,0 +1,760 @@
+<!DOCTYPE html><html lang="en" class="w-mod-js"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="format-detection" content="telephone=no"><title>HouseCanary MCP: 149 Property Tools for Any AI Agent</title><meta name="description" content="HouseCanary's MCP server connects any AI agent to 149 property data tools — valuations, forecasts, comps, hazards, portfolio monitoring. Install with pip install housecanary-mcp."><link rel="canonical" href="https://www.housecanary.com/blog/housecanary-mcp-server"><!-- Meta tags (deduplicated: skip description already rendered above, OG tags rendered below, and viewport already in head) --><meta property="twitter:title" content="HouseCanary MCP: 149 Property Tools for Any AI Agent"><meta property="twitter:description" content="Install the HouseCanary MCP server with one pip command. Connect Claude, ChatGPT, or any AI agent to 149 property data tools."><meta property="twitter:image" content="/images/housecanary-mcp-hero-v9.svg"><meta name="twitter:card" content="summary_large_image"><!-- OG tags (authoritative source from ogTags prop) --><meta property="og:title" content="HouseCanary MCP: 149 Property Tools for Any AI Agent"><meta property="og:description" content="HouseCanary's MCP server connects any AI agent to 149 property data tools — valuations, forecasts, comps, hazards, portfolio monitoring. Install with pip install housecanary-mcp."><meta property="og:image" content="https://www.housecanary.com/images/housecanary-mcp-hero-v9.svg"><meta property="og:type" content="article"><meta property="og:url" content="https://www.housecanary.com/blog/housecanary-mcp-server"><!-- JSON-LD structured data --><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "HouseCanary MCP: 149 Property Tools for Any AI Agent", "description": "HouseCanary's Analytics and Portfolio Monitoring APIs are now installable as a Model Context Protocol server. 149 tools, 36-month forecasts, one pip install.", "image": "https://www.housecanary.com/images/housecanary-mcp-hero-v9.svg", "datePublished": "2026-04-27", "dateModified": "2026-04-27", "author": {"@type": "Organization", "name": "HouseCanary", "url": "https://www.housecanary.com"}, "publisher": {"@type": "Organization", "name": "HouseCanary", "logo": {"@type": "ImageObject", "url": "https://www.housecanary.com/images/housecanary_website_opengraphurl.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.housecanary.com/blog/housecanary-mcp-server"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.housecanary.com"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.housecanary.com/resources/blog"}, {"@type": "ListItem", "position": 3, "name": "Real Estate Tech & AI", "item": "https://www.housecanary.com/category/real-estate-tech-ai"}, {"@type": "ListItem", "position": 4, "name": "HouseCanary MCP: 149 Property Tools for Any AI Agent", "item": "https://www.housecanary.com/blog/housecanary-mcp-server"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need a new API key?", "acceptedAnswer": {"@type": "Answer", "text": "No. The MCP server uses your existing HouseCanary API username and password."}}, {"@type": "Question", "name": "How is MCP usage billed?", "acceptedAnswer": {"@type": "Answer", "text": "Every tool call counts as a normal HouseCanary API call and is billed against your existing plan or contract — there is no separate MCP fee. Portfolio Monitor, Market Pulse, and the Bulk Property Data endpoint are no-additional-charge (subscription products); all other endpoints are billed at your contract rate. Track current usage in your HouseCanary billing dashboard at solutions.housecanary.com/org-admin/billing."}}, {"@type": "Question", "name": "Is the source code open?", "acceptedAnswer": {"@type": "Answer", "text": "The package is published on PyPI. The license is proprietary."}}, {"@type": "Question", "name": "Which AI models can use this?", "acceptedAnswer": {"@type": "Answer", "text": "Anything that speaks MCP — Claude, Cursor, Cline, Continue, ChatGPT desktop with MCP support, and custom agents."}}, {"@type": "Question", "name": "Is it stdio or HTTP?", "acceptedAnswer": {"@type": "Answer", "text": "Both. Default is stdio. Set FASTMCP_TRANSPORT=http for hosted HTTP on port 8000."}}]}</script><!-- Hero image preload for LCP optimization --><link rel="preload" as="image" href="/images/housecanary-mcp-hero-v9.svg" fetchpriority="high"><!-- Font preloads: body (Poppins 400), CTA buttons (Poppins 500), and headings (Space Grotesk 600).
+       Previously preloaded space-grotesk-500.woff2 by mistake (the comment said 600 but the URL said 500),
+       and didn't preload Poppins 500 which the hero CTA uses. Fixing both. --><link rel="preload" as="font" type="font/woff2" href="/images/66e8714cbe7c5a8aaa4a5145_Poppins-Regular.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/images/66e8714c0c06b2649511ed07_Poppins-Medium.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-600.woff2" crossorigin><!-- Favicon --><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- Fonts + site CSS imported in frontmatter → Vite hashes them automatically --><!-- Robots: per-page directives come from metas[] in pageIndex.ts.
+       Pages that should be noindexed (e.g. /search-results) set their own robots meta there. --><!-- Keywords --><meta name="keywords" content="real estate data, property data, AI-powered valuations, real estate analytics, market forecasts, AVM, automated valuation model, CMA, real estate API, property data API, real estate investors, loan officers, mortgage lenders, capital markets, SFR, single family rental, HouseCanary, CanaryAI, residential real estate, machine learning, bulk property data, portfolio monitoring, comp tool, BPO"><!-- ============================================================
+       Analytics & Tracking Tags
+       Migrated from Webflow → Astro (April 2026 cutover)
+       ============================================================ --><!-- 1. CookieYes consent banner (production) / consent bypass (dev/QA) --><script>(function(){
+    if(window.location.hostname==='www.housecanary.com'){
+      var s=document.createElement('script');
+      s.id='cookieyes';s.type='text/javascript';
+      s.src='https://cdn-cookieyes.com/client_data/caff57969a745acde520d1b4/script.js';
+      document.currentScript.parentNode.insertBefore(s,document.currentScript.nextSibling);
+    }else{
+      /* Dev/QA: CookieYes rejects non-registered domains.
+         Force Google consent to granted so GTM fires all tags. */
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent','default',{
+        'ad_storage':'granted','analytics_storage':'granted',
+        'functionality_storage':'granted','personalization_storage':'granted',
+        'security_storage':'granted','ad_user_data':'granted',
+        'ad_personalization':'granted'
+      });
+    }
+  })();</script><!-- 2. Google Tag Manager (manages GA4, Google Ads, LinkedIn, Bing) --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WXDJBWHK');</script><!-- 3. PostHog (session recording + feature flags) --><script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageviewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_6burkqDHeWXCtT07JLyqu6s7Vu5EaEGQFcZEX7UmbS9',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only',autocapture:{url_ignorelist:[/\/products\/canary-ai/,/\/industries\/real-estate-investors/]}});</script><!-- 4. Facebook/Meta Pixel --><script>!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1688203735073309');
+  fbq('track', 'PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1688203735073309&ev=PageView&noscript=1"></noscript><!-- PostHog feature flag anti-flicker CSS.
+       Control variants render by default so the page paints without a
+       blank-state shift when the flag resolves. Test variants stay
+       display:none until PostHog activates them. --><style>
+    [data-ph-flag][data-ph-variant="test"] { display: none; }
+    [data-ph-flag][data-ph-variant="test"].ph-active { display: block; }
+    [data-ph-flag][data-ph-variant="control"].ph-hidden { display: none; }
+  </style><!-- Extra head content from pages (e.g. rel="prev"/"next" for pagination) --><link rel="stylesheet" href="/assets/_slug_.DthiIe9Y.css">
+<style>.tablet-toc-overlay[data-astro-cid-4sn4zg3r]{position:absolute;top:0;width:100vw;left:50%;transform:translate(calc(-50% - var(--container-left, 0px)));z-index:1000}.hc-rail{order:3;width:100%;min-width:292px;max-width:292px;height:fit-content;position:sticky;top:140px}.hc-cta-card{width:100%;border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;font-family:Poppins,Arial,sans-serif}.hc-cta-card .hc-caps-label{font-family:Space Grotesk,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0;color:#cddfff}.hc-cta-card h3{font-family:Space Grotesk,sans-serif;font-weight:500;font-size:21px;line-height:1.3;margin:0;color:#fff}.hc-cta-card .hc-sub{font-size:13.5px;line-height:1.55;margin:0;color:#dbe7ff}.hc-cta-card .w-button{background:#fff;color:#0c62ff;align-self:flex-start;text-decoration:none;border-radius:5px;font-size:15px;font-weight:500;line-height:25px;padding:10px 20px;display:inline-block;text-align:center;transition:background-color .3s,color .3s}.hc-cta-card .w-button:hover{background:#f2f7ff}.hc-card-blue{background:#0c62ff url(/images/682f57f4d75a8859fed5612b_Frame-320.webp) 100% 50%/cover no-repeat}@media(min-width:992px){.hc-rail~.blogpost-main-right{max-width:calc(100% - 672px)}}@media(min-width:992px)and (max-width:1240px){.blogpost-main-content:has(.hc-rail){grid-column-gap:32px}.hc-rail~.blogpost-main-right{max-width:calc(100% - 608px)}}@media(max-width:991px){.blogpost-main-left{order:1}.hc-rail{position:static;order:2;min-width:0;max-width:none;top:auto;margin:8px 0 24px}.blogpost-main-right{order:3}}@media(max-width:767px){.hc-cta-card{padding:28px 24px}}@media(max-width:991px){.blogpost-main-left.toc-open .toc-wrapper{display:block}.toc-mobile-toggle .toc-img:last-child img{transition:transform .2s ease}.blogpost-main-left.toc-open .toc-mobile-toggle .toc-img:last-child img{transform:rotate(180deg)}}
+</style></head> <body class="body-16"> <!-- GTM noscript fallback --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXDJBWHK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <div class="navbar" data-navbar data-variant="default"> <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar-container w-nav"> <div class="full-width-container navbar-spacing"> <div class="grid-container is-navbar"> <div class="column desk-12"> <div class="navbar-wrapper">  <a href="/" class="navbar-brand w-nav-brand" aria-label="home"> <img width="150" height="27" sizes="(max-width: 479px) 90vw, 150px" alt="The HouseCanary logo has a canary's silhouette perched atop a roof next the the name HouseCanary." src="/images/65a05005286e67faab8f120e_hc-logo_dark.webp" srcset="/images/65a05005286e67faab8f120e_hc-logo_dark-p-500.png 500w, /images/65a05005286e67faab8f120e_hc-logo_dark.webp 1549w" class="nav-float" data-logo-dark> <img width="150" height="27" sizes="(max-width: 479px) 90vw, 150px" alt="The HouseCanary logo has a canary's silhouette perched atop a roof next the the name HouseCanary." src="/images/6697668364cae5124f40b8ef_hc-logo_white.webp" srcset="/images/6697668364cae5124f40b8ef_hc-logo_white-p-500.webp 500w, /images/6697668364cae5124f40b8ef_hc-logo_white-p-800.png 800w, /images/6697668364cae5124f40b8ef_hc-logo_white-p-1080.png 1080w, /images/6697668364cae5124f40b8ef_hc-logo_white.webp 3097w" class="nav-float white" data-logo-white> </a>  <nav role="navigation" class="nav-menu-wrapper w-nav-menu"> <ul role="list" class="nav-menu w-list-unstyled">  <li class="pricing-list-item"> <div data-delay="0" data-hover="false" class="nav-dropdown w-dropdown"> <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-0" aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0" data-dropdown-toggle="0"> <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"> <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </div> <div class="paragraph medium nav">Solutions and Services</div> </div> <nav class="nav-dropdown-full-width shadow-three mobile-shadow-hide w-dropdown-list" id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0" style="display:none"> <div class="dropdown-full-width">  <div class="nav-dropdown-columns">  <span class="h6 hide-tablet">SOLUTIONS &amp; SERVICES</span> <div class="w-layout-layout quick-stack-16 wf-layout-layout"> <div class="w-layout-cell"> <a href="/products/canary-ai" class="nav-icon-div w-inline-block"> <div class="div-block-86"> <div class="nav-icon-img"> <img src="/images/6697f64d531ee920f85ff287_gen-ai-dark-blue.webp" loading="lazy" alt="" class="icon-30" width="96" height="96"> </div> <p class="paragraph large bold nav">CanaryAI</p> </div> <div class="nav-item-details-stack"> <p class="paragraph small nav">First-of-its-kind generative AI real estate assistant.</p> </div> </a> </div><div class="w-layout-cell"> <a href="/solutions/data-analytics-valuations" class="nav-icon-div w-inline-block"> <div class="div-block-86"> <div class="nav-icon-img"> <img src="/images/65a9a80f5c420ad535c32ae0_Home-Search.webp" loading="lazy" alt="" class="icon-30" width="96" height="96"> </div> <p class="paragraph large bold nav">Programmatic Data</p> </div> <div class="nav-item-details-stack"> <p class="paragraph small nav">Streamline and improve decision making across your business.</p> </div> </a> </div><div class="w-layout-cell"> <a href="/solutions/instant-insights" class="nav-icon-div w-inline-block"> <div class="div-block-86"> <div class="nav-icon-img"> <img src="/images/65a9a8af75ef49451ef1adfd_Map.webp" loading="lazy" alt="" class="icon-30" width="96" height="96"> </div> <p class="paragraph large bold nav">Instant Insights</p> </div> <div class="nav-item-details-stack"> <p class="paragraph small nav">Uncover and vet your next SFR investment opportunity.</p> </div> </a> </div><div class="w-layout-cell"> <a href="/solutions/comehome" class="nav-icon-div w-inline-block"> <div class="div-block-86"> <div class="nav-icon-img"> <img src="/images/65a9a8e7b600557d519b34d1_Lot.webp" loading="lazy" alt="" class="icon-30" width="96" height="96"> </div> <p class="paragraph large bold nav">Customer Engagement Platform</p> </div> <div class="nav-item-details-stack"> <p class="paragraph small nav">Engage, convert, and retain your lending customers.</p> </div> </a> </div> </div>  </div>  <div class="nav-dropdown-right"> <div class="nav-dropdown-right-container"> <div class="nav-dropdown-right-column"> <div class="div-block-24"><span class="h6 nav-title">FOR YOUR INDUSTRY</span></div> <ul role="list" class="paragraph small w-list-unstyled"> <li class="nav-list-item"> <a href="/industries/real-estate-investors" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Real Estate Investors</div> </a> </li><li class="nav-list-item"> <a href="/industries/real-estate-agents" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Real Estate Agents</div> </a> </li><li class="nav-list-item"> <a href="/industries/loan-officers" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Loan Officers</div> </a> </li><li class="nav-list-item"> <a href="/industries/mortgage-lenders" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Banks &amp; Mortgage Lenders</div> </a> </li><li class="nav-list-item"> <a href="/industries/private-money-lenders" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Private Money / Non-QM Lenders</div> </a> </li><li class="nav-list-item"> <a href="/industries/capital-markets" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Capital Markets</div> </a> </li><li class="nav-list-item"> <a href="/industries/servicers" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Servicers</div> </a> </li> </ul> </div> <div class="nav-dropdown-right-column">  <div class="div-block-24"><span class="h6 nav-title">Data &amp; Analytics</span></div> <ul role="list" class="paragraph small w-list-unstyled"> <li class="nav-list-item"> <a href="/products/data-explorer" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Real Estate Data API</div> </a> </li><li class="nav-list-item"> <a href="/products/bulk-property-data" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Bulk Property Data</div> </a> </li><li class="nav-list-item"> <a href="/products/hpi-rpi-data" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">HPI &amp; RPI Data</div> </a> </li><li class="nav-list-item"> <a href="/products/market-insights" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">MSA &amp; ZIP Level Analytics</div> </a> </li><li class="nav-list-item"> <a href="/products/portfolio-monitoring" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Portfolio Monitoring</div> </a> </li> </ul>   <div class="div-block-24"><span class="h6 nav-title">Valuations &amp; Reporting</span></div> <ul role="list" class="paragraph small w-list-unstyled"> <li class="nav-list-item"> <a href="/products/agile-insights" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Automated Valuation Report</div> </a> </li><li class="nav-list-item"> <a href="/products/property-explorer" class="link-block w-inline-block" tabindex="0"> <div class="nav-sentence">Custom Valuation &amp; Comp Tool</div> </a> </li> </ul>    <div class="_10px-spacer"></div> <a href="/products/canary-ai" class="link-block-7 w-inline-block"> <h6 class="h6 nav-title link">CANARYAI</h6> </a>  <div class="_10px-spacer"></div> <a href="/solutions/comehome" class="link-block-7 w-inline-block"> <h6 class="h6 nav-title link">Customer Engagement Platform</h6> </a>  <div class="_10px-spacer"></div> <a href="/products/brokerage-services" class="link-block-7 w-inline-block"> <h6 class="h6 nav-title link">Brokerage Services</h6> </a>  </div> </div> </div> </div> </nav> </div> </li>  <li class="pricing-list-item"> <a href="/pricing" class="nav-link">Pricing</a> </li>  <li class="pricing-list-item"> <div data-delay="0" data-hover="false" class="nav-dropdown w-dropdown"> <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-1" aria-controls="w-dropdown-list-1" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0" data-dropdown-toggle="1"> <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"> <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </div> <div class="paragraph medium nav">Resources</div> </div> <nav class="nav-dropdown-small w-dropdown-list" id="w-dropdown-list-1" aria-labelledby="w-dropdown-toggle-1" style="display:none"> <div> <a href="/resources/blog" class="dropdown-link w-dropdown-link" tabindex="0">Blog</a><a href="/resources/developer-tools" class="dropdown-link w-dropdown-link" tabindex="0">Developer Tools</a><a href="/resources/our-dna" class="dropdown-link w-dropdown-link" tabindex="0">Our DNA</a><a href="/resources/our-avm" class="dropdown-link w-dropdown-link" tabindex="0">Our AVM</a><a href="/resources/about-us" class="dropdown-link w-dropdown-link" tabindex="0">About Us</a><a href="/resources/careers" class="dropdown-link w-dropdown-link" tabindex="0">Careers</a><a href="/contact" class="dropdown-link w-dropdown-link" tabindex="0">Contact Us</a> </div> </nav> </div> </li>  <li class="nav-buttons"> <div class="nav-button-wrapper first"> <a href="https://solutions.housecanary.com/login" target="_blank" class="button-link w-inline-block"> <div class="button outline"> <div class="button-text">Log In</div> </div> </a> </div> <address class="nav-button-wrapper"> <a href="/pricing" class="button-animation w-inline-block"> <div class="button-text-animation">Get Started</div> <div class="button-hover-arrow"> <img loading="lazy" src="/images/65a1d24ed52156b4353bf5bc_white-arrow-right.webp" alt="" class="image-33" width="100" height="86"> </div> </a> </address> </li> </ul> </nav>  <a href="/contact" class="button small desktop-hide w-button"> Get Started </a>  <div class="menu-button w-nav-button" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" data-mobile-toggle> <div class="icon-31 w-icon-nav-menu" aria-hidden="true"> <svg style="display:block;width:1em;height:1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </div> </div> </div> </div> </div> </div> </div> </div>   <section class="section breadcrumbs" data-astro-cid-4sn4zg3r> <div class="full-width-container _w-100 margin-auto" data-astro-cid-4sn4zg3r> <div class="breadcrumbs-content" data-astro-cid-4sn4zg3r> <a href="/resources/blog" class="no-decoration w-inline-block" data-astro-cid-4sn4zg3r> <div class="paragraph xsmall" data-astro-cid-4sn4zg3r>Blog</div> </a><div class="breadcrumbs-chevron" data-astro-cid-4sn4zg3r> <img src="/images/682e2b603862b00fe675016f_Chevron-down-small.svg" loading="lazy" alt="" class="img100" width="16" height="16" data-astro-cid-4sn4zg3r> </div><a href="/category/real-estate-tech-ai" class="no-decoration w-inline-block" data-astro-cid-4sn4zg3r> <div class="paragraph xsmall" data-astro-cid-4sn4zg3r>Real Estate Tech &amp; AI</div> </a><div class="breadcrumbs-chevron" data-astro-cid-4sn4zg3r> <img src="/images/682e2b603862b00fe675016f_Chevron-down-small.svg" loading="lazy" alt="" class="img100" width="16" height="16" data-astro-cid-4sn4zg3r> </div><div class="paragraph xsmall text-color-grey no-wrap" data-astro-cid-4sn4zg3r>HouseCanary MCP: 149 Property Tools for Any AI Agent</div> </div> </div> </section> <section class="section blogpost-hero" data-astro-cid-4sn4zg3r> <div class="w-layout-blockcontainer full-width-container _w-100 margin-auto relative w-container" data-astro-cid-4sn4zg3r> <div class="blogpost-content-wrapper" data-astro-cid-4sn4zg3r> <div class="blogpost-thumbnail" data-astro-cid-4sn4zg3r> <img src="/images/housecanary-mcp-hero-v9.svg" loading="eager" fetchpriority="high" alt="HouseCanary MCP hero: property card with floating data chips (AVM, cap rate, rent est., comps, built year, square footage) around a central MCP 149 tools badge" class="img100 cover" width="720" height="480" data-astro-cid-4sn4zg3r> </div> <div class="blogpost-content" data-astro-cid-4sn4zg3r> <div class="blogpost-left" data-astro-cid-4sn4zg3r> <div class="blogpost-left-top" data-astro-cid-4sn4zg3r> <a href="/category/real-estate-tech-ai" class="blog-dot-item with-background w-inline-block" data-astro-cid-4sn4zg3r> <div class="dot white" data-astro-cid-4sn4zg3r></div> <div class="paragraph xsmall caps white" data-astro-cid-4sn4zg3r>Real Estate Tech &amp; AI</div> </a>  </div> <h1 class="h1 white" data-astro-cid-4sn4zg3r>HouseCanary MCP: 149 Property Tools for Any AI Agent</h1> <div class="blog-author-wrapper" data-astro-cid-4sn4zg3r>  <div class="blog-dot-item vertical" data-astro-cid-4sn4zg3r>  <div class="blog-author-bottom" data-astro-cid-4sn4zg3r>  <div class="blog-details-wrapper" data-astro-cid-4sn4zg3r> <div class="paragraph xsmall caps text-color--cddfff font-space-grotesk" data-astro-cid-4sn4zg3r> updated:
+</div> <div class="paragraph xsmall caps text-color--cddfff font-space-grotesk" data-astro-cid-4sn4zg3r> April 27, 2026 </div> </div>  </div> </div> </div> </div> </div> </div> </div> <div class="blogpost-hero-bg" data-astro-cid-4sn4zg3r> <img src="/images/682f3e01905575ca69330a9d_Market-Insights_LinkedIn.webp" loading="lazy" alt="" class="img100 cover mobile-left-16" width="2880" height="706" data-astro-cid-4sn4zg3r> </div> </section> <section class="section" data-astro-cid-4sn4zg3r> <div class="w-layout-blockcontainer full-width-container _w-100 margin-auto relative w-container" data-astro-cid-4sn4zg3r> <div class="blogpost-main-content" data-astro-cid-4sn4zg3r>  <div class="tablet-toc-overlay" data-astro-cid-4sn4zg3r> <div class="hide w-embed w-script" data-astro-cid-4sn4zg3r>  </div> </div>  <div class="blogpost-main-left" data-astro-cid-4sn4zg3r> <div data-w-id="9e9d0d83-c635-9a86-d322-2cdecf5131c5" class="toc-mobile-toggle" data-astro-cid-4sn4zg3r> <div class="toc-img" data-astro-cid-4sn4zg3r> <img loading="lazy" src="/images/68309b42594979711fe6c48d_sort.svg" alt="" class="img100" width="24" height="24" data-astro-cid-4sn4zg3r> </div> <div class="paragraph medium font-weight-600" data-astro-cid-4sn4zg3r>Table of Contents</div> <div data-w-id="9e9d0d83-c635-9a86-d322-2cdecf5131ca" class="toc-img" data-astro-cid-4sn4zg3r> <img loading="lazy" src="/images/682cc341beae954717e04ac0_Chevron-down-small.svg" alt="" class="img100" width="24" height="24" data-astro-cid-4sn4zg3r> </div> </div> <div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#key-takeaways" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> Key Takeaways </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#what-mcp-is-and-why-it-matters" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> What MCP Is, and Why This Matters </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#whats-in-the-housecanary-mcp" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> What&#39;s in the HouseCanary MCP </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#install-and-run" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> Install and Run </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#how-it-compares" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> How It Compares </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#what-this-enables" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> What This Enables </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#why-ship-this-now" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> Why Ship This Now </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#faq" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> FAQ </a> </div><div class="toc-wrapper" data-astro-cid-4sn4zg3r> <a fs-toc-element="link" href="#get-started" class="toc-link w-inline-block" data-astro-cid-4sn4zg3r> Get Started </a> </div> <div class="toc-cta hide" data-astro-cid-4sn4zg3r> <p class="paragraph-4 large font-weight-600 text-color-white" data-astro-cid-4sn4zg3r> <span class="text-color-yellow-2" data-astro-cid-4sn4zg3r>Free Local Market</span> Report for Investors and
+              lenders
+</p> <a href="#" class="button bg-white w-button" data-astro-cid-4sn4zg3r>Get Your Report</a> </div> </div>  <div class="hc-rail" data-astro-cid-4sn4zg3r> <div class="hc-cta-card hc-card-blue" data-astro-cid-4sn4zg3r> <p class="hc-caps-label" data-astro-cid-4sn4zg3r>HouseCanary</p> <h3 data-astro-cid-4sn4zg3r>Know what any property is really worth.</h3> <p class="hc-sub" data-astro-cid-4sn4zg3r>AVMs with a 2.7% median error, plus the comps and forecasts agents and investors rely on.</p> <a href="/pricing" class="w-button" data-astro-cid-4sn4zg3r>Explore Plans</a> </div> </div>  <div class="blogpost-main-right" data-astro-cid-4sn4zg3r> <div fs-toc-offsettop="110px" fs-toc-element="contents" fs-inject-element="target" class="new-blog-rt w-richtext" data-astro-cid-4sn4zg3r> <div class="w-embed">
+  <style>
+    /* Code blocks: match v5 design — light-blue tint, brand-blue accent border,
+       Space Mono mono, 18px to match .new-blog-rt body copy */
+    .new-blog-rt pre {
+      background: #f2f7ff;
+      padding: 24px 28px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Space Mono', 'Courier New', monospace;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #20203f;
+      margin: 28px 0;
+      border-left: 4px solid #0a62ff;
+    }
+    .new-blog-rt code {
+      background: #f2f7ff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'Space Mono', 'Courier New', monospace;
+      font-size: 0.95em;
+      color: #20203f;
+    }
+    .new-blog-rt pre code {
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+    }
+  </style>
+</div>
+
+<p>
+  HouseCanary's Analytics and Portfolio Monitoring APIs are now available as a
+  Model Context Protocol (MCP) server. AI agents — Claude, ChatGPT, custom
+  internal copilots — can call <strong>149 HouseCanary endpoints</strong>
+  directly: property valuations, 36-month forecasts, comps, rental estimates,
+  hazard data, market pulse, and full portfolio monitoring.
+</p>
+<p>Install it with one command:</p>
+<pre><code>pip install housecanary-mcp</code></pre>
+<p>
+  Existing API credentials work as-is. There's no separate signup, no demo
+  request, no waitlist. The package is published to PyPI today.
+</p>
+
+<div id="key-takeaways" style="scroll-margin-top: 110px">
+  <h2><strong>Key Takeaways</strong></h2>
+  <ul>
+    <li>
+      <strong>149 tools across 11 categories</strong> — from individual property
+      valuations up to state-level forecasts.
+    </li>
+    <li>
+      <strong>36-month forecasts</strong> at the property, ZIP, block, block
+      group, metro division, MSA, and state level — exposed natively to any
+      MCP-compatible model.
+    </li>
+    <li>
+      <strong>Read-only by design.</strong> The server filters out write
+      endpoints, so an agent can read the data but can't mutate your portfolios.
+    </li>
+    <li>
+      <strong>stdio by default, HTTP optional.</strong> Works with Claude
+      Desktop out of the box and runs as a hosted endpoint when you need it.
+    </li>
+  </ul>
+</div>
+
+<div id="what-mcp-is-and-why-it-matters" style="scroll-margin-top: 110px">
+  <h2><strong>What MCP Is, and Why This Matters</strong></h2>
+  <p>
+    The Model Context Protocol is an open standard for connecting AI models to
+    tools and data. Anthropic published the spec in late 2024, and the major
+    model providers — Anthropic, OpenAI, and Google — have all shipped MCP
+    support since. An MCP server exposes a list of callable tools; an
+    MCP-compatible model (Claude, ChatGPT, an in-house agent) decides when to
+    call them.
+  </p>
+  <p>
+    For real estate, that changes the workflow. An agent no longer scrapes a
+    listing site or guesses comps. It calls <code>property/value</code> and
+    gets back a valuation with a confidence band and FSD score. It calls
+    <code>zip/market_pulse/timeseries</code> and pulls a historical pulse
+    for the ZIP code.
+  </p>
+  <p>
+    That's the protocol layer. The data layer matters more — and that's where
+    <a href="https://www.housecanary.com/blog/automated-valuation-model"
+      >HouseCanary's AVM accuracy</a
+    >
+    (2.7% postlist, 7.5% prelist median absolute error) becomes the foundation every agent
+    inherits when it grounds itself in our tools.
+  </p>
+</div>
+
+<div id="whats-in-the-housecanary-mcp" style="scroll-margin-top: 110px">
+  <h2><strong>What's in the HouseCanary MCP</strong></h2>
+  <p>
+    The server wraps the HouseCanary Analytics and Portfolio Monitoring APIs
+    across multiple geographic levels — from individual properties up to
+    states. The full surface, organized by category:
+  </p>
+
+  <div class="w-embed">
+    <style>
+      .data-table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+      table.housecanary-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        border: 1px solid #e0e0e0;
+        table-layout: fixed;
+      }
+      table.housecanary-table th,
+      table.housecanary-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+        word-wrap: break-word;
+      }
+      table.housecanary-table th {
+        background-color: #f2f7ff;
+        font-weight: 700;
+        color: #20203f;
+      }
+      table.housecanary-table tr:hover {
+        background-color: #f8faff;
+      }
+      .entity-name {
+        font-weight: 700;
+        color: #0a62ff;
+      }
+      /* Tools table: keep Category names on one line, narrow Tools count column */
+      .table-tools table.housecanary-table th:nth-child(1),
+      .table-tools table.housecanary-table td:nth-child(1) { width: 200px; white-space: nowrap; }
+      .table-tools table.housecanary-table th:nth-child(2),
+      .table-tools table.housecanary-table td:nth-child(2) { width: 80px; }
+      /* Comparison table: balanced 4-col layout */
+      .table-compare table.housecanary-table th:nth-child(1),
+      .table-compare table.housecanary-table td:nth-child(1) { width: 26%; }
+    </style>
+    <div class="data-table-container table-tools">
+      <table class="housecanary-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Tools</th>
+            <th>What an agent can ask for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="entity-name">Property level</td>
+            <td>31</td>
+            <td>
+              Estimate, value forecast, value-by-condition,
+              value with FSD threshold, rental value + forecast, sales/tax
+              history, mortgage liens, NOD, LTV, HOA fees, schools, flood, FEMA
+              disaster area, geo features
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">ZIP level</td>
+            <td>28</td>
+            <td>
+              HPI and RPI historical + forecast, affordability, gross rental
+              yield, market grade, market volatility
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">Census Block level</td>
+            <td>24</td>
+            <td>
+              Earthquake, hail, hurricane, tornado, and wind activity; Superfund
+              sites; crime; value distributions and forecasts
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">MSA level</td>
+            <td>16</td>
+            <td>
+              HPI/RPI historical + forecast, affordability, returns and risk,
+              gross rental yield
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">State level</td>
+            <td>14</td>
+            <td>
+              HPI/RPI historical + forecast, affordability, gross rental yield
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">Market Pulse</td>
+            <td>10</td>
+            <td>
+              MSA, state, and ZIP — for-sale and rental, latest snapshots and
+              timeseries
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">Block Group level</td>
+            <td>10</td>
+            <td>
+              Value and rental distributions, forecast/historical, yield
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">Metro Division level</td>
+            <td>8</td>
+            <td>HPI forecast/historical, affordability forecast/historical</td>
+          </tr>
+          <tr>
+            <td class="entity-name">Property Explorer</td>
+            <td>4</td>
+            <td>
+              Static and dynamic shareable links, bulk job status + download
+            </td>
+          </tr>
+          <tr>
+            <td class="entity-name">Portfolio Monitor</td>
+            <td>3</td>
+            <td>List portfolios, list assets, get full portfolio data</td>
+          </tr>
+          <tr>
+            <td class="entity-name">Bulk Property Data</td>
+            <td>1</td>
+            <td>File download links</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>
+    The 36-month forecast horizon you already have through the
+    <a href="https://www.housecanary.com/blog/real-estate-api"
+      >Data Explorer API</a
+    >
+    is exposed at every geographic level. So is value-by-condition and
+    the full Property Explorer link API.
+  </p>
+</div>
+
+<div id="install-and-run" style="scroll-margin-top: 110px">
+  <h2><strong>Install and Run</strong></h2>
+  <p>The package is on PyPI:</p>
+  <pre><code>pip install housecanary-mcp</code></pre>
+  <p>Or run it without installing, using <code>uvx</code>:</p>
+  <pre><code>uvx housecanary-mcp</code></pre>
+  <p>
+    Authenticate with the same credentials you use for the HouseCanary API:
+  </p>
+  <pre><code>export HOUSECANARY_API_USERNAME="your-username"
+export HOUSECANARY_API_PASSWORD="your-password"
+housecanary-mcp</code></pre>
+  <p>
+    To wire it into Claude Desktop, add this to
+    <code>claude_desktop_config.json</code>:
+  </p>
+  <pre><code>{
+  "mcpServers": {
+    "housecanary": {
+      "command": "uvx",
+      "args": ["housecanary-mcp"],
+      "env": {
+        "HOUSECANARY_API_USERNAME": "your-username",
+        "HOUSECANARY_API_PASSWORD": "your-password"
+      }
+    }
+  }
+}</code></pre>
+  <p>To run it as a hosted HTTP endpoint instead of stdio:</p>
+  <pre><code>FASTMCP_TRANSPORT=http \
+FASTMCP_HOST=127.0.0.1 \
+FASTMCP_PORT=8000 \
+FASTMCP_STREAMABLE_HTTP_PATH=/mcp \
+uvx housecanary-mcp</code></pre>
+  <p>
+    That's the full integration. The default endpoint is
+    <code>http://127.0.0.1:8000/mcp</code>, ready for any MCP-compatible client.
+  </p>
+
+  <p
+    style="
+      background: #f2f7ff;
+      border-left: 4px solid #0a62ff;
+      padding: 16px 20px;
+      margin: 24px 0;
+      color: #20203f;
+    "
+  >
+    <strong>Note on billing.</strong> Tool calls count as normal HouseCanary
+    API calls and are billed against your existing plan or contract — there's
+    no separate MCP fee. <strong>Portfolio Monitor</strong>,
+    <strong>Market Pulse</strong>, and the <strong>Bulk Property Data</strong>
+    endpoint are no-additional-charge (subscription products, included in your
+    plan). Everything else (Property, ZIP, Block, MSA, State, Property
+    Explorer) is billed at your contract rate. AI agents can call tools many
+    times in a single workflow, so monitor usage in your
+    <a
+      href="https://solutions.housecanary.com/org-admin/billing"
+      rel="noopener"
+      target="_blank"
+      >HouseCanary billing dashboard</a
+    >
+    during the first week to set an expectation.
+  </p>
+</div>
+
+<div id="how-it-compares" style="scroll-margin-top: 110px">
+  <h2><strong>How It Compares</strong></h2>
+  <p>
+    Two other property data vendors have shipped MCP servers this year:
+    <a
+      href="https://www.prnewswire.com/news-releases/attom-introduces-mcp-server-for-ai-applications-and-expands-its-cloud-data-delivery-through-databricks-302674520.html"
+      rel="noopener"
+      target="_blank"
+      >ATTOM</a
+    >
+    and
+    <a
+      href="https://www.cotality.com/press-releases/cotality-launches-a-universal-ai-connector-mcp-server-and-ai-ready-property-intelligence"
+      rel="noopener"
+      target="_blank"
+      >Cotality (formerly CoreLogic)</a
+    >. The three approaches are different.
+  </p>
+
+  <div class="w-embed">
+    <div class="data-table-container table-compare">
+      <table class="housecanary-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ATTOM</th>
+            <th>Cotality</th>
+            <th>HouseCanary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="entity-name">Tools enumerated publicly</td>
+            <td>~43</td>
+            <td>4 named data assets</td>
+            <td><strong>149</strong></td>
+          </tr>
+          <tr>
+            <td class="entity-name">Forecasts exposed</td>
+            <td>None disclosed</td>
+            <td>HPI Forecasts</td>
+            <td><strong>Forecasts at 7 geographic levels</strong></td>
+          </tr>
+          <tr>
+            <td class="entity-name">Distribution</td>
+            <td>Hosted, API key required</td>
+            <td>Sales-gated demo request</td>
+            <td><code>pip install housecanary-mcp</code></td>
+          </tr>
+          <tr>
+            <td class="entity-name">Source visibility</td>
+            <td>Closed</td>
+            <td>Closed</td>
+            <td>Open package on PyPI</td>
+          </tr>
+          <tr>
+            <td class="entity-name">Time to first call</td>
+            <td>Sign up + 30-day trial key</td>
+            <td>"Request a demo"</td>
+            <td>Existing HC credentials</td>
+          </tr>
+          <tr>
+            <td class="entity-name">Bundled extra</td>
+            <td>Databricks Delta Sharing</td>
+            <td>OSI YAML semantic files</td>
+            <td>Read-only by design</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>
+    Each vendor optimized for a different buyer. ATTOM bundled MCP with
+    Databricks for bulk-data analytics teams. Cotality leans on enterprise
+    governance and the open-source OSI semantic standard. HouseCanary's MCP
+    wraps the deepest analytics surface in the category and ships as a normal
+    Python package — install it, point it at credentials, and any MCP client
+    can call it.
+  </p>
+  <p>
+    The forecast point matters. Predictive analytics is HouseCanary's
+    structural data advantage — 36-month value forecasts, propensity-to-list
+    scoring, ZIP-level rental forecasts. None of that shows up in a
+    competitor's MCP today. With this release, an AI agent can ground itself
+    in HouseCanary's forward-looking models, not just point-in-time data.
+  </p>
+</div>
+
+<div id="what-this-enables" style="scroll-margin-top: 110px">
+  <h2><strong>What This Enables</strong></h2>
+  <p>
+    A few concrete agentic workflows this server makes possible today:
+  </p>
+  <ul>
+    <li>
+      <strong>Underwriting assistants.</strong> A loan officer's copilot pulls
+      <code>property/estimate</code>,
+      <code>property/value_fsd_threshold</code>,
+      <code>property/ltv_origination</code>, and
+      <code>property/flood</code> in a single conversation, then summarizes
+      risk for the file.
+    </li>
+    <li>
+      <strong>Investor deal screens.</strong> An investor's agent runs
+      <code>property/value</code>, <code>zip/hcri</code> for gross rental
+      yield, <code>block/hazard_*</code> for disaster exposure, and
+      <code>msa/hpi_ts_forecast</code> for the 36-month outlook before
+      recommending a bid.
+    </li>
+    <li>
+      <strong>Portfolio monitoring at conversational level.</strong> A
+      servicer asks "which assets in portfolio 12345 are now above 80% LTV?"
+      and the agent calls
+      <code>portfolio-monitor/portfolios/{portfolio_id}</code> plus
+      <code>property/ltv_details</code> to answer with current numbers.
+    </li>
+    <li>
+      <strong>Listing-presentation prep.</strong> An agent's CMA tooling
+      pulls <code>property/value_analysis</code>,
+      <code>property/sales_history</code>, and
+      <code>zip/market_pulse/latest</code> to build a defensible price
+      discussion for a kitchen-table conversation.
+    </li>
+  </ul>
+  <p>
+    These aren't future use cases. They work today, against the live
+    HouseCanary API, through any MCP-compatible model.
+  </p>
+</div>
+
+<div id="why-ship-this-now" style="scroll-margin-top: 110px">
+  <h2><strong>Why Ship This Now</strong></h2>
+  <p>
+    Property data has been hard for AI to use. APIs are fragmented, schemas
+    are inconsistent, and models that try to reason about real estate without
+    grounding produce confident but wrong answers — bad comps, hallucinated
+    owners, AVMs invented from thin air.
+  </p>
+  <p>
+    MCP is the standard that fixes that. It gives any model a clean way to
+    call data that's accurate, documented, and auditable. By publishing the
+    HouseCanary MCP as an open Python package on day one, we're making the
+    lowest-friction path to grounded
+    <a href="https://www.housecanary.com/blog/ai-in-real-estate"
+      >AI in real estate</a
+    >
+    a HouseCanary path.
+  </p>
+  <blockquote
+    style="
+      border-left: 4px solid #0a62ff;
+      background: #f2f7ff;
+      padding: 16px 20px;
+      margin: 24px 0;
+      color: #20203f;
+      font-style: italic;
+    "
+  >
+    "Every AI agent in property tech needs accurate data underneath it.
+    Shipping our MCP server as a public, installable package — wrapping 149
+    endpoints and 36-month forecasts — means any builder can ground their
+    agents in HouseCanary's data the same day they think to ask. That's how
+    the next generation of real estate AI gets built."
+    <br /><br />
+    <strong>— Chris Rediger, CEO</strong>
+  </blockquote>
+
+  <figure class="mcp-data-flow-figure" style="margin: 32px 0; width: 100%; max-width: 100%;">
+    <svg viewBox="0 0 880 320" style="width: 100%; height: auto; display: block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data flow diagram: HouseCanary data sources feed into the MCP server, which exposes 149 tools to AI agents like Claude, Cursor, and ChatGPT.">
+      <defs>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f2f7ff"/>
+          <stop offset="100%" stop-color="#e6effe"/>
+        </linearGradient>
+        <linearGradient id="mcpGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0c62ff"/>
+          <stop offset="100%" stop-color="#0c62ff"/>
+        </linearGradient>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#0c62ff"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="880" height="320" rx="16" fill="url(#bgGrad)"/>
+      <g font-family="'Poppins','Avenir Next',sans-serif" fill="#20203f">
+        <text x="40" y="38" font-size="11" font-weight="700" letter-spacing="1.5" fill="#5a6478">DATA SOURCES</text>
+        <g transform="translate(40,56)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <circle cx="22" cy="22" r="8" fill="#0c62ff"/>
+          <text x="42" y="20" font-size="13" font-weight="700">AVMs</text>
+          <text x="42" y="35" font-size="11" fill="#5a6478">Property + rent + land</text>
+        </g>
+        <g transform="translate(40,112)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <circle cx="22" cy="22" r="8" fill="#0c62ff"/>
+          <text x="42" y="20" font-size="13" font-weight="700">Market Insights</text>
+          <text x="42" y="35" font-size="11" fill="#5a6478">MSA / ZIP / block</text>
+        </g>
+        <g transform="translate(40,168)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <circle cx="22" cy="22" r="8" fill="#0c62ff"/>
+          <text x="42" y="20" font-size="13" font-weight="700">Forecasts</text>
+          <text x="42" y="35" font-size="11" fill="#5a6478">36-month HPI/RPI</text>
+        </g>
+        <g transform="translate(40,224)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <circle cx="22" cy="22" r="8" fill="#0c62ff"/>
+          <text x="42" y="20" font-size="13" font-weight="700">Property Records</text>
+          <text x="42" y="35" font-size="11" fill="#5a6478">Listings, comps, owners</text>
+        </g>
+      </g>
+      <g stroke="#0c62ff" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.7">
+        <path d="M225,78 C260,78 280,160 320,160"/>
+        <path d="M225,134 C265,134 285,160 320,160"/>
+        <path d="M225,190 C265,190 285,160 320,160"/>
+        <path d="M225,246 C260,246 280,160 320,160"/>
+      </g>
+      <g transform="translate(320,80)">
+        <rect width="240" height="160" rx="14" fill="url(#mcpGrad)"/>
+        <text x="120" y="44" text-anchor="middle" font-family="'Poppins','Avenir Next',sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#9bbfff">MCP SERVER</text>
+        <text x="120" y="84" text-anchor="middle" font-family="'Poppins','Avenir Next',sans-serif" font-size="40" font-weight="800" fill="#fff">149</text>
+        <text x="120" y="106" text-anchor="middle" font-family="'Poppins','Avenir Next',sans-serif" font-size="13" font-weight="500" fill="#cfdfff">tools exposed</text>
+        <g transform="translate(40,124)" font-family="'Poppins','Avenir Next',sans-serif" font-size="10" font-weight="600" fill="#fff">
+          <rect x="0" y="0" width="48" height="20" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="24" y="14" text-anchor="middle">stdio</text>
+          <rect x="56" y="0" width="48" height="20" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="80" y="14" text-anchor="middle">HTTP</text>
+          <rect x="112" y="0" width="48" height="20" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="136" y="14" text-anchor="middle">SSE</text>
+        </g>
+      </g>
+      <g stroke="#0c62ff" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.7">
+        <path d="M560,134 C600,134 620,84 660,84"/>
+        <path d="M560,160 C600,160 620,160 660,160"/>
+        <path d="M560,186 C600,186 620,236 660,236"/>
+      </g>
+      <g font-family="'Poppins','Avenir Next',sans-serif" fill="#20203f">
+        <text x="660" y="38" font-size="11" font-weight="700" letter-spacing="1.5" fill="#5a6478">AI CLIENTS</text>
+        <g transform="translate(660,62)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <text x="16" y="20" font-size="13" font-weight="700">Claude Desktop</text>
+          <text x="16" y="35" font-size="11" fill="#5a6478">Anthropic</text>
+        </g>
+        <g transform="translate(660,138)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <text x="16" y="20" font-size="13" font-weight="700">Cursor</text>
+          <text x="16" y="35" font-size="11" fill="#5a6478">IDE agent</text>
+        </g>
+        <g transform="translate(660,214)">
+          <rect width="180" height="44" rx="8" fill="#fff" stroke="#d8e0ec"/>
+          <text x="16" y="20" font-size="13" font-weight="700">Custom agents</text>
+          <text x="16" y="35" font-size="11" fill="#5a6478">via MCP SDK</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption style="text-align: center; font-size: 14px; color: #5a6478; margin-top: 12px;">The HouseCanary MCP server bridges 149 production data tools to any MCP-compatible AI client.</figcaption>
+  </figure>
+</div>
+
+<div id="faq" style="scroll-margin-top: 110px">
+  <h2><strong>FAQ</strong></h2>
+
+  <h3><strong>Do I need a new API key?</strong></h3>
+  <p>
+    No. The MCP server uses your existing HouseCanary API username and
+    password. If you already have access to the Analytics API, you have access
+    to the MCP server.
+  </p>
+
+  <h3><strong>How is MCP usage billed?</strong></h3>
+  <p>
+    Every tool call counts as a normal HouseCanary API call and is billed
+    against your existing plan or contract — there's no separate MCP fee, but
+    agents can call tools many times in a single workflow, so usage adds up.
+    Three exceptions: <strong>Portfolio Monitor</strong>,
+    <strong>Market Pulse</strong>, and the
+    <strong>Bulk Property Data</strong> endpoint don't carry per-call charges
+    (they're subscription products, included in your plan). All other
+    endpoints (Property, ZIP, Block, MSA, State, Property Explorer) are
+    billed at your contract rate. Track current usage in your
+    <a
+      href="https://solutions.housecanary.com/org-admin/billing"
+      rel="noopener"
+      target="_blank"
+      >HouseCanary billing dashboard</a
+    >
+    — that's the quickest way to see usage for the current billing period.
+  </p>
+
+  <h3><strong>Is the source code open?</strong></h3>
+  <p>
+    The package is published as an installable wheel and source distribution
+    on PyPI. The license is proprietary — you can install and run it, but the
+    underlying API access is governed by your HouseCanary contract.
+  </p>
+
+  <h3><strong>Which AI models can use this?</strong></h3>
+  <p>
+    Anything that speaks MCP. That includes Claude (Desktop, Code, API),
+    Cursor, Cline, Continue, ChatGPT desktop with MCP support, and any custom
+    agent built on the official Anthropic, OpenAI, or Google MCP client
+    libraries.
+  </p>
+
+  <h3><strong>Is it stdio or HTTP?</strong></h3>
+  <p>
+    Both. Default transport is stdio for local clients like Claude Desktop.
+    Set <code>FASTMCP_TRANSPORT=http</code> to run it as a hosted HTTP endpoint
+    on port 8000.
+  </p>
+
+  <h3><strong>What's excluded from the MCP surface?</strong></h3>
+  <p>
+    POST methods and the <code>component_mget</code> batch endpoints are
+    filtered out by design. The MCP server is read-only — agents can query but
+    not mutate state.
+  </p>
+
+  <h3>
+    <strong>How does it compare to building directly against the REST API?</strong>
+  </h3>
+  <p>
+    The REST API is still the right choice for high-throughput backend
+    workloads. MCP is for agentic and conversational use cases — wherever an
+    LLM is doing the calling.
+  </p>
+</div>
+
+<div id="get-started" style="scroll-margin-top: 110px">
+  <h2><strong>Get Started</strong></h2>
+  <p>
+    The package is live on PyPI:
+    <a
+      href="https://pypi.org/project/housecanary-mcp/0.1.0/"
+      rel="noopener"
+      target="_blank"
+      >pypi.org/project/housecanary-mcp</a
+    >.
+  </p>
+  <pre><code>pip install housecanary-mcp</code></pre>
+  <p>
+    If you don't have HouseCanary API credentials yet,
+    <a href="https://www.housecanary.com/products/data-explorer"
+      >start with the Analytics API</a
+    >
+    — every endpoint there is now also an MCP tool.
+  </p>
+  <p>
+    Already a self-serve customer? Check pricing for your current plan and
+    your current bill in your
+    <a
+      href="https://solutions.housecanary.com/org-admin/billing"
+      rel="noopener"
+      target="_blank"
+      >billing dashboard</a
+    >.
+  </p>
+</div>
+ </div> </div> </div> </div> </section> <script>(function(){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('.hc-cta-card a.w-button');if(!a)return;try{if(window.posthog&&typeof posthog.capture==='function'){posthog.capture('blog_cta_click',{placement:'blog_sticky_rail',copy:'agents-investors-v1',viewport:(window.innerWidth<992?'mobile':'desktop'),pathname:location.pathname});}}catch(err){}},true);})();</script> <section class="section related"><div class="w-layout-blockcontainer full-width-container _w-100 margin-auto relative w-container"><div class="related-content"><div class="related-top"><h2 class="h2">Related Reading</h2><a href="/resources/blog" class="link is-icon tablet-hide w-inline-block"><div>Blog home</div><div class="link-arrow-wrapper"><img src="/images/682cd0bcd28ac985e4c6e523_arrow_right_alt.svg" loading="lazy" alt="arrow icon" class="img100" width="16" height="13"></div></a></div><div class="related-bottom"><div class="w-dyn-list"><div role="list" class="blog-list _4-col w-dyn-items"><div role="listitem" class="w-dyn-item"><a href="/blog/real-estate-api" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">10 Best Real Estate APIs in 2026 + Use Cases</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">September 17, 2026</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/6984e0c1aa44b111a3ebd197_real-estate-api-hero.jpg" loading="lazy" alt=" A cloud, question mark, and check mark icon" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/ai-in-real-estate" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">AI in Real Estate 2025: Trends, Benefits, and Tips</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">September 24, 2025</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/691f3387fc3577966f001dbb_68d40189928e5b9966a984fe_ai-in-real-estate-hero.jpeg" loading="lazy" alt="A neighborhood overview with an upward trending graph icon, start icon, and home report icon" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/automated-valuation-model" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">Automated Valuation Model: How It Works and Why It Matters</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">May 30, 2025</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/691f3387c222b77d53e38eff_6839d1c22415617a2ee8ef60_automated-valuation-model-hero-2520-1-.jpeg" loading="lazy" alt="Automated valuation model" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/5-ai-tools-for-real-estate-agents" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">18 Best AI Tools for Real Estate Agents (2026)</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">September 2, 2026</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/6935d900c6c7514bb5817fa2_ai-tools-for-real-estate-agents-hero.jpg" loading="lazy" alt="A home image with an arrow and AI search icons" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/avms-reshape-real-estate" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">How Automated Valuation Models Disrupt Traditional Appraisals and Reshape Real Estate Strategy</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">November 3, 2025</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/691f339192331b4e396e8585_6904ce8c5a149524e2584a8d_avms-reshape-real-estate-hero.jpeg" loading="lazy" alt="Home icons with price symbol" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/home-value-explorer" class="blog-item mobile-layout related w-inline-block"><div class="blog-item-top mobile-layout related"><div class="tag">Real Estate Tech &amp; AI</div><h3 class="blog-title">Home Value Explorer Alternatives: Agile Insights Compared</h3><div class="blog-dot-item mobile-hide"><div class="dot"></div><div class="paragraph xsmall caps text-color-grey">July 14, 2025</div></div></div><div class="blog-item-bottom mobile-layout related"><img src="/images/691f338da861cc404c05a264_6875191082d8eea5e13eab94_hve-vs-agile-insights-hero.png" loading="lazy" alt="Images of Home Value Explorer and Agile Insights with HVE grayed out" class="img100 cover mobile-min-h-80" width="1880" height="1252"></div></a></div></div></div></div><a href="/resources/blog" class="link is-icon desktop-hide w-inline-block"><div>Blog home</div><div class="link-arrow-wrapper"><img src="/images/682cd0bcd28ac985e4c6e523_arrow_right_alt.svg" loading="lazy" alt="arrow icon" class="img100" width="16" height="13"></div></a></div></div></section> <section class="section cta"> <div class="cta-bg"> <img src="/images/682e380064708502accc35d0_Frame-131.webp" loading="lazy" sizes="(max-width: 479px) 100vw, 240px, 100vw" srcset="/images/682e380064708502accc35d0_Frame-131-p-500.webp 500w, /images/682e380064708502accc35d0_Frame-131-p-800.webp 800w, /images/682e380064708502accc35d0_Frame-131-p-1080.webp 1080w, /images/682e380064708502accc35d0_Frame-131-p-1600.webp 1600w, /images/682e380064708502accc35d0_Frame-131-p-2000.webp 2000w, /images/682e380064708502accc35d0_Frame-131-p-2600.webp 2600w, /images/682e380064708502accc35d0_Frame-131.webp 2880w" alt="" class="img100" width="2880" height="970"> </div> <div class="full-width-container _w-100 margin-auto"> <div class="cta-content"> <div class="cta-left"> <div class="cta-left-inner"> <div class="eyebrow">PORTFOLIO MONITORING</div> <h2 class="h2 white">Proactively monitor risk within your property or loan portfolio</h2> <p class="paragraph medium white">Streamline your portfolio management with automated updates that ensure you&#39;re always in the know.</p> </div> <div class="button-group"> <a href="/pricing" target="_blank" rel="noopener noreferrer" class="button mobile-full-width w-button">Buy Now</a> <a href="/products/portfolio-monitoring" class="button secondary mobile-full-width w-button">Learn More</a> </div> </div> <div class="cta-right"> <img src="/images/6931ecf1e73a54e40aebd59d_hc_portfolio-monitoring-hero.svg" loading="lazy" alt="" class="img100" width="380" height="258"> </div> </div> </div> </section>  <section class="footer" data-astro-cid-sz7xmlte> <div class="w-layout-blockcontainer _1400-container w-container" data-astro-cid-sz7xmlte>  <div class="full-width-container footer-spacing" data-astro-cid-sz7xmlte> <div class="footer-wrapper" data-astro-cid-sz7xmlte>  <div class="footer-logo" data-astro-cid-sz7xmlte> <a href="/" class="footer-brand w-inline-block" aria-label="HouseCanary Home" data-astro-cid-sz7xmlte> <img src="/images/65a05005286e67faab8f120e_hc-logo_dark.webp" loading="lazy" width="150" height="27" sizes="(max-width: 479px) 100vw, 150px" alt="HouseCanary logo" srcset="/images/65a05005286e67faab8f120e_hc-logo_dark-p-500.png 500w, /images/65a05005286e67faab8f120e_hc-logo_dark.webp 1549w" data-astro-cid-sz7xmlte> </a> <div class="footer-social-block" data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/company/housecanary-inc" target="_blank" rel="noopener noreferrer" class="footer-social-link w-inline-block" aria-label="Follow us on LinkedIn" data-astro-cid-sz7xmlte> <img src="/images/62434fa732124a389912aad8_linkedin-small.svg" loading="lazy" alt="" class="image-15" width="24" height="24" data-astro-cid-sz7xmlte> </a> <img src="/images/65dcbc900e3e8ac2e7fbb92a_FPI-Management_fair-housing-and-equal-opportunity.webp" loading="lazy" sizes="(max-width: 479px) 100vw, 240px" srcset="/images/65dcbc900e3e8ac2e7fbb92a_FPI-Management_fair-housing-and-equal-opportunity-p-500.png 500w, /images/65dcbc900e3e8ac2e7fbb92a_FPI-Management_fair-housing-and-equal-opportunity.webp 947w" alt="A logo of the fair housing opportunity icon" class="image-14" width="947" height="946" data-astro-cid-sz7xmlte> </div> <p class="paragraph xsmall" data-astro-cid-sz7xmlte>We build groundbreaking technologies to improve and accelerate residential real estate operations.</p> </div>  <div class="footer-content" data-astro-cid-sz7xmlte> <div class="footer-block" data-astro-cid-sz7xmlte> <div class="title-small blue" data-astro-cid-sz7xmlte>Company</div> <a href="/resources/about-us" class="footer-link" data-astro-cid-sz7xmlte> About Us </a><a href="/resources/careers" class="footer-link hide" data-astro-cid-sz7xmlte> Careers </a><a href="https://www.housecanary.com/category/news" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> Press Resources </a><a href="https://trust.housecanary.com/" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> Trust Center </a> </div><div class="footer-block" data-astro-cid-sz7xmlte> <div class="title-small blue" data-astro-cid-sz7xmlte>Resources</div> <a href="/info/legal" class="footer-link" data-astro-cid-sz7xmlte> Legal </a><a href="/info/brokerage" class="footer-link" data-astro-cid-sz7xmlte> Brokerage Information </a><a href="https://status.housecanary.com/?utm_source=housecanary_website&utm_medium=button&utm_campaign=platform_status" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> Status </a><a href="https://support.housecanary.com/?utm_source=housecanary_website&utm_medium=button&utm_campaign=platform_support" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> Support </a> </div><div class="footer-block" data-astro-cid-sz7xmlte> <div class="title-small blue" data-astro-cid-sz7xmlte>Programs</div> <a href="/google" class="footer-link" data-astro-cid-sz7xmlte> Google Listings Program </a> </div><div class="footer-block" data-astro-cid-sz7xmlte> <a href="https://www.housecanary.com/info/legal" class="link-block-8 w-inline-block" data-astro-cid-sz7xmlte> <div class="title-small blue" data-astro-cid-sz7xmlte>Legal</div> </a> <a href="https://www.housecanary.com/legal/housecanary-product-terms-of-use-20201222" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> Terms &amp; Conditions </a><a href="/legal/privacy-policy" class="footer-link" data-astro-cid-sz7xmlte> Privacy Policy </a><a href="/reorganization" class="footer-link" data-astro-cid-sz7xmlte> Reorganization </a><a href="https://www.housecanary.com/legal/sla" target="_blank" rel="noopener noreferrer" class="footer-link" data-astro-cid-sz7xmlte> SLA </a> </div> </div> </div> </div> <div class="_40px-spacer" data-astro-cid-sz7xmlte></div> <div class="footer-divider" data-astro-cid-sz7xmlte></div>  <div class="div-block-56" data-astro-cid-sz7xmlte> <div class="paragraph xsmall" data-astro-cid-sz7xmlte> <a href="/images/65cd53995c0ab0688cb07362_LS-NY-SOP.pdf" target="_blank" rel="noopener noreferrer" class="paragraph" data-astro-cid-sz7xmlte> NY Standard Operating Procedures </a> </div><div class="paragraph xsmall" data-astro-cid-sz7xmlte> <a href="/images/661841246c4747e58caeaeb5_TX-Information-about-Brokerage-Services.pdf" target="_blank" rel="noopener noreferrer" class="paragraph" data-astro-cid-sz7xmlte> TREC Info About Brokerage Services </a> </div><div class="paragraph xsmall" data-astro-cid-sz7xmlte> <a href="https://www.trec.texas.gov/forms/consumer-protection-notice" target="_blank" rel="noopener noreferrer" class="paragraph" data-astro-cid-sz7xmlte> TREC Consumer Protection Notice </a> </div><div class="paragraph xsmall" data-astro-cid-sz7xmlte> <a href="#" class="paragraph no-underline" data-astro-cid-sz7xmlte> California DRE #02113022 </a> </div> </div> <div class="footer-divider" data-astro-cid-sz7xmlte></div>  <div class="paragraph xsmall footer-disclaimer" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>  Copyright © 2026 HouseCanary </span><span data-astro-cid-sz7xmlte> <br data-astro-cid-sz7xmlte>&#8205;<br data-astro-cid-sz7xmlte> HouseCanary, Inc. is a Licensed Real Estate Brokerage in KS, NM, SC and under the Trade Name ComeHome in AL, AK, AZ, CA, CO, CT, DC, DE, FL, GA, HI, IA, ID, IL, IN, KY, LA, MA, MD, ME, MO, MN, MS, MT, NC, ND, NE, NH, NJ, NV, NY, OH, OK, OR, PA, RI, SD, TN, TX, VA, VT, WA, WI, WV, WY. Trade Name ComeHome Real Estate in MI and UT. Trade Name ComeHome by HouseCanary in AR. </span><span data-astro-cid-sz7xmlte> <br data-astro-cid-sz7xmlte>&#8205;<br data-astro-cid-sz7xmlte> AVM Disclosure: An AVM is an estimated sale price for a property. It is not the same as the opinion of value in an appraisal developed by a licensed appraiser under the Uniform Standards of Professional Appraisal Practice. </span><span data-astro-cid-sz7xmlte> <br data-astro-cid-sz7xmlte>&#8205;<br data-astro-cid-sz7xmlte> *HouseCanary&#39;s Price Match Guarantee is only good for like/identical products and proof of competitive pricing is required. HouseCanary reserves the right to exclude anyone from the offer at our discretion. </span> </div> </div> </section>  <!-- Client-side JS: SPA navigation + widget hydration --> <!-- Relative src → processed by Vite → content-hashed output in dist/_astro/ --> <script type="module">(function(){var b=2e3,d=null,s=!1;function w(){if(!s){s=!0,d&&clearTimeout(d);var e=document.querySelectorAll("[data-ph-flag]");if(e.length){for(var t={},o=0;o<e.length;o++){var i=e[o],r=i.getAttribute("data-ph-flag");t[r]||(t[r]=[]),t[r].push(i)}for(var a=Object.keys(t),p=0;p<a.length;p++){var g=a[p],n=t[g],l=null;try{window.posthog&&typeof window.posthog.getFeatureFlag=="function"&&(l=window.posthog.getFeatureFlag(g))}catch{}var h;l===!0?h="test":l===!1||l===null||l===void 0?h="control":h=String(l);for(var u=null,v=0;v<n.length;v++){var c=n[v],L=c.getAttribute("data-ph-variant");L===h?(c.classList.add("ph-active"),c.classList.remove("ph-hidden"),u=L):(c.classList.add("ph-hidden"),c.classList.remove("ph-active"))}if(!u)for(var f=0;f<n.length;f++)n[f].getAttribute("data-ph-variant")==="control"&&(n[f].classList.add("ph-active"),n[f].classList.remove("ph-hidden"),u="control");if(u&&window.posthog&&typeof window.posthog.capture=="function")try{window.posthog.capture("$experiment_started",{$feature_flag:g,$feature_flag_response:u})}catch{}}A()}}}function A(){var e=document.querySelectorAll(".ph-active [data-lottie-src]");if(!e.length)return;function t(){if(!(!window.lottie||typeof window.lottie.loadAnimation!="function"))for(var r=0;r<e.length;r++){var a=e[r];if(a.getAttribute("data-lottie-init")!=="1"){a.setAttribute("data-lottie-init","1");try{window.lottie.loadAnimation({container:a,renderer:"svg",loop:a.getAttribute("data-lottie-loop")!=="false",autoplay:a.getAttribute("data-lottie-autoplay")!=="false",path:a.getAttribute("data-lottie-src")})}catch{}}}}if(window.lottie&&typeof window.lottie.loadAnimation=="function"){t();return}var o=document.querySelector("script[data-lottie-loader]");if(o){o.addEventListener("load",t);return}var i=document.createElement("script");i.src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js",i.async=!0,i.setAttribute("data-lottie-loader","1"),i.onload=t,document.head.appendChild(i)}function y(){if(!s){s=!0;for(var e=document.querySelectorAll("[data-ph-flag]"),t=0;t<e.length;t++){var o=e[t];o.getAttribute("data-ph-variant")==="control"?(o.classList.add("ph-active"),o.classList.remove("ph-hidden")):(o.classList.add("ph-hidden"),o.classList.remove("ph-active"))}A()}}function m(){if(d=setTimeout(y,b),!document.querySelectorAll("[data-ph-flag]").length){s=!0,d&&clearTimeout(d);return}if(window.posthog&&typeof window.posthog.onFeatureFlags=="function")window.posthog.onFeatureFlags(w);else var e=0,t=setInterval(function(){e++,window.posthog&&typeof window.posthog.onFeatureFlags=="function"?(clearInterval(t),window.posthog.onFeatureFlags(w)):e>20&&(clearInterval(t),y())},100)}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",m):m()})();</script> <!-- ============================================================
+       Tracking scripts (bottom of body for performance)
+       ============================================================ --> <!-- UTM parameter handler (captures utm_*, gclid, fbclid, msclkid to localStorage + cookies) --> <script>(function(){try{var params=new URLSearchParams(window.location.search);var utmKeys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_keyword','gclid','fbclid','msclkid','li_fat_id','uqaid','meta_type','wbraid','gbraid'];var found={};utmKeys.forEach(function(k){var v=params.get(k);if(v){found[k]=v}});if(Object.keys(found).length>0){var existing={};try{existing=JSON.parse(localStorage.getItem('hc_utm_params')||'{}')}catch(e){}var merged=Object.assign({},existing,found);merged._ts=Date.now();merged._lp=window.location.pathname;localStorage.setItem('hc_utm_params',JSON.stringify(merged));Object.keys(found).forEach(function(k){document.cookie=k+'='+encodeURIComponent(found[k])+';path=/;max-age=2592000;SameSite=Lax'})}}catch(e){}})();</script> <!-- uqaid handler (?uqaid → localStorage + cookie for internal tracking) --> <script>(function(){try{var u=new URLSearchParams(window.location.search).get('uqaid');if(u){localStorage.setItem('hc_uqaid',u);document.cookie='uqaid='+encodeURIComponent(u)+';path=/;max-age=2592000;SameSite=Lax'}}catch(e){}})();</script> <!-- Pardot tracking code --> <script>piAId='652793';piCId='86176';piHostname='pi.pardot.com';
+  (function(){function async_load(){var s=document.createElement('script');s.type='text/javascript';s.src=('https:'==document.location.protocol?'https://pi':'http://cdn')+ '.pardot.com/pd.js';var c=document.getElementsByTagName('script')[0];c.parentNode.insertBefore(s,c)}if(window.attachEvent){window.attachEvent('onload',async_load)}else{window.addEventListener('load',async_load,false)}})();</script> <!-- PostHog feature flags evaluator --> <script type="module" src="/assets/BaseLayout.astro_astro_type_script_index_1_lang.BY_RNQps.js"></script> <!-- UTM link decoration: append UTM params to solutions.housecanary.com links --> <script>
+  window.addEventListener('load', function () {
+    try {
+      var utmRaw = localStorage.getItem('hc_utm_params');
+      if (!utmRaw) return;
+      var utmParams;
+      try { utmParams = JSON.parse(utmRaw); } catch (e) { return; }
+      if (!utmParams || typeof utmParams !== 'object') return;
+
+      var filtered = {};
+      var clickIds = ['gclid', 'fbclid', 'msclkid', 'wbraid', 'gbraid'];
+      Object.keys(utmParams).forEach(function (k) {
+        if (k.startsWith('utm') || k === 'uqaid' || k === 'meta_type' || clickIds.indexOf(k) !== -1) filtered[k] = utmParams[k];
+      });
+      // trk_ prefix: the signup app persists any trk_* param and carries it into
+      // signup-event url_search_params; unprefixed click IDs it would drop
+      if (utmParams.gclid) filtered.trk_gclid = utmParams.gclid;
+      if (utmParams.uqaid) filtered.trk_uqaid = utmParams.uqaid;
+      if (utmParams.meta_type) filtered.trk_meta_type = utmParams.meta_type;
+      if (!Object.keys(filtered).length) return;
+
+      document.querySelectorAll('a[href*="solutions.housecanary.com"]').forEach(function (link) {
+        try {
+          var url = new URL(link.href);
+          if (url.hostname !== 'solutions.housecanary.com') return;
+          Object.keys(filtered).forEach(function (k) {
+            url.searchParams.set(k, filtered[k]);
+          });
+          link.href = url.toString();
+        } catch (e) {}
+      });
+    } catch (e) {}
+  });
+  </script> </body> </html> 

@@ -1,0 +1,232 @@
+{
+  "product": "FlipperForce",
+  "slug": "flipperforce",
+  "date": "2026-10-06",
+  "kind": "competitor",
+  "urls": [
+    {
+      "url": "https://flipperforce.com/",
+      "raw_file": "raw/home.html",
+      "http_status": 200,
+      "what": "home"
+    },
+    {
+      "url": "https://flipperforce.com/pricing",
+      "raw_file": "raw/pricing.html",
+      "http_status": 200,
+      "what": "pricing"
+    },
+    {
+      "url": "https://flipperforce.com/software-features/rehab-repair-cost-estimator",
+      "raw_file": "raw/estimator.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipperforce.com/software-features/comps-tool",
+      "raw_file": "raw/comps_tool.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipperforce.com/learn/tools/ai-receipt-analyzer",
+      "raw_file": "raw/receipt.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipperforce.com/learn/tools/public-api",
+      "raw_file": "raw/public_api.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://www.flipperforce.com/new-software-features",
+      "raw_file": "raw/newfeatures.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://flipperforce.com/house-flipping-blog-all",
+      "raw_file": "raw/blogall.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://flipperforce.com/house-flipping-blog/2025-year-in-review-productivity-and-platform-updates",
+      "raw_file": "raw/yir2025.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://www.flipperforce.com/house-flipping-blog/new-feature-track-expense-change-orders",
+      "raw_file": "raw/changeorders.html",
+      "http_status": 200,
+      "what": "features"
+    },
+    {
+      "url": "https://flipperforce.com/house-flipping-blog/comps-tool-thumbs-up-thumbs-down-comp-selection",
+      "raw_file": "raw/comps_thumbs.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://flipperforce.com/house-flipping-blog/introducing-our-new-ai-powered-bulk-expense-importer",
+      "raw_file": "raw/bulk_expense_blog.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://flipperforce.com/house-flipping-blog/new-public-api-endpoints-for-expenses",
+      "raw_file": "raw/api_expenses_blog.html",
+      "http_status": 200,
+      "what": "changelog"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/id6746277826",
+      "raw_file": "raw/appstore.html",
+      "http_status": 200,
+      "what": "appstore"
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=6746277826&country=us",
+      "raw_file": "raw/itunes_lookup.json",
+      "http_status": 200,
+      "what": "appstore"
+    }
+  ],
+  "features": [
+    {
+      "feature": "Rehab estimator with 500+ item cost database and SOW",
+      "quote": "Start from a pre-built cost database of over 500 common repair items and unit prices, customize it to your market, and generate a detailed estimate and professional scope of work in minutes.",
+      "source_url": "https://flipperforce.com/software-features/rehab-repair-cost-estimator"
+    },
+    {
+      "feature": "Pre-written SOW notes shared with contractors",
+      "quote": "Pre-written SOW Notes for each repair category telling the contractor exactly wat to include in their proposal.",
+      "source_url": "https://flipperforce.com/software-features/rehab-repair-cost-estimator"
+    },
+    {
+      "feature": "Comps tool with pick / drop and live ARV",
+      "quote": "It automatically pulls a list of recent comparable sales that match your subject property, lets you pick the best comps and drop the bad ones, and calculates the average price per square foot",
+      "source_url": "https://flipperforce.com/software-features/comps-tool"
+    },
+    {
+      "feature": "Thumbs up / thumbs down comp selection",
+      "quote": "Thumb down a comp to flag it. It drops to the bottom of the list, gets highlighted in red so it's easy to spot, and disappears from the map view",
+      "source_url": "https://flipperforce.com/house-flipping-blog/comps-tool-thumbs-up-thumbs-down-comp-selection"
+    },
+    {
+      "feature": "Change orders tracked against contingency in Expense Tracker",
+      "quote": "You can now track this amount separately as a Change Order using the 'Adders' option on the drop down menu. Expenses tracked as Change Orders will are then deducted from your Adders/Contingency budget",
+      "source_url": "https://www.flipperforce.com/house-flipping-blog/new-feature-track-expense-change-orders"
+    },
+    {
+      "feature": "AI Receipt Analyzer (photo to expense)",
+      "quote": "Take a photo of any receipt, and AI automatically extracts the vendor, date, amount, and category",
+      "source_url": "https://flipperforce.com/learn/tools/ai-receipt-analyzer"
+    },
+    {
+      "feature": "AI bulk expense importer (Home Depot Pro Xtra, bank statement PDF/CSV)",
+      "quote": "You can now drop in raw, unstructured CSVs or even PDF bank statements.",
+      "source_url": "https://flipperforce.com/house-flipping-blog/introducing-our-new-ai-powered-bulk-expense-importer"
+    },
+    {
+      "feature": "Budget vs actuals",
+      "quote": "Track expenses, compare budget vs. actuals, and control project finances.",
+      "source_url": "https://flipperforce.com/pricing"
+    },
+    {
+      "feature": "Share individual project update with lenders / partners",
+      "quote": "Generate a share link for any individual project update so you can send a specific progress report to your lenders or partners without sharing your entire update log.",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "feature": "Lender Network directory including draw processes",
+      "quote": "a free directory of 65+ vetted nationwide and local hard money lenders with real rates, terms, and draw processes for every state.",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "feature": "Public REST API (expenses, material catalog)",
+      "quote": "The FlipperForce Public API exposes your workspace data through a RESTful API with standard authentication.",
+      "source_url": "https://flipperforce.com/learn/tools/public-api"
+    }
+  ],
+  "pricing": [
+    {
+      "plan": "Rookie Analysis Plan",
+      "price": "Free",
+      "limits": "1 user, 5 leads and analysis; deal analysis and rehab estimation; no comps, property data or reports",
+      "source_url": "https://flipperforce.com/pricing"
+    },
+    {
+      "plan": "Solo",
+      "price": "$79/mo monthly, or $59/mo billed yearly ($708)",
+      "limits": "1 user, 50 leads and projects; no project teams, permissions, team tasks, activity logs",
+      "source_url": "https://flipperforce.com/pricing"
+    },
+    {
+      "plan": "Teams",
+      "price": "$199/mo monthly, or $149/mo billed yearly ($1,788)",
+      "limits": "5 users, 100 leads and projects",
+      "source_url": "https://flipperforce.com/pricing"
+    },
+    {
+      "plan": "Business",
+      "price": "$499/mo monthly, or $349/mo billed yearly ($4,188)",
+      "limits": "Unlimited users, leads and projects; custom platform branding",
+      "source_url": "https://flipperforce.com/pricing"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-09-22",
+      "change": "Faster, more reliable photo and receipt uploads in mobile app; My Recent Uploads inbox with retry",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-09-22",
+      "change": "Dark mode on web and FlipperForce Field mobile app",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-08-27",
+      "change": "Daily and Weekly Digest emails lead with Work Assigned to Me",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-08-24",
+      "change": "AI Receipt Analyzer accepts .doc and .docx invoices",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-08-22",
+      "change": "New Material Catalog Public API endpoint (read, create, update)",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-08-19",
+      "change": "Task search, filter and complete from table",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-08-06",
+      "change": "Share link for an individual project update (for lenders / partners)",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    },
+    {
+      "date": "2026-07-15",
+      "change": "FlipperForce Lender Network directory (65+ lenders, rates, terms, draw processes)",
+      "source_url": "https://www.flipperforce.com/new-software-features"
+    }
+  ],
+  "app_store": {
+    "version": "1.1.14",
+    "release_date": "2026-09-26",
+    "whats_new": "Faster photo uploading and reliability. Easier photo navigation with swiping and zooming. Added dark mode. General bug fixes.",
+    "rating_count_if_shown": "3 ratings, 4.33 average (iTunes lookup)",
+    "source_url": "https://apps.apple.com/us/app/id6746277826"
+  },
+  "api_or_mcp": "Public REST API live with API keys from the Integrations section (https://flipperforce.com/learn/tools/public-api); expense endpoints (post dated 2026-06-21) and Material Catalog endpoint (2026-08-22). A native MCP server and native Zapier integration are announced as upcoming, not shipped: 'A Native MCP Server: To let your custom AI agents and LLMs seamlessly read and interact with your FlipperForce data right out of the box.' (https://flipperforce.com/house-flipping-blog/new-public-api-endpoints-for-expenses)",
+  "notes": "Older dated items: comps thumbs up / down post dated 2026-06-25; AI bulk expense importer post 2026-03-31; AI Receipt Analyzer introduced 2026-01-11 (all from the listed pages). Draw management as a FlipperForce feature: not established."
+}
