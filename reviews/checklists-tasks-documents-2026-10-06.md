@@ -1,5 +1,7 @@
 # Checklists, tasks and documents: review and proposed construct
 
+> **Superseded** by `tasks-agent-lifecycle-2026-10-07.md` after Paul noted amendments are rare. Kept for the inventory in section 1.
+
 2026-10-06. Read-only review of `readvise` (RA) and `recontrol` (RC). Nothing in either repo was changed. Paths are relative to each repo root.
 
 **Origin:** Paul's comment on idea 1 (deadlines): "there may be a larger rethinking of the checklists, tasks, upload of docs. interconnecting or reworking to a better construct."
