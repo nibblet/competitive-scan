@@ -280,7 +280,7 @@
     ]
   },
   "paul_guidance": {
-    "updated": "2026-10-06",
+    "updated": "2026-10-07",
     "note": "Filters for future idea cards, from Paul's 2026-10-06 review.",
     "items": [
       "Keep project management light: no change orders, no lender draw workflows, no stakeholder portals.",
@@ -289,7 +289,9 @@
       "Checklists, tasks and document upload may get a larger rework; read deadline and document ideas as input to that.",
       "Wholesale disposition support is of interest if a workable data source exists.",
       "Track our own leads' fate (competitor listing or recorded sale on our lead) alongside competitor tracking.",
-      "Accuracy scorecard in Track is wanted."
+      "Accuracy scorecard in Track is wanted.",
+      "Agents create open tasks by default; completion evidence stays light (a link or a short reason).",
+      "CoS hand-offs to other bots stay ledger events (work_dispatched); no separate Readvise task."
     ]
   }
 }
